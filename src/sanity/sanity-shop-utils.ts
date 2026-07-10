@@ -153,5 +153,10 @@ export async function getCountdown() {
 }
 
 export function imageBuilder(source: any) {
+  if (!source) {
+    return {
+      url: () => "",
+    } as any;
+  }
   return ImageUrlBuilder(clientConfig).image(source);
 }
