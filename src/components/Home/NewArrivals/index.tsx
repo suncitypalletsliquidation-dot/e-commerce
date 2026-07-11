@@ -5,7 +5,7 @@ import NewArrivalTitle from "./NewArrivalTitle";
 const NewArrival = async () => {
   const products = await getProductsByFilter(
     `*[_type == "product"] | order(publishedAt desc)[0...8]`,
-    ["product"]
+    ["product"],
   );
 
   return (

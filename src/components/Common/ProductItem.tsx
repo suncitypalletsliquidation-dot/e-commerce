@@ -26,16 +26,18 @@ const ProductItem = ({ item }: { item: Product }) => {
 
   const { cartItems } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlistReducer.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlistReducer.items,
+  );
 
   const pathUrl = usePathname() || "";
 
   const isAlreadyInCart = cartItems.some(
-    (cartItem) => cartItem.id?.toString() === item._id?.toString()
+    (cartItem) => cartItem.id?.toString() === item._id?.toString(),
   );
 
   const isAlreadyInWishlist = Object.values(wishlistItems ?? {}).some(
-    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString()
+    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString(),
   );
 
   const cartItem = {
@@ -69,7 +71,7 @@ const ProductItem = ({ item }: { item: Product }) => {
         addItemToWishlist({
           ...item,
           quantity: 1,
-        })
+        }),
       );
       toast.success("Product added to wishlist!");
     }
@@ -84,6 +86,8 @@ const ProductItem = ({ item }: { item: Product }) => {
     setMounted(true);
   }, []);
 
+  const hasDiscount = item.discountedPrice < item.price;
+
   return (
     <div className="group">
       <div className="relative overflow-hidden flex border items-center justify-center rounded-lg border-gray-2 bg-[#F6F7FB] min-h-[270px] mb-4">
@@ -93,6 +97,7 @@ const ProductItem = ({ item }: { item: Product }) => {
               ? `${item?.slug?.current}`
               : `products/${item?.slug?.current}`
           }`}
+          className="h-full w-full"
         >
           <Image
             src={
@@ -103,6 +108,7 @@ const ProductItem = ({ item }: { item: Product }) => {
             alt={item.name}
             width={250}
             height={250}
+            className="object-cover w-full h-full"
           />
         </Link>
 
@@ -161,8 +167,15 @@ const ProductItem = ({ item }: { item: Product }) => {
       </h3>
 
       <span className="flex items-center gap-2 text-lg font-medium">
-        <span className="text-dark">${item.discountedPrice}</span>
-        <span className="line-through text-dark-4">${item.price}</span>
+        {hasDiscount ? (
+          <>
+            {" "}
+            <span className="text-dark">${item.discountedPrice}</span>
+            <span className="line-through text-dark-4">${item.price}</span>
+          </>
+        ) : (
+          <span className="text-dark">${item.price}</span>
+        )}
       </span>
     </div>
   );

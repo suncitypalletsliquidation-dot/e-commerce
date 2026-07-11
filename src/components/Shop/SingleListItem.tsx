@@ -24,14 +24,16 @@ const SingleListItem = ({ item }: { item: Product }) => {
 
   const { cartItems } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlistReducer.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlistReducer.items,
+  );
 
   const isAlreadyInCart = cartItems.some(
-    (cartItem) => cartItem.id.toString() === item._id.toString()
+    (cartItem) => cartItem.id.toString() === item._id.toString(),
   );
 
   const isAlreadyInWishlist = Object.values(wishlistItems ?? {}).some(
-    (wishlistItem) => wishlistItem._id.toString() === item._id.toString()
+    (wishlistItem) => wishlistItem._id.toString() === item._id.toString(),
   );
 
   const cartItem = {
@@ -65,7 +67,7 @@ const SingleListItem = ({ item }: { item: Product }) => {
         addItemToWishlist({
           ...item,
           quantity: 1,
-        })
+        }),
       );
       toast.success("Product added to wishlist!");
     }
@@ -75,6 +77,8 @@ const SingleListItem = ({ item }: { item: Product }) => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const hasDiscount = item.discountedPrice < item.price;
 
   return (
     <div className="bg-white rounded-lg group shadow-1">
@@ -143,8 +147,16 @@ const SingleListItem = ({ item }: { item: Product }) => {
             </h3>
 
             <span className="flex items-center gap-2 text-lg font-medium">
-              <span className="line-through text-dark-4">${item.price}</span>
-              <span className="text-dark">${item.discountedPrice}</span>
+              {hasDiscount ? (
+                <>
+                  <span className="line-through text-dark-4">
+                    ${item.price}
+                  </span>
+                  <span className="text-dark">${item.discountedPrice}</span>
+                </>
+              ) : (
+                <span className="text-dark">${item.price}</span>
+              )}
             </span>
           </div>
         </Link>

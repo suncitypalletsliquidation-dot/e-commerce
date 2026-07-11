@@ -10,12 +10,13 @@ const SingleItem = ({ item }: { item: Category }) => {
       href={`/categories/${item.slug.current}`}
       className="group flex flex-col items-center"
     >
-      <div className="max-w-[130px] w-full bg-[#F2F3F8] h-32.5 rounded-full flex items-center justify-center mb-4">
+      <div className="max-w-[130px] overflow-hidden w-full bg-[#F2F3F8] h-32.5 rounded-full flex items-center justify-center mb-4">
         <Image
           src={imageBuilder(item.image).url()!}
           alt="Category"
-          width={82}
-          height={62}
+          width={200}
+          height={200}
+          className="object-cover w-full h-full"
         />
       </div>
 

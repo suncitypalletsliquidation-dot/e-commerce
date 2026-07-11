@@ -1,3 +1,4 @@
+import { createHash } from "crypto";
 import { Category } from "@/types/category";
 import { Countdown } from "@/types/countdown";
 import { Order } from "@/types/order";
@@ -55,19 +56,25 @@ export async function getAllProducts() {
   });
 }
 
-export const getProductsByFilter = cache(
-  async (query: string, tags: string[]) => {
-    const filterQuery = groq`${query} ${productData}`;
+export async function getProductsByFilter(query: string, tags: string[]) {
+  const queryHash = createHash("sha256").update(query).digest("hex");
 
-    return sanityFetch<Product[]>({
-      query: filterQuery,
-      qParams: {},
-      tags,
-    });
-  },
-  ["filtered-products"],
-  { tags: ["product"] }
-);
+  const fetcher = cache(
+    async (q: string) => {
+      const filterQuery = groq`${q} ${productData}`;
+
+      return sanityFetch<Product[]>({
+        query: filterQuery,
+        qParams: {},
+        tags,
+      });
+    },
+    ["filtered-products", queryHash],
+    { tags: ["product", ...tags] }
+  );
+
+  return fetcher(query);
+}
 
 export async function getAllProductsCount() {
   return client.fetch<number>(groq`count(*[_type == "product"])`);
@@ -108,6 +115,7 @@ export async function getOrderById(orderId: string) {
   return data;
 }
 
+const heroBannerQueryHash = createHash("sha256").update(heroBannerQuery).digest("hex");
 export const getHeroBanners = cache(
   async () =>
     sanityFetch<any>({
@@ -115,10 +123,11 @@ export const getHeroBanners = cache(
       qParams: {},
       tags: ["heroBanner"],
     }),
-  ["hero-banners"],
+  ["hero-banners", heroBannerQueryHash],
   { tags: ["heroBanner"] }
 );
 
+const heroSliderQueryHash = createHash("sha256").update(heroSliderQuery).digest("hex");
 export const getHeroSliders = cache(
   async () =>
     sanityFetch<any>({
@@ -126,7 +135,7 @@ export const getHeroSliders = cache(
       qParams: {},
       tags: ["heroSlider"],
     }),
-  ["hero-sliders"],
+  ["hero-sliders", heroSliderQueryHash],
   { tags: ["heroSlider"] }
 );
 

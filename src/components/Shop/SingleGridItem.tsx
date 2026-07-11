@@ -24,14 +24,16 @@ const SingleGridItem = ({ item }: { item: Product }) => {
 
   const { cartItems } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlistReducer.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlistReducer.items,
+  );
 
   const isAlreadyInCart = cartItems.some(
-    (cartItem) => cartItem.id?.toString() === item._id?.toString()
+    (cartItem) => cartItem.id?.toString() === item._id?.toString(),
   );
 
   const isAlreadyInWishlist = Object.values(wishlistItems ?? {}).some(
-    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString()
+    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString(),
   );
 
   const cartItem = {
@@ -65,7 +67,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
         addItemToWishlist({
           ...item,
           quantity: 1,
-        })
+        }),
       );
       toast.success("Product added to wishlist!");
     }
@@ -76,10 +78,15 @@ const SingleGridItem = ({ item }: { item: Product }) => {
     setMounted(true);
   }, []);
 
+  const hasDiscount = item.discountedPrice < item.price;
+
   return (
     <div className="group">
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[270px] mb-4">
-        <Link href={`/products/${item?.slug?.current}`}>
+        <Link
+          href={`/products/${item?.slug?.current}`}
+          className="w-full h-full"
+        >
           <Image
             src={
               item?.previewImages
@@ -89,6 +96,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
             alt={item.name}
             width={250}
             height={250}
+            className="object-cover w-full h-full"
           />
         </Link>
 
@@ -137,8 +145,14 @@ const SingleGridItem = ({ item }: { item: Product }) => {
         </h3>
 
         <span className="flex items-center gap-2 text-lg font-medium">
-          <span className="line-through text-dark-4">${item.price}</span>
-          <span className="text-dark">${item.discountedPrice}</span>
+          {hasDiscount ? (
+            <>
+              <span className="line-through text-dark-4">${item.price}</span>
+              <span className="text-dark">${item.discountedPrice}</span>
+            </>
+          ) : (
+            <span className="text-dark">${item.price}</span>
+          )}
         </span>
       </Link>
     </div>

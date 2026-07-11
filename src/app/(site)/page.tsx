@@ -18,9 +18,9 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <PromoBanner />
       <Categories />
       <NewArrival />
-      <PromoBanner />
       <BestSeller />
       <CountDown />
       <Testimonials />
