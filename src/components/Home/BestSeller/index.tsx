@@ -1,3 +1,4 @@
+import { createHash } from "crypto";
 import { bestSellerQuery } from "@/sanity/queries/shop-queries";
 import { sanityFetch } from "@/sanity/sanity-utils";
 import { Product } from "@/types/product";
@@ -5,6 +6,10 @@ import { unstable_cache as cache } from "next/cache";
 import Link from "next/link";
 import BestSellerSectionTitle from "./BestSellerSectionTitle";
 import SingleItem from "./SingleItem";
+
+const queryHash = createHash("sha256")
+  .update(bestSellerQuery + "[0...6]")
+  .digest("hex");
 
 const getBestSeller = cache(
   async () => {
@@ -14,17 +19,17 @@ const getBestSeller = cache(
       tags: ["product"],
     });
   },
-  ["best-seller"],
+  ["best-seller", queryHash],
   {
     tags: ["product"],
-  }
+  },
 );
 
 const BestSeller = async () => {
   const products = await getBestSeller();
 
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden mt-8">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0 ">
         <BestSellerSectionTitle />
 

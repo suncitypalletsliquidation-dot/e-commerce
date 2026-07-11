@@ -66,7 +66,11 @@ export const categoryByIdQuery = groq`*[_type == "category" && _id == $id][0] {
 
 export const allProductsQuery = groq`*[_type == "product"] | order(_createdAt desc) ${productData}`;
 
-export const bestSellerQuery = groq`*[_type == "product"] | order(count(reviews) desc) ${productData}`;
+// Original query fixed to count product orders instead of reviews:
+// export const bestSellerQuery = groq`*[_type == "product"] | order(count(*[_type == "order" && references(^._id)]) desc) ${productData}`;
+
+// Temporary query: fetch products in inverse order of creation/publish
+export const bestSellerQuery = groq`*[_type == "product"] | order(publishedAt asc)[0..5] ${productData}`;
 
 export const singleProductQuery = groq`*[_type == "product" && slug.current == $slug][0] ${productData}`;
 

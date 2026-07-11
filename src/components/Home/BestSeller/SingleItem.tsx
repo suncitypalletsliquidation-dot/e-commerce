@@ -22,14 +22,16 @@ const SingleItem = ({ item }: { item: Product }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { cartItems } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlistReducer.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlistReducer.items,
+  );
 
   const isAlreadyInCart = cartItems.some(
-    (cartItem) => cartItem.id?.toString() === item._id?.toString()
+    (cartItem) => cartItem.id?.toString() === item._id?.toString(),
   );
 
   const isAlreadyInWishlist = Object.values(wishlistItems ?? {}).some(
-    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString()
+    (wishlistItem) => wishlistItem._id?.toString() === item._id?.toString(),
   );
 
   const cartItem = {
@@ -94,11 +96,13 @@ const SingleItem = ({ item }: { item: Product }) => {
         addItemToWishlist({
           ...item,
           quantity: 1,
-        })
+        }),
       );
       toast.success("Product added to wishlist!");
     }
   };
+
+  const hasDiscount = item.discountedPrice < item.price;
 
   return (
     <div className="group">
@@ -109,8 +113,14 @@ const SingleItem = ({ item }: { item: Product }) => {
           </h3>
 
           <span className="flex items-center justify-center gap-2 text-lg font-medium">
-            <span className="line-through text-dark-4">${item.price}</span>
-            <span className="text-dark">${item.discountedPrice}</span>
+            {hasDiscount ? (
+              <>
+                <span className="line-through text-dark-4">${item.price}</span>
+                <span className="text-dark">${item.discountedPrice}</span>
+              </>
+            ) : (
+              <span className="text-dark">${item.price}</span>
+            )}
           </span>
         </div>
         <div className="flex items-center justify-center">
