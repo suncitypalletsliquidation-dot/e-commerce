@@ -2,6 +2,7 @@ import { structuredAlgoliaHtmlData } from '@/algolia/crawlIndex';
 import BlogDetails from '@/components/BlogDetails';
 import { getPost, getPosts } from '@/sanity/sanity-blog-utils';
 import { imageBuilder } from '@/sanity/sanity-shop-utils';
+import { notFound } from 'next/navigation';
 
 type Params = {
   params: Promise<{
@@ -87,6 +88,10 @@ export async function generateMetadata({ params }: Params) {
 const BlogDetailsPage = async ({ params }: Params) => {
   const { slug } = await params;
   const post = await getPost(slug);
+
+  if (!post) {
+    notFound();
+  }
 
   await structuredAlgoliaHtmlData({
     type: 'blogs',
