@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useState } from "react";
 
 export default function CacheRefreshButton() {
@@ -16,7 +16,7 @@ export default function CacheRefreshButton() {
       // Optional: Call manual revalidation if secret is available
       if (process.env.NEXT_PUBLIC_REVALIDATE_SECRET) {
         await fetch(
-          `/api/revalidate-manual?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`
+          `/api/revalidate-manual?secret=${process.env.NEXT_PUBLIC_REVALIDATE_SECRET}`,
         );
       }
     } catch (error) {

@@ -32,12 +32,13 @@ export default function HeroBannerItem({
           </div>
         </div>
 
-        <div className="max-w-[180px] w-full">
+        <div className="max-w-[180px] w-full aspect-[13/10]">
           <Image
             src={imageBuilder(bannerItem?.image).url()!}
             alt="mobile image"
             width={180}
             height={210}
+            className="object-cover w-full h-full"
           />
         </div>
       </div>

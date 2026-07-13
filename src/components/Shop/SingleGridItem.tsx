@@ -82,7 +82,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
 
   return (
     <div className="group">
-      <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[270px] mb-4">
+      <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-white shadow-1 min-h-[250px] size-[250px] mb-4">
         <Link
           href={`/products/${item?.slug?.current}`}
           className="w-full h-full"

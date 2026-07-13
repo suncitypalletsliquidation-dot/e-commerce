@@ -1,13 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { useCheckoutForm } from "./form";
 import { useSession } from "next-auth/react";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
 import PaymentMethod from "./PaymentMethod";
@@ -58,26 +55,28 @@ const CheckoutPaymentArea = ({ amount }: { amount: number }) => {
     const orderId = `ORDER-${Math.floor(Math.random() * 1000000)}`;
 
     const orderData = {
-        orderId,
-        status: "pending",
-        totalPrice: amount, // total order price (integer)
-        userId: session?.user?.id || "", // user ID (string)
-        userEmail: session?.user?.email || data.billing?.email, // user email
-        productQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0).toString(),
-        orderTitle: "Order from NextMerce",
-        country: data.billing?.country,
-        city: data.billing?.town,
-        line1: data.billing?.address?.street,
-        line2: data.billing?.address?.apartment || "",
-        products: cartItems.map((item) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          color: item?.color || "",
-          size: item?.size || "",
-          attribute: item?.attribute || "",
-        })),
+      orderId,
+      status: "pending",
+      totalPrice: amount, // total order price (integer)
+      userId: session?.user?.id || "", // user ID (string)
+      userEmail: session?.user?.email || data.billing?.email, // user email
+      productQuantity: cartItems
+        .reduce((sum, item) => sum + item.quantity, 0)
+        .toString(),
+      orderTitle: "Order from NextMerce",
+      country: data.billing?.country,
+      city: data.billing?.town,
+      line1: data.billing?.address?.street,
+      line2: data.billing?.address?.apartment || "",
+      products: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        color: item?.color || "",
+        size: item?.size || "",
+        attribute: item?.attribute || "",
+      })),
     };
 
     try {
@@ -144,7 +143,11 @@ const CheckoutPaymentArea = ({ amount }: { amount: number }) => {
         disabled={(paymentMethod === "bank" && !stripe) || loading}
         className="w-full h-max font-medium text-white bg-blue py-3 px-6 rounded-full ease-out duration-200 hover:bg-blue-dark disabled:opacity-50 mt-7.5"
       >
-        {loading ? "Processing..." : paymentMethod === "cod" ? "Place Order" : `Pay Now`}
+        {loading
+          ? "Processing..."
+          : paymentMethod === "cod"
+            ? "Place Order"
+            : `Pay Now`}
       </button>
     </form>
   );

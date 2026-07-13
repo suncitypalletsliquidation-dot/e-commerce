@@ -5,7 +5,7 @@ import Loader from "@/components/Common/Loader";
 import cn from "@/utils/cn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -108,7 +108,7 @@ const Signin = () => {
                     "w-full flex justify-center font-medium text-white bg-dark py-3 px-6 rounded-full ease-out duration-200 hover:bg-blue mt-7.5 items-center gap-2",
                     {
                       "opacity-80 pointer-events-none": isLoading,
-                    }
+                    },
                   )}
                   disabled={isLoading}
                 >

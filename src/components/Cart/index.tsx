@@ -38,10 +38,7 @@ const Cart = () => {
           <div className="max-w-7xl  w-full mx-auto px-4 sm:px-8 xl:px-0">
             <div className="flex flex-wrap items-center justify-between gap-5 mb-7.5">
               <h2 className="font-medium text-dark text-2xl">Your Cart</h2>
-              <button
-                onClick={() => clearCart()}
-                className="text-blue"
-              >
+              <button onClick={() => clearCart()} className="text-blue">
                 Clear Shopping Cart
               </button>
             </div>
@@ -84,7 +81,7 @@ const Cart = () => {
                 control,
                 setValue,
                 errors: formState.errors,
-                handleSubmit
+                handleSubmit,
               }}
             >
               <form
@@ -133,7 +130,7 @@ const Cart = () => {
           <p className="pb-6">Your cart is empty!</p>
 
           <Link
-            href="/shop-with-sidebar"
+            href="/shop"
             className="w-96 mx-auto flex justify-center font-medium text-white bg-dark py-[13px] px-6 rounded-full ease-out duration-200 hover:bg-opacity-95"
           >
             Continue Shopping

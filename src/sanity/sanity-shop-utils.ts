@@ -1,11 +1,9 @@
-import { createHash } from "crypto";
 import { Category } from "@/types/category";
 import { Countdown } from "@/types/countdown";
 import { Order } from "@/types/order";
 import { Product } from "@/types/product";
 import ImageUrlBuilder from "@sanity/image-url";
 import { createClient, groq } from "next-sanity";
-import { unstable_cache as cache } from "next/cache";
 import clientConfig from "./config/client-config";
 import {
   allCategoriesQuery,
@@ -57,23 +55,13 @@ export async function getAllProducts() {
 }
 
 export async function getProductsByFilter(query: string, tags: string[]) {
-  const queryHash = createHash("sha256").update(query).digest("hex");
+  const filterQuery = groq`${query} ${productData}`;
 
-  const fetcher = cache(
-    async (q: string) => {
-      const filterQuery = groq`${q} ${productData}`;
-
-      return sanityFetch<Product[]>({
-        query: filterQuery,
-        qParams: {},
-        tags,
-      });
-    },
-    ["filtered-products", queryHash],
-    { tags: ["product", ...tags] }
-  );
-
-  return fetcher(query);
+  return sanityFetch<Product[]>({
+    query: filterQuery,
+    qParams: {},
+    tags,
+  });
 }
 
 export async function getAllProductsCount() {
@@ -115,29 +103,21 @@ export async function getOrderById(orderId: string) {
   return data;
 }
 
-const heroBannerQueryHash = createHash("sha256").update(heroBannerQuery).digest("hex");
-export const getHeroBanners = cache(
-  async () =>
-    sanityFetch<any>({
-      query: heroBannerQuery,
-      qParams: {},
-      tags: ["heroBanner"],
-    }),
-  ["hero-banners", heroBannerQueryHash],
-  { tags: ["heroBanner"] }
-);
+export async function getHeroBanners() {
+  return sanityFetch<any>({
+    query: heroBannerQuery,
+    qParams: {},
+    tags: ["heroBanner"],
+  });
+}
 
-const heroSliderQueryHash = createHash("sha256").update(heroSliderQuery).digest("hex");
-export const getHeroSliders = cache(
-  async () =>
-    sanityFetch<any>({
-      query: heroSliderQuery,
-      qParams: {},
-      tags: ["heroSlider"],
-    }),
-  ["hero-sliders", heroSliderQueryHash],
-  { tags: ["heroSlider"] }
-);
+export async function getHeroSliders() {
+  return sanityFetch<any>({
+    query: heroSliderQuery,
+    qParams: {},
+    tags: ["heroSlider"],
+  });
+}
 
 export async function getCoupons() {
   return createClient(clientConfig).fetch(

@@ -34,8 +34,8 @@ const CheckoutSuccess = () => {
               </h3>
 
               <p className="max-w-[491px] w-full mx-auto mb-7.5 text-dark-2">
-                Wait a second while we save the order. You will receive an
-                email with details of your order.
+                Wait a second while we save the order. You will receive an email
+                with details of your order.
               </p>
 
               <div className="flex justify-center gap-5">
@@ -69,8 +69,8 @@ const CheckoutSuccess = () => {
               </h3>
 
               <p className="max-w-[491px] w-full mx-auto mb-7.5 text-dark-2">
-                Sign In with & Track the order. If you are not already Signed
-                Up use the purchase email to Sign up.
+                Sign In with & Track the order. If you are not already Signed Up
+                use the purchase email to Sign up.
               </p>
 
               <div className="flex justify-center flex-wrap gap-5">
@@ -83,7 +83,7 @@ const CheckoutSuccess = () => {
                 </Link>
 
                 <Link
-                  href="/shop-with-sidebar"
+                  href="/shop"
                   className="inline-flex items-center gap-2 font-medium text-white bg-blue py-3 px-8 rounded-full ease-out duration-200 hover:bg-blue-dark transition-all shadow-md active:scale-95"
                 >
                   Continue Shopping

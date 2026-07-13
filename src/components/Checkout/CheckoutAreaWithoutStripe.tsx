@@ -2,7 +2,7 @@
 import { useCheckoutForm } from "./form";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import toast from "react-hot-toast";
 import { useCart } from "@/hooks/useCart";
 import PaymentMethod from "./PaymentMethod";
@@ -22,26 +22,28 @@ const CheckoutAreaWithoutStripe = ({ amount }: { amount: number }) => {
     const orderId = `ORDER-${Math.floor(Math.random() * 1000000)}`;
 
     const orderData = {
-        orderId,
-        status: "pending",
-        totalPrice: amount, // total order price (integer)
-        userId: session?.user?.id || "", // user ID (string)
-        userEmail: session?.user?.email || data.billing?.email, // user email
-        productQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0).toString(),
-        orderTitle: "Order from NextMerce",
-        country: data.billing?.country,
-        city: data.billing?.town,
-        line1: data.billing?.address?.street,
-        line2: data.billing?.address?.apartment || "",
-        products: cartItems.map((item) => ({
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          quantity: item.quantity,
-          color: item?.color || "",
-          size: item?.size || "",
-          attribute: item?.attribute || "",
-        })),
+      orderId,
+      status: "pending",
+      totalPrice: amount, // total order price (integer)
+      userId: session?.user?.id || "", // user ID (string)
+      userEmail: session?.user?.email || data.billing?.email, // user email
+      productQuantity: cartItems
+        .reduce((sum, item) => sum + item.quantity, 0)
+        .toString(),
+      orderTitle: "Order from NextMerce",
+      country: data.billing?.country,
+      city: data.billing?.town,
+      line1: data.billing?.address?.street,
+      line2: data.billing?.address?.apartment || "",
+      products: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        color: item?.color || "",
+        size: item?.size || "",
+        attribute: item?.attribute || "",
+      })),
     };
 
     try {

@@ -18,7 +18,7 @@ import Shipping from "./Shipping";
 import ShippingMethod from "./ShippingMethod";
 
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
 );
 
 const Checkout = () => {
@@ -110,7 +110,7 @@ const Checkout = () => {
                   Please add some products to your cart before checking out.
                 </p>
                 <Link
-                  href="/shop-with-sidebar"
+                  href="/shop"
                   className="inline-flex justify-center font-medium text-white bg-blue py-3 px-10 rounded-full ease-out duration-200 hover:bg-blue-dark"
                 >
                   Return To Shop

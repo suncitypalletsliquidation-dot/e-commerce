@@ -83,8 +83,11 @@ const SingleListItem = ({ item }: { item: Product }) => {
   return (
     <div className="bg-white rounded-lg group shadow-1">
       <div className="flex">
-        <div className="shadow-list relative overflow-hidden flex items-center justify-center max-w-[270px] w-full sm:min-h-[270px] p-4">
-          <Link href={`/products/${item?.slug?.current}`}>
+        <div className="shadow-list relative overflow-hidden flex items-center justify-center max-w-[270px] w-full sm:min-h-[270px] md:!w-[270px] md:!min-w-[270px] md:!h-[200px] md:!min-h-[200px] p-4">
+          <Link
+            href={`/products/${item?.slug?.current}`}
+            className="w-full h-full"
+          >
             <Image
               src={
                 item?.previewImages?.[0]?.image
@@ -92,7 +95,7 @@ const SingleListItem = ({ item }: { item: Product }) => {
                   : ""
               }
               alt={item.name}
-              className="object-cover"
+              className="object-cover w-full h-full"
               width={270}
               height={270}
             />
@@ -137,29 +140,32 @@ const SingleListItem = ({ item }: { item: Product }) => {
           </div>
         </div>
 
-        <Link
-          href={`/products/${item?.slug?.current}`}
-          className="w-full flex flex-col gap-5 sm:flex-row sm:items-center justify-center sm:justify-between py-5 px-4 sm:px-7.5 lg:pl-11 lg:pr-12"
-        >
-          <div>
-            <h3 className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
-              {item.name}
-            </h3>
+        <div className="flex flex-col gap-2 py-5 px-4 sm:px-7.5">
+          <Link
+            href={`/products/${item?.slug?.current}`}
+            className="w-full flex flex-col gap-5 sm:flex-row sm:items-center justify-center sm:justify-between "
+          >
+            <div>
+              <h3 className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5">
+                {item.name}
+              </h3>
 
-            <span className="flex items-center gap-2 text-lg font-medium">
-              {hasDiscount ? (
-                <>
-                  <span className="line-through text-dark-4">
-                    ${item.price}
-                  </span>
-                  <span className="text-dark">${item.discountedPrice}</span>
-                </>
-              ) : (
-                <span className="text-dark">${item.price}</span>
-              )}
-            </span>
-          </div>
-        </Link>
+              <span className="flex items-center gap-2 text-lg font-medium">
+                {hasDiscount ? (
+                  <>
+                    <span className="line-through text-dark-4">
+                      ${item.price}
+                    </span>
+                    <span className="text-dark">${item.discountedPrice}</span>
+                  </>
+                ) : (
+                  <span className="text-dark">${item.price}</span>
+                )}
+              </span>
+            </div>
+          </Link>
+          <p className="line-clamp-3 text-ellipsis">{item.shortDescription}</p>
+        </div>
       </div>
     </div>
   );

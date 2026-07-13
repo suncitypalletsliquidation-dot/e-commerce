@@ -8,6 +8,8 @@ const Hero = async () => {
   const data = await getHeroBanners();
   const sliders = await getHeroSliders();
 
+  console.log({ sliders });
+
   return (
     <section className="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15 pt-60 sm:pt-45 lg:pt-30 xl:pt-51.5">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0">

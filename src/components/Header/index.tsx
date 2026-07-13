@@ -266,24 +266,13 @@ const Header = () => {
                             {menuItem.title}
                           </Link>
                         </li>
-                      )
+                      ),
                     )}
                   </ul>
                 </nav>
                 {/* //   <!-- Main Nav End --> */}
               </div>
               {/* // <!--=== Main Nav End ===--> */}
-              <div className="hidden xl:block">
-                <Link
-                  href="/popular?sort=popular"
-                  className="text-sm text-dark flex items-center font-medium hover:text-blue"
-                >
-                  Best Selling
-                  <span className="bg-red text-white font-semibold text-[10px] inline-flex items-center justify-center rounded-full ml-2.5  px-2 h-5 uppercase">
-                    SALE
-                  </span>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -364,7 +353,7 @@ const Header = () => {
                         {menuItem.title}
                       </Link>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
             </nav>{" "}

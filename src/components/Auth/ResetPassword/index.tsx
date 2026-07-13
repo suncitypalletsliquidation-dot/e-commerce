@@ -4,7 +4,7 @@ import Loader from "@/components/Common/Loader";
 import cn from "@/utils/cn";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -137,7 +137,7 @@ export default function ResetPassword({ token }: { token: string }) {
                       "w-full flex justify-center font-medium text-white bg-dark py-3 px-6 rounded-full ease-out duration-200 hover:bg-blue mt-7.5 items-center gap-2",
                       {
                         "opacity-80 pointer-events-none": loading,
-                      }
+                      },
                     )}
                     disabled={loading}
                   >
