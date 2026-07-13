@@ -16,6 +16,8 @@ const Categories = () => {
 
   const { data = [] } = useGetCategoriesQuery();
 
+    console.log({ categories: data, isLoading });
+
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
     // @ts-ignore
