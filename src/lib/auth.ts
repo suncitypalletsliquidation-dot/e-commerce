@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { Adapter } from "next-auth/adapters";
+import { sendEmail, getWelcomeEmailTemplate } from "./email";
 
 declare module "next-auth" {
   interface Session {
@@ -58,7 +59,7 @@ export const authOptions: NextAuthOptions = {
         // check to see if passwords match
         const passwordMatch = await bcrypt.compare(
           credentials.password,
-          user.password
+          user.password,
         );
 
         if (!passwordMatch) {
@@ -69,10 +70,10 @@ export const authOptions: NextAuthOptions = {
       },
     }),
 
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-    }),
+    // GitHubProvider({
+    //   clientId: process.env.GITHUB_CLIENT_ID as string,
+    //   clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    // }),
 
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -102,6 +103,27 @@ export const authOptions: NextAuthOptions = {
         return session;
       }
       return session;
+    },
+  },
+
+  events: {
+    createUser: async ({ user }) => {
+      try {
+        const welcomeHtml = getWelcomeEmailTemplate(
+          user.name || "",
+          user.email || "",
+        );
+        await sendEmail({
+          to: user.email!,
+          subject: "Welcome to Amazon Liquidation Express!",
+          html: welcomeHtml,
+        });
+      } catch (emailErr) {
+        console.error(
+          "Failed to send welcome email for social signup:",
+          emailErr,
+        );
+      }
     },
   },
 

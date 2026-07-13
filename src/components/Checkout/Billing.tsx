@@ -12,7 +12,9 @@ export default function Billing() {
 
   return (
     <div>
-        <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">Billing details</h2>
+      <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">
+        Billing details
+      </h2>
 
       <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 mb-5">
@@ -28,7 +30,7 @@ export default function Billing() {
                 error={!!fieldState.error}
                 errorMessage="First name is required"
                 name={field.name}
-                value={session.data?.user?.name || field.value || ""}
+                value={field.value || ""}
                 onChange={field.onChange}
                 readOnly={!!session.data?.user?.name}
               />
@@ -69,10 +71,7 @@ export default function Billing() {
         </div>
 
         <div className="mb-5">
-          <label
-            htmlFor="regionName"
-            className="block mb-2.5"
-          >
+          <label htmlFor="regionName" className="block mb-2.5">
             Region
             <span className="text-red">*</span>
           </label>
@@ -197,9 +196,9 @@ export default function Billing() {
                 error={!!fieldState.error}
                 errorMessage="Email is required"
                 name={field.name}
-                value={session?.data?.user?.email || field.value || ""}
+                value={field.value || ""}
                 onChange={field.onChange}
-                readOnly={!!session?.data?.user?.email}
+                readOnly={Boolean(session?.data?.user?.email)}
               />
             )}
           />

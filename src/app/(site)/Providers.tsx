@@ -9,13 +9,12 @@ import CartProvider from "@/components/Providers/CartProvider";
 import { AutoOpenCartProvider } from "@/components/Providers/AutoOpenCartProvider";
 import { SessionProvider } from "next-auth/react";
 
-
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ReduxProvider>
       <SessionProvider>
         <CartProvider>
-          <AutoOpenCartProvider>
+          <AutoOpenCartProvider defaultAutoOpen={false}>
             <ModalProvider>
               <PreviewSliderProvider>
                 {children}

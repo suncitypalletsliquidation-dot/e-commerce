@@ -73,21 +73,13 @@ const Signup = () => {
 
             <div className="flex flex-col gap-4.5">
               <button
-                onClick={() => signIn("google")}
+                type="button"
+                onClick={() => signIn("google", { callbackUrl: "/" })}
                 className="flex justify-center items-center gap-3.5 rounded-full border border-gray-3 bg-gray-1 p-3 ease-out duration-200 hover:text-dark hover:bg-gray-2 disabled:pointer-events-none disabled:opacity-60"
                 disabled={isLoading}
               >
                 <GoogleIcon />
                 Sign Up with Google
-              </button>
-
-              <button
-                onClick={() => signIn("github")}
-                className="flex justify-center items-center gap-3.5 rounded-full border border-gray-3 bg-gray-1 p-3 ease-out duration-200 hover:text-dark hover:bg-gray-2 disabled:pointer-events-none disabled:opacity-60"
-                disabled={isLoading}
-              >
-                <GitHubIcon />
-                Sign Up with Github
               </button>
             </div>
 

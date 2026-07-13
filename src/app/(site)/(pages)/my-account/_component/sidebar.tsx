@@ -43,6 +43,13 @@ export default function Sidebar() {
               Dashboard
             </Link>
 
+            {session?.user?.role === 'ADMIN' && (
+              <Link href="/admin">
+                <DashboardIcon />
+                Sanity Studio
+              </Link>
+            )}
+
             <Link href="/my-account/orders">
               <BasketIcon />
               Orders

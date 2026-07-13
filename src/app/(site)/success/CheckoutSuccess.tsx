@@ -69,8 +69,13 @@ const CheckoutSuccess = () => {
               </h3>
 
               <p className="max-w-[491px] w-full mx-auto mb-7.5 text-dark-2">
-                Sign In with & Track the order. If you are not already Signed Up
-                use the purchase email to Sign up.
+                Congratulations! Your order has been placed successfully. You
+                will receive an email with your order details and you can track
+                your order right here from{" "}
+                <Link href={"/my-account"} className="text-blue underline">
+                  your account
+                </Link>
+                .
               </p>
 
               <div className="flex justify-center flex-wrap gap-5">

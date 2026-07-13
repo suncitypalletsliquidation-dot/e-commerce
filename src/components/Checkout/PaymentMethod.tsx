@@ -1,12 +1,11 @@
-import Image from "next/image";
 import { Controller } from "react-hook-form";
 import { RadioInput } from "../ui/input/radio";
 import { useCheckoutForm } from "./form";
-import { PaymentElement } from "@stripe/react-stripe-js";
 
 const PaymentMethod = ({ amount }: { amount: number }) => {
-  const { register, errors, control, watch } = useCheckoutForm();
+  const { errors, control, watch } = useCheckoutForm();
   const paymentMethod = watch("paymentMethod");
+
   return (
     <div className="bg-white shadow-1 rounded-[10px] mt-7.5">
       <div className="border-b border-gray-3 py-5 px-4 sm:px-8.5">
@@ -15,68 +14,82 @@ const PaymentMethod = ({ amount }: { amount: number }) => {
 
       <div className="p-4 sm:p-8.5">
         <div className="flex flex-col gap-3">
-          {amount > 0 && (
-            <Controller
-              name="paymentMethod"
-              control={control}
-              render={({ field }) => (
-                <RadioInput
-                  name={field.name}
-                  value="bank"
-                  onChange={field.onChange}
-                  checked={field.value === "bank"}
-                  label={<PaymentMethodCard method="bank" />}
-                />
-              )}
-            />
-          )}
-
           <Controller
             name="paymentMethod"
             control={control}
+            rules={{ required: "Please select a payment method" }}
             render={({ field }) => (
               <RadioInput
                 name={field.name}
-                value="cod"
+                value="cashapp"
                 onChange={field.onChange}
-                checked={field.value === "cod"}
-                label={<PaymentMethodCard method="cod" />}
+                checked={field.value === "cashapp"}
+                label={<PaymentMethodCard method="cashapp" />}
               />
             )}
           />
 
-          {/* {amount > 0 && (
-            <Controller
-              name="paymentMethod"
-              control={control}
-              render={({ field }) => (
-                <RadioInput
-                  {...field}
-                  value="paypal"
-                  label={<PaymentMethodCard method="paypal" />}
-                />
-              )}
-            />
-          )} */}
+          <Controller
+            name="paymentMethod"
+            control={control}
+            rules={{ required: "Please select a payment method" }}
+            render={({ field }) => (
+              <RadioInput
+                name={field.name}
+                value="zelle"
+                onChange={field.onChange}
+                checked={field.value === "zelle"}
+                label={<PaymentMethodCard method="zelle" />}
+              />
+            )}
+          />
+
+          <Controller
+            name="paymentMethod"
+            control={control}
+            rules={{ required: "Please select a payment method" }}
+            render={({ field }) => (
+              <RadioInput
+                name={field.name}
+                value="bitcoin"
+                onChange={field.onChange}
+                checked={field.value === "bitcoin"}
+                label={<PaymentMethodCard method="bitcoin" />}
+              />
+            )}
+          />
         </div>
 
         {errors.paymentMethod && (
           <p className="mt-2 text-sm text-red">
-            Please select a payment method
+            {errors.paymentMethod.message || "Please select a payment method"}
           </p>
         )}
 
-        {paymentMethod === "bank" && amount > 0 && (
-          <div className="mt-5">
-            <PaymentElement />
-          </div>
-        )}
-        {paymentMethod === "cod" && (
-          <p className="mt-5 text-green">
-            You have selected Cash on Delivery. Your order will be processed and
-            payment will be collected upon delivery.
-          </p>
-        )}
+        <div className="mt-6 border-t border-gray-2 pt-4">
+          {paymentMethod === "cashapp" && (
+            <p className="text-dark-4 text-sm leading-relaxed">
+              Cash Tag will be sent to you by our agent once your order has been received.
+            </p>
+          )}
+          {paymentMethod === "zelle" && (
+            <p className="text-dark-4 text-sm leading-relaxed">
+              Zelle Detail will be sent to you by our agent once your order has been received.
+            </p>
+          )}
+          {paymentMethod === "bitcoin" && (
+            <div className="flex flex-col gap-2">
+              <p className="text-dark-4 text-sm leading-relaxed">
+                Bitcoin/Altcoin payment details will be sent to you by our agent once your order has been received.
+              </p>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="inline-flex items-center justify-center bg-orange-100 text-orange-600 rounded-full px-2 py-0.5 text-xs font-semibold">BTC</span>
+                <span className="inline-flex items-center justify-center bg-green-100 text-green-600 rounded-full px-2 py-0.5 text-xs font-semibold">BCH</span>
+                <span className="inline-flex items-center justify-center bg-gray-100 text-gray-600 rounded-full px-2 py-0.5 text-xs font-semibold">LTC</span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -85,57 +98,44 @@ const PaymentMethod = ({ amount }: { amount: number }) => {
 export default PaymentMethod;
 
 type CardProps = {
-  method: "bank" | "cod";
+  method: "cashapp" | "zelle" | "bitcoin";
 };
-// type CardProps = {
-//   method: "bank" | "cod" | "paypal";
-// };
 
 function PaymentMethodCard({ method }: CardProps) {
   const data = {
-    bank: {
-      name: "Stripe",
-      image: {
-        src: "/images/checkout/stripe.svg",
-        width: 75,
-        height: 20,
-      },
+    cashapp: {
+      name: "CashApp",
+      icon: (
+        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white font-bold text-lg select-none">
+          $
+        </span>
+      ),
     },
-    cod: {
-      name: "Cash on delivery",
-      image: {
-        src: "/images/checkout/cash.svg",
-        width: 21,
-        height: 21,
-      },
+    zelle: {
+      name: "Zelle",
+      icon: (
+        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-600 text-white font-bold text-sm select-none">
+          Z
+        </span>
+      ),
     },
-    // paypal: {
-    //   name: "Paypal",
-    //   image: {
-    //     src: "/images/checkout/paypal.svg",
-    //     width: 75,
-    //     height: 20,
-    //   },
-    // },
+    bitcoin: {
+      name: "Bitcoin/Altcoin",
+      icon: (
+        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500 text-white font-bold text-lg select-none">
+          ₿
+        </span>
+      ),
+    },
   };
 
   return (
-    <div className="rounded-md border-[0.5px] flex items-center shadow-1 border-gray-4 py-3.5 px-5 ease-out duration-200 hover:bg-gray-2 hover:border-transparent hover:shadow-none peer-checked:shadow-none peer-checked:border-transparent peer-checked:bg-gray-2 min-w-[240px]">
-      <div className="pr-2.5">
-        <Image
-          src={data[method].image.src}
-          className="shrink-0"
-          alt={"Logo of " + data[method].name}
-          width={data[method].image.width}
-          height={data[method].image.height}
-        />
+    <div className="rounded-md border-[0.5px] flex items-center shadow-1 border-gray-4 py-3 px-4 ease-out duration-200 hover:bg-gray-2 hover:border-transparent hover:shadow-none peer-checked:shadow-none peer-checked:border-transparent peer-checked:bg-gray-2 min-w-[240px]">
+      <div className="pr-3 flex items-center shrink-0">
+        {data[method].icon}
       </div>
 
-      <p className="border-l border-gray-4 pl-2.5">{data[method].name}</p>
-
-      {/* {method === 'bank' && (
-        
-      )} */}
+      <p className="border-l border-gray-4 pl-3 text-dark font-medium">{data[method].name}</p>
     </div>
   );
 }

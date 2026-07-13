@@ -35,6 +35,11 @@ const CheckoutAreaWithoutStripe = ({ amount }: { amount: number }) => {
       city: data.billing?.town,
       line1: data.billing?.address?.street,
       line2: data.billing?.address?.apartment || "",
+      firstName: data.billing?.firstName || "",
+      lastName: data.billing?.lastName || "",
+      phone: data.billing?.phone || "",
+      paymentMethod: data.paymentMethod || "cashapp",
+      notes: data.notes || "",
       products: cartItems.map((item) => ({
         id: item.id,
         name: item.name,
