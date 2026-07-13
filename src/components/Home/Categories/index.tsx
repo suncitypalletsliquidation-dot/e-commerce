@@ -14,7 +14,7 @@ const Categories = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
 
-  const { data = [] } = useGetCategoriesQuery();
+  const { data = [], isLoading } = useGetCategoriesQuery();
 
     console.log({ categories: data, isLoading });
 
