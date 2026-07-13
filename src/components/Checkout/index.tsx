@@ -1,14 +1,12 @@
 "use client";
 import { EmptyCartIcon } from "@/assets/icons";
 import { useCart } from "@/hooks/useCart";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Billing from "./Billing";
 import CheckoutAreaWithoutStripe from "./CheckoutAreaWithoutStripe";
-import CheckoutPaymentArea from "./CheckoutPaymentArea";
 import Coupon from "./Coupon";
 import { CheckoutFormProvider, CheckoutInput } from "./form";
 import Login from "./Login";
@@ -16,10 +14,6 @@ import Notes from "./Notes";
 import Orders from "./orders";
 import Shipping from "./Shipping";
 import ShippingMethod from "./ShippingMethod";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-);
 
 const Checkout = () => {
   const { data: session } = useSession();
@@ -38,10 +32,22 @@ const Checkout = () => {
         name: "free",
         price: 0,
       },
-      paymentMethod: "cod",
+      paymentMethod: "cashapp",
       couponDiscount: 0,
     },
   });
+
+  // Autofill session details when they become available
+  useEffect(() => {
+    if (session?.user) {
+      if (session.user.name) {
+        setValue("billing.firstName", session.user.name);
+      }
+      if (session.user.email) {
+        setValue("billing.email", session.user.email);
+      }
+    }
+  }, [session, setValue]);
 
   const cartIsEmpty = cartItems.length === 0;
 
@@ -80,20 +86,7 @@ const Checkout = () => {
                 <div className="flex-1">
                   <Orders />
                   <ShippingMethod />
-                  {amount > 0 ? (
-                    <Elements
-                      stripe={stripePromise}
-                      options={{
-                        mode: "payment",
-                        amount: Math.round(amount),
-                        currency: "usd",
-                      }}
-                    >
-                      <CheckoutPaymentArea amount={amount} />
-                    </Elements>
-                  ) : (
-                    <CheckoutAreaWithoutStripe amount={amount} />
-                  )}
+                  <CheckoutAreaWithoutStripe amount={amount} />
                 </div>
               </div>
             </CheckoutFormProvider>
@@ -110,7 +103,7 @@ const Checkout = () => {
                   Please add some products to your cart before checking out.
                 </p>
                 <Link
-                  href="/shop-with-sidebar"
+                  href="/shop"
                   className="inline-flex justify-center font-medium text-white bg-blue py-3 px-10 rounded-full ease-out duration-200 hover:bg-blue-dark"
                 >
                   Return To Shop

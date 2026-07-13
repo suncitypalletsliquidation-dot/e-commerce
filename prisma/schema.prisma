@@ -83,6 +83,11 @@ model Order {
   status          String?
   totalPrice      Int?
   userEmail       String?
+  firstName       String?
+  lastName        String?
+  phone           String?
+  paymentMethod   String?
+  notes           String?
 }
 
 model Coupon {

@@ -7,7 +7,7 @@ import {
   HeartIcon,
   HeartSolid,
   MinusIcon,
-  PlusIcon
+  PlusIcon,
 } from "@/assets/icons";
 import { updateproductDetails } from "@/redux/features/product-details";
 import {
@@ -45,14 +45,16 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
   const { cartItems, addItem, handleCartClick } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlistReducer.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlistReducer.items,
+  );
 
   const isProductInCart = cartItems.some(
-    (cartItem) => cartItem.id === product._id
+    (cartItem) => cartItem.id === product._id,
   );
 
   const isProductInWishlist = Object.values(wishlistItems ?? {}).some(
-    (wishlistItem) => wishlistItem._id?.toString() === product._id?.toString()
+    (wishlistItem) => wishlistItem._id?.toString() === product._id?.toString(),
   );
 
   useEffect(() => {
@@ -128,7 +130,7 @@ const ShopDetails = ({ product }: { product: Product }) => {
           quantity: 1,
           reviews: product.reviews || [],
           slug: product.slug,
-        })
+        }),
       );
       toast.success("Product added to wishlist!");
     }
@@ -141,6 +143,11 @@ const ShopDetails = ({ product }: { product: Product }) => {
       [itemIndex]: attributeId,
     }));
   };
+
+  const hasDiscount = product?.discountedPrice < product?.price;
+  const discountPercentage = Math.round(
+    ((product?.price - product?.discountedPrice) / product?.price) * 100,
+  );
 
   return (
     <>
@@ -162,8 +169,11 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
                   <Image
                     src={
-                      product?.previewImages && product.previewImages[previewImg]
-                        ? imageBuilder(product.previewImages[previewImg].image).url()!
+                      product?.previewImages &&
+                      product.previewImages[previewImg]
+                        ? imageBuilder(
+                            product.previewImages[previewImg].image,
+                          ).url()!
                         : ""
                     }
                     alt={product.name}
@@ -200,9 +210,11 @@ const ShopDetails = ({ product }: { product: Product }) => {
                   {product.name}
                 </h2>
 
-                <div className="inline-flex  rounded-full shrink-0 font-medium text-xs text-white bg-blue py-0.5 px-2.5">
-                  30% OFF
-                </div>
+                {hasDiscount && (
+                  <div className="inline-flex  rounded-full shrink-0 font-medium text-xs text-white bg-blue py-0.5 px-2.5">
+                    {discountPercentage}% OFF
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-wrap items-center gap-5.5 mb-4.5">
@@ -230,13 +242,23 @@ const ShopDetails = ({ product }: { product: Product }) => {
               <h3 className="font-medium text-custom-1 mb-4.5">
                 <span className="mr-2 text-dark">
                   Price:{" "}
-                  <span className="line-through text-gray-6">
-                    ${product.price}
-                  </span>{" "}
-                  {""}
-                  <span>${product.discountedPrice}</span>
+                  {hasDiscount ? (
+                    <>
+                      <span className="line-through text-gray-6">
+                        ${product.price}
+                      </span>{" "}
+                      {""}
+                      <span>${product.discountedPrice}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="">${product.price}</span>{" "}
+                    </>
+                  )}
                 </span>
               </h3>
+
+              <p className="text-gray-7 mb-4">{product.shortDescription}</p>
 
               <ul className="flex flex-col gap-2">
                 {product.offers?.map((offer, key) => (
@@ -250,65 +272,6 @@ const ShopDetails = ({ product }: { product: Product }) => {
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-4.5 border-y border-gray-3 mt-7.5 mb-9 py-9">
                   {/* <!-- details item --> */}
-                  <div className="flex items-center gap-4">
-                    <div className="min-w-[65px]">
-                      <h4 className="font-medium text-dark capitalize">
-                        Color:
-                      </h4>
-                    </div>
-
-                    <div className="flex items-center gap-2.5">
-                      {product?.colors?.map((color, key) => (
-                        <label
-                          key={key}
-                          htmlFor={color}
-                          className="flex items-center cursor-pointer select-none"
-                        >
-                          <div className="relative">
-                            <input
-                              type="radio"
-                              name="color"
-                              id={color}
-                              className="sr-only"
-                              onChange={() => {
-                                setActiveColor(color);
-                                setPreviewImg(key);
-                              }}
-                            />
-                            <div className="flex items-center justify-center w-5.5 h-5.5 rounded-full">
-                              <span
-                                className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                                  color === "white"
-                                    ? "border border-gray-4"
-                                    : ""
-                                }`}
-                                style={{ backgroundColor: color }}
-                              >
-                                {activeColor === color && (
-                                  <svg
-                                    className="w-2.5 h-2.5"
-                                    viewBox="0 0 10 10"
-                                    fill="none"
-                                  >
-                                    <path
-                                      d="M8.33317 2.5L3.74984 7.08333L1.6665 5"
-                                      stroke={
-                                        color === "white" ? "black" : "white"
-                                      }
-                                      strokeWidth="1.94437"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </svg>
-                                )}
-                              </span>
-                            </div>
-                          </div>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
                   {product?.customAttributes?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-center gap-4">
                       <div className="min-w-[65px]">

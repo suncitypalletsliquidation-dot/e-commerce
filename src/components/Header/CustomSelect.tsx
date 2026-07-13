@@ -1,9 +1,11 @@
 import { useGetCategoriesQuery } from "@/redux/features/api/category";
 import Link from "next/link";
+import { useRouter } from "nextjs-toploader/app";
 import { useEffect, useState } from "react";
 
 const CustomSelect = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState({
     title: "All Categories",
   });
@@ -15,6 +17,7 @@ const CustomSelect = () => {
 
   const handleOptionClick = (option: any) => {
     setSelectedOption(option);
+    router.push(`/categories/${option.slug.current}`);
     toggleDropdown();
   };
 
@@ -92,9 +95,7 @@ const CustomSelect = () => {
               selectedOption === category ? "same-as-selected" : ""
             }`}
           >
-            <Link href={`/categories/${category.slug.current}`}>
-              {category.title}
-            </Link>
+            {category.title}
           </div>
         ))}
       </div>

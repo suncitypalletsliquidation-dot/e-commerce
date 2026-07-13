@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prismaDB";
+import { sendEmail, getOrderStatusUpdateTemplate } from "@/lib/email";
 
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -11,9 +12,15 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    const isAdmin = session?.user?.role === "ADMIN";
     const orders = await prisma.order.findMany({
-      where: {
-        userEmail: session?.user?.email,
+      where: isAdmin
+        ? {}
+        : {
+            userEmail: session?.user?.email,
+          },
+      orderBy: {
+        createdAt: "desc",
       },
     });
 
@@ -52,6 +59,19 @@ export async function POST(req: NextRequest) {
         status,
       },
     });
+
+    try {
+      if (order.userEmail) {
+        const emailHtml = getOrderStatusUpdateTemplate(order, status);
+        await sendEmail({
+          to: order.userEmail,
+          subject: `Your order #${order.orderId || order.id} status has been updated to ${status}`,
+          html: emailHtml,
+        });
+      }
+    } catch (emailErr) {
+      console.error("Failed to send order status update email:", emailErr);
+    }
 
     return NextResponse.json({ order }, { status: 200 });
   } catch (err) {

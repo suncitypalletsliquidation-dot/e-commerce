@@ -7,24 +7,43 @@ import { InputGroup } from "@/components/ui/input";
 import cn from "@/utils/cn";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type Input = {
   firstName: string;
   lastName: string;
+  email: string;
   subject: string;
   phone: string;
   message: string;
 };
 
 const Contact = () => {
-  const { register, control, formState, handleSubmit } = useForm<Input>();
+  const { register, control, formState, handleSubmit, reset } = useForm<Input>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = (data: Input) => {
+  const onSubmit = async (data: Input) => {
     setIsLoading(true);
-    // Handle form submission
-    console.log(data);
-    setIsLoading(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message. Please try again later.");
+      }
+
+      toast.success("Your message has been sent successfully!");
+      reset();
+    } catch (error: any) {
+      toast.error(error.message || "Something went wrong.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,7 +95,7 @@ const Contact = () => {
                           error={!!fieldState.error}
                           errorMessage={fieldState.error?.message}
                           name={field.name}
-                          value={field.value}
+                          value={field.value || ""}
                           onChange={field.onChange}
                           required
                         />
@@ -96,7 +115,57 @@ const Contact = () => {
                           error={!!fieldState.error}
                           errorMessage={fieldState.error?.message}
                           name={field.name}
-                          value={field.value}
+                          value={field.value || ""}
+                          onChange={field.onChange}
+                          required
+                        />
+                      </div>
+                    )}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-5 mb-5 lg:flex-row sm:gap-8">
+                  <Controller
+                    control={control}
+                    name="email"
+                    rules={{
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    }}
+                    render={({ field, fieldState }) => (
+                      <div className="w-full">
+                        <InputGroup
+                          type="email"
+                          label="Email Address"
+                          placeholder="Enter your email"
+                          error={!!fieldState.error}
+                          errorMessage={fieldState.error?.message}
+                          name={field.name}
+                          value={field.value || ""}
+                          onChange={field.onChange}
+                          required
+                        />
+                      </div>
+                    )}
+                  />
+
+                  <Controller
+                    control={control}
+                    name="phone"
+                    rules={{ required: "Phone is required" }}
+                    render={({ field, fieldState }) => (
+                      <div className="w-full">
+                        <InputGroup
+                          type="tel"
+                          label="Phone"
+                          placeholder="Enter your phone"
+                          error={!!fieldState.error}
+                          errorMessage={fieldState.error?.message}
+                          name={field.name}
+                          value={field.value || ""}
                           onChange={field.onChange}
                           required
                         />
@@ -118,28 +187,7 @@ const Contact = () => {
                           error={!!fieldState.error}
                           errorMessage={fieldState.error?.message}
                           name={field.name}
-                          value={field.value}
-                          onChange={field.onChange}
-                          required
-                        />
-                      </div>
-                    )}
-                  />
-
-                  <Controller
-                    control={control}
-                    name="phone"
-                    rules={{ required: "Phone is required" }}
-                    render={({ field, fieldState }) => (
-                      <div className="w-full">
-                        <InputGroup
-                          type="tel"
-                          label="Phone"
-                          placeholder="Enter your phone"
-                          error={!!fieldState.error}
-                          errorMessage={fieldState.error?.message}
-                          name={field.name}
-                          value={field.value}
+                          value={field.value || ""}
                           onChange={field.onChange}
                           required
                         />

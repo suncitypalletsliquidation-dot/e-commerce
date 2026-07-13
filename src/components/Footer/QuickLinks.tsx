@@ -4,25 +4,30 @@ const quickLinks = [
   {
     id: 1,
     label: 'Privacy Policy',
-    href: '#',
+    href: '/privacy-policy',
   },
   {
     id: 2,
     label: 'Refund Policy',
-    href: '#',
+    href: '/refund-policy',
   },
   {
     id: 3,
     label: 'Terms of Use',
-    href: '#',
+    href: '/terms-of-use',
   },
   {
     id: 4,
-    label: "FAQ's",
-    href: '#',
+    label: 'Shipping Policy',
+    href: '/shipping-policy',
   },
   {
     id: 5,
+    label: 'FAQs',
+    href: '/faq',
+  },
+  {
+    id: 6,
     label: 'Contact',
     href: '/contact',
   },

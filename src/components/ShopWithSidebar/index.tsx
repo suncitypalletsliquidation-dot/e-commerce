@@ -84,10 +84,7 @@ const ShopWithSidebar = ({ data }: PropsType) => {
 
   return (
     <>
-      <Breadcrumb
-        title={"Explore All Products"}
-        pages={["shop", "/", "shop with sidebar"]}
-      />
+      <Breadcrumb title={"Explore All Products"} pages={["shop"]} />
 
       <section className="relative pt-5 pb-20 overflow-hidden lg:pt-20 xl:pt-28 bg-gray-2">
         <div className="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0">
@@ -121,12 +118,12 @@ const ShopWithSidebar = ({ data }: PropsType) => {
                 {/* gender box */}
                 {/* <GenderDropdown genders={genders} /> */}
 
-                <Suspense>
+                {/* <Suspense>
                   <SizeDropdown availableSizes={availableSizes} />
-                </Suspense>
+                </Suspense> */}
 
                 {/* color box */}
-                <ColorsDropdown availableColors={availableColors} />
+                {/* <ColorsDropdown availableColors={availableColors} /> */}
 
                 {/*  price range box */}
                 <RadixSlider highestPrice={data.highestPrice} />

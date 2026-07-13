@@ -5,7 +5,7 @@ import Loader from "@/components/Common/Loader";
 import cn from "@/utils/cn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -108,7 +108,7 @@ const Signin = () => {
                     "w-full flex justify-center font-medium text-white bg-dark py-3 px-6 rounded-full ease-out duration-200 hover:bg-blue mt-7.5 items-center gap-2",
                     {
                       "opacity-80 pointer-events-none": isLoading,
-                    }
+                    },
                   )}
                   disabled={isLoading}
                 >
@@ -138,18 +138,6 @@ const Signin = () => {
                   >
                     <GoogleIcon />
                     Sign In with Google
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      signIn("github", { callbackUrl: "/my-account" })
-                    }
-                    type="button"
-                    className="flex justify-center items-center gap-3.5 rounded-full border border-gray-3 bg-gray-1 p-3 ease-out duration-200 hover:text-dark hover:bg-gray-2 disabled:pointer-events-none disabled:opacity-60"
-                    disabled={isLoading}
-                  >
-                    <GitHubIcon />
-                    Sign In with Github
                   </button>
                 </div>
 

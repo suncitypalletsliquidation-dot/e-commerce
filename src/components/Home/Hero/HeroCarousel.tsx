@@ -28,7 +28,7 @@ const HeroCarousal = ({ sliders }: any) => {
       {sliders?.map((slider: any, key: number) => (
         <SwiperSlide key={key}>
           <div>
-            <div className="max-w-[366px] absolute left-8 lg:left-20 top-1/2 -translate-y-1/2">
+            <div className="max-w-[366px] absolute left-8 lg:left-20 top-1/2 -translate-y-1/2 z-[5]">
               <div className="flex items-center gap-4 mb-5">
                 <span className="block font-medium text-lg uppercase text-white">
                   {slider?.discount}
@@ -52,6 +52,7 @@ const HeroCarousal = ({ sliders }: any) => {
                 Shop Now
               </Link>
             </div>
+            <div className="bg-blue-dark/20 backdrop-blur-[2px] absolute inset-0 z-[4]" />
             <Image
               src={
                 slider?.image ? imageBuilder(slider?.image).url()! : "/no image"
