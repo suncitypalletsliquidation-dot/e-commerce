@@ -70,13 +70,13 @@ const GlobalSearchModal = (props: any) => {
                     loadingIcon: "hidden",
                   }}
                 />
-
+                {/* 
                 <SearchFilter
                   filterValue={filterValue}
                   setFilterValue={setFilterValue}
-                />
+                /> */}
 
-                <div className="bg-white p-5 sm:p-10 pt-7.5">
+                <div className="bg-white p-5 sm:p-10 !pt-0">
                   {/* <EmptyState /> */}
                   <div className="flex flex-wrap -mx-4">
                     <Results
