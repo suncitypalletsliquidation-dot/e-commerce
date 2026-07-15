@@ -2,9 +2,8 @@ import Signin from "@/components/Auth/Signin";
 import React from "react";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Signin Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Signin Page for NextMerce Template",
-  // other metadata
+  title: "Sign In | Suncity Pallets Liquidation Store",
+  description: "Sign in to your Suncity Pallets Liquidation Store account to track your orders and manage details.",
 };
 
 const SigninPage = () => {

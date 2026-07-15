@@ -4,9 +4,8 @@ import { getProductsByFilter } from '@/sanity/sanity-shop-utils';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shop Page | NextMerce | Next.js E-commerce Boilerplate',
-  description: 'This is Shop Page for NextMerce Template',
-  // other metadata
+  title: 'Popular Products | Suncity Pallets Liquidation Store',
+  description: 'View our most popular and high-demand liquidation pallets at Suncity Pallets Liquidation Store.',
 };
 
 type PageProps = {

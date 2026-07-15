@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Shipping Policy | Amazon Liquidation Express",
-  description: "Shipping Policy, delivery timeframes, rates, and customs guidelines for Amazon Liquidation Express.",
+  title: "Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
+  description: "Shipping Policy, delivery timeframes, rates, and customs guidelines for SUNCITY PALLETS LIQUIDATION STORE LLC.",
 };
 
 export default function ShippingPolicyPage() {
@@ -13,10 +13,10 @@ export default function ShippingPolicyPage() {
         <div>
           <h2 className="text-custom-2xl font-semibold text-dark mb-4">Delivery Policy</h2>
           <p className="text-base text-dark-3 leading-relaxed mb-4">
-            Shipping wholesale liquidation pallets is often not as straightforward as shipping regular goods. At Amazon Liquidation Express we use a variety of materials to package and ship our merchandise, the most common being cases, bins, gaylords, or shrink-wrapped pallets. Our clients typically ship their goods by Courier (UPS/FedEx), LTL (Less than Load) Carriers, Full Trailers, or Containers.
+            Shipping wholesale liquidation pallets is often not as straightforward as shipping regular goods. At SUNCITY PALLETS LIQUIDATION STORE LLC we use a variety of materials to package and ship our merchandise, the most common being cases, bins, gaylords, or shrink-wrapped pallets. Our clients typically ship their goods by Courier (UPS/FedEx), LTL (Less than Load) Carriers, Full Trailers, or Containers.
           </p>
           <p className="text-base text-dark-3 leading-relaxed">
-            This Shipping Policy (&ldquo;Policy&rdquo;) outlines the terms and conditions governing the shipping of products purchased from Amazon Liquidation Express (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) through our website <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span> (&ldquo;Website&rdquo;). By placing an order and using our services, you (&ldquo;Customer,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) agree to comply with this Policy.
+            This Shipping Policy (&ldquo;Policy&rdquo;) outlines the terms and conditions governing the shipping of products purchased from SUNCITY PALLETS LIQUIDATION STORE LLC (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) through our website <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span> (&ldquo;Website&rdquo;). SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 12112 VILLAGE GATE DR, EL PASO, TX, 79936. By placing an order and using our services, you (&ldquo;Customer,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) agree to comply with this Policy.
           </p>
         </div>
 
@@ -124,13 +124,13 @@ export default function ShippingPolicyPage() {
                   <span className="font-semibold text-dark">Import Restrictions:</span> Many countries restrict what types of goods can be imported. Furthermore, brand protection and agency rights in place may prohibit the importation of certain brands into the country other than from the authorized importer.
                 </li>
                 <li>
-                  <span className="font-semibold text-dark">Buyer&rsquo;s Responsibility:</span> It is the buyer&rsquo;s sole responsibility to be informed of particular restrictions in the destination country. Amazon Liquidation Express cannot be held responsible for merchandise seized or refused at customs. Please familiarize yourself with these costs and ensure you can clear customs before placing an order.
+                  <span className="font-semibold text-dark">Buyer&rsquo;s Responsibility:</span> It is the buyer&rsquo;s sole responsibility to be informed of particular restrictions in the destination country. SUNCITY PALLETS LIQUIDATION STORE LLC cannot be held responsible for merchandise seized or refused at customs. Please familiarize yourself with these costs and ensure you can clear customs before placing an order.
                 </li>
                 <li>
                   <span className="font-semibold text-dark">CBP Inspections and Customs Duties:</span> U.S. Customs &amp; Border Protection (CBP) has broad authority to inspect export cargo. The cost of inspections ordered by CBP is the responsibility of the consignee. All customs clearance fees, import duties, and related taxes are also the responsibility of the consignee. When appropriate, please verify that the Seal # matches the paperwork and has not been tampered with.
                 </li>
                 <li>
-                  <span className="font-semibold text-dark font-mono text-xs">Manifest Limitations:</span> We export dozens of orders weekly, and in over 98% of cases, orders clear customs without issue. However, due to the nature of liquidation, we are usually unable to provide detailed manifests and country of origin details. Clearing customs with such goods can on rare occasions be problematic, and Amazon Liquidation Express does not control that aspect of the sale.
+                  <span className="font-semibold text-dark font-mono text-xs">Manifest Limitations:</span> We export dozens of orders weekly, and in over 98% of cases, orders clear customs without issue. However, due to the nature of liquidation, we are usually unable to provide detailed manifests and country of origin details. Clearing customs with such goods can on rare occasions be problematic, and SUNCITY PALLETS LIQUIDATION STORE LLC does not control that aspect of the sale.
                 </li>
               </ul>
             </div>

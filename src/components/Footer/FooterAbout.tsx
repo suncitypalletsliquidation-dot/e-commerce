@@ -5,17 +5,17 @@ const aboutData = [
   {
     id: 1,
     icon: MapIcon,
-    text: "685 Market Street,Las Vegas, LA 95820,United States.",
+    text: "12112 VILLAGE GATE DR, EL PASO, TX, 79936, United States",
   },
   {
     id: 2,
     icon: CallIcon,
-    text: "(+099) 532-786-9843",
+    text: "WhatsApp 817 330 9020",
   },
   {
     id: 3,
     icon: EmailIcon,
-    text: "support@example.com",
+    text: "info@suncitypalletsliquidation.com",
   },
 ];
 

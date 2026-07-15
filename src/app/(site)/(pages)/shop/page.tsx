@@ -9,9 +9,8 @@ import {
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shop Page | NextMerce | Next.js E-commerce Boilerplate',
-  description: 'This is Shop Page for NextMerce Template',
-  // other metadata
+  title: 'Shop | Suncity Pallets Liquidation Store',
+  description: 'Shop wholesale liquidation pallets of tools, apparel, electronics, toys, and home goods on Suncity Pallets Liquidation Store.',
 };
 
 type PageProps = {
@@ -46,7 +45,7 @@ const ShopWithSidebarPage = async ({ searchParams }: PageProps) => {
 
 
   if (selectedSizes) {
-    queries.sizes = `&& count(sizes[ @ in ${JSON.stringify(selectedSizes)} ]) > 0`;
+    queries.sizes = `&& count(sizeVariants[ size in ${JSON.stringify(selectedSizes)} ]) > 0`;
   }
 
   if (selectedColors) {

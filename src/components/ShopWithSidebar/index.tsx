@@ -41,7 +41,9 @@ const ShopWithSidebar = ({ data }: PropsType) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const availableSizes = useMemo(() => {
-    const sizes = allProducts.flatMap((product) => product.sizes || []);
+    const sizes = allProducts.flatMap((product) =>
+      (product.sizeVariants || []).map((v) => v.size),
+    );
     return [...new Set(sizes)];
   }, []);
 

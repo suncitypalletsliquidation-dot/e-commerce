@@ -19,10 +19,10 @@ export const wishlist = createSlice({
         name,
         price,
         quantity,
-        thumbnails,
         discountedPrice,
         status,
         slug,
+        previewImages,
       } = action.payload;
       const existingItem = state.items.find((item) => item._id === _id);
 
@@ -33,8 +33,8 @@ export const wishlist = createSlice({
           _id,
           name,
           price,
-          thumbnails,
           discountedPrice,
+          previewImages,
           status,
           quantity: 1,
           reviews: [],

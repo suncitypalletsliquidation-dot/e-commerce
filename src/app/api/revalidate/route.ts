@@ -19,8 +19,7 @@ export async function POST(req: NextRequest) {
       reviews?: any[] | undefined;
       category?: any | undefined;
       colors?: any[] | undefined;
-      sizes?: any[] | undefined;
-      thumbnails?: any[] | undefined;
+      sizeVariants?: any[] | undefined;
       status?: string | undefined;
       description?: string | undefined;
       offers?: any[] | undefined;
@@ -82,9 +81,8 @@ export async function POST(req: NextRequest) {
       reviews: body?.reviews,
       category: category?.title || null,
       colors: body?.colors,
-      sizes: body?.sizes,
+      sizes: (body?.sizeVariants || []).map((v: any) => v.size),
       _id: body?._id,
-      thumbnails: body?.thumbnails,
       status: body?.status,
       previewImages: body?.previewImages,
       description: body?.description,

@@ -25,8 +25,8 @@ export default function DeliveryFAQ() {
             </h2>
             <p className="text-custom-sm sm:text-base text-dark-3 leading-relaxed">
               The Bulk Liquidations Store has a dedicated customer support team reachable at{" "}
-              <a href="mailto:info@amazonliquidationexpress.com" className="font-bold text-dark hover:text-blue transition-colors">
-                info@amazonliquidationexpress.com
+              <a href="mailto:info@suncitypalletsliquidation.com" className="font-bold text-dark hover:text-blue transition-colors">
+                info@suncitypalletsliquidation.com
               </a>
               . For any questions, feedback, or order issues, please contact them directly, as Amazon's 
               general customer service team may not be able to assist with this programme.

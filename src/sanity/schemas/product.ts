@@ -99,45 +99,58 @@ const product = {
       ],
     },
     {
-      name: "colors",
-      title: "Colors",
+      name: "sizeVariants",
+      title: "Size Variants (with Price)",
       type: "array",
+      description:
+        "Add each size and set its specific price. If a size has no price set, the product's default price will be used.",
       of: [
         {
-          type: "string",
-          title: "Color",
-          validation: (Rule: any) =>
-            Rule.custom((fields: any) => {
-              if (
-                fields !== fields.toLowerCase() ||
-                fields.split(" ").includes("")
-              ) {
-                return "Colors must be lowercase and not be included space";
-              }
-              return true;
-            }),
-        },
-      ],
-    },
-
-    {
-      name: "sizes",
-      title: "Sizes",
-      type: "array",
-      of: [
-        {
-          type: "string",
-          title: "Size",
-          validation: (Rule: any) =>
-            Rule.custom((fields: any) => {
-              if (
-                fields !== fields.toLowerCase() ||
-                fields.split(" ").includes("")
-              ) {
-                return "size must be lowercase and not be included space";
-              }
-              return true;
-            }),
+          type: "object",
+          name: "sizeVariant",
+          title: "Size Variant",
+          fields: [
+            {
+              name: "size",
+              title: "Size",
+              type: "string",
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              name: "price",
+              title: "Price",
+              type: "number",
+              description: "Price for this size (overrides the default price)",
+              validation: (Rule: any) =>
+                Rule.required().min(0).error("Price must be a positive number"),
+            },
+            {
+              name: "discountedPrice",
+              title: "Discounted Price",
+              type: "number",
+              description:
+                "Optional discounted price for this size. Leave blank to use the default discounted price.",
+              validation: (Rule: any) => Rule.min(0),
+            },
+          ],
+          preview: {
+            select: {
+              title: "size",
+              price: "price",
+              discountedPrice: "discountedPrice",
+            },
+            prepare(selection: any) {
+              const { title, price, discountedPrice } = selection;
+              const subtitle =
+                discountedPrice != null
+                  ? `$${discountedPrice} (was $${price})`
+                  : `$${price}`;
+              return {
+                title: title ? title.toUpperCase() : "Size",
+                subtitle,
+              };
+            },
+          },
         },
       ],
     },
@@ -233,47 +246,7 @@ const product = {
         },
       ],
     },
-    {
-      name: "thumbnails",
-      title: "Thumbnails",
-      type: "array",
-      validation: (Rule: any) => Rule.required(),
-      of: [
-        {
-          type: "object",
-          name: "thumbnail",
-          title: "Thumbnail",
-          fields: [
-            {
-              name: "image",
-              title: "Image",
-              type: "image",
-              options: {
-                hotspot: true,
-              },
-            },
-            {
-              name: "color",
-              title: "Color",
-              type: "string",
-            },
-          ],
-          preview: {
-            select: {
-              title: "color",
-              media: "image",
-            },
-            prepare(selection: any) {
-              const { title, media } = selection;
-              return {
-                title: title || "Thumbnail",
-                media,
-              };
-            },
-          },
-        },
-      ],
-    },
+
     {
       name: "previewImages",
       title: "Preview Images",
@@ -339,7 +312,7 @@ const product = {
       title: "name",
       description: "shortDescription",
       category: "category.title",
-      media: "thumbnails.0.image",
+      media: "previewImages.0.image",
     },
     prepare(selection: any) {
       const { description, category, media } = selection;

@@ -11,7 +11,7 @@ export type Product = {
   description?: PortableTextBlock[];
   shortDescription?: string;
   colors?: string[];
-  thumbnails?: any;
+
   previewImages?: any;
   additionalInformation?: {
     name: string;
@@ -33,7 +33,11 @@ export type Product = {
   currency?: string;
   sku?: string;
   body?: PortableTextBlock[];
-  sizes?: string[];
+  sizeVariants?: {
+    size: string;
+    price: number;
+    discountedPrice?: number;
+  }[];
   inStock?: boolean;
   quantity?: number;
 };

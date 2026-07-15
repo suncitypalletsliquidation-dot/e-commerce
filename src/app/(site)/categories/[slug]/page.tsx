@@ -33,9 +33,9 @@ export async function generateMetadata({ params }: Params) {
     return {
       title: `${
         categoryData?.title || "Category Page"
-      } | NextMerce - Next.js E-commerce Template`,
+      } | Suncity Pallets Liquidation Store`,
       description: `${categoryData?.description?.slice(0, 136)}...`,
-      author: "NextMerce",
+      author: "Suncity Pallets Liquidation Store",
       alternates: {
         canonical: `${siteURL}/categories/${categoryData?.slug?.current}`,
         languages: {
@@ -58,10 +58,10 @@ export async function generateMetadata({ params }: Params) {
       },
 
       openGraph: {
-        title: `${categoryData?.title} | NextMerce`,
+        title: `${categoryData?.title} | Suncity Pallets Liquidation Store`,
         description: categoryData.description,
         url: `${siteURL}/categories/${categoryData?.slug?.current}`,
-        siteName: "NextMerce",
+        siteName: "Suncity Pallets Liquidation Store",
         images: [
           {
             url: imageBuilder(categoryData.image).url(),
@@ -76,10 +76,10 @@ export async function generateMetadata({ params }: Params) {
 
       twitter: {
         card: "summary_large_image",
-        title: `${categoryData?.title} | NextMerce`,
+        title: `${categoryData?.title} | Suncity Pallets Liquidation Store`,
         description: `${categoryData?.description?.slice(0, 136)}...`,
-        creator: "@NextMerce",
-        site: "@NextMerce",
+        creator: "Suncity Pallets Liquidation Store",
+        site: "Suncity Pallets Liquidation Store",
         images: [imageBuilder(categoryData.image).url()],
         url: `${siteURL}/categories/${categoryData?.slug?.current}`,
       },

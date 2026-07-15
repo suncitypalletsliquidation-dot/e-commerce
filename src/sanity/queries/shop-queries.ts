@@ -11,10 +11,10 @@ export const productData = `
   slug,
   tags,
   colors,
-  sizes,
+  sizeVariants[]{ size, price, discountedPrice },
   customAttributes,
   additionalInformation,
-  thumbnails,
+
   previewImages,
   publishedAt,
   price,
@@ -95,7 +95,7 @@ export const heroSliderQuery = groq`*[_type == "heroSlider"] | order(_createdAt 
   _id,
   name,
   image,
-  discount,
+
   product->{
     shortDescription,
     slug,

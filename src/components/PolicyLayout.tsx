@@ -174,25 +174,26 @@ export default function PolicyLayout({ title, children }: PolicyLayoutProps) {
 
                   <div className="flex flex-col gap-3.5">
                     <Link
-                      href="tel:+099 532-786-9843"
+                      href="https://wa.me/18173309020"
+                      target="_blank"
                       className="flex items-center gap-3 text-custom-xs text-dark font-medium transition duration-200 hover:text-blue-dark"
                     >
                       <CallIcon className="w-5 h-5 text-blue shrink-0" />
-                      (+099) 532-786-9843
+                      WhatsApp 817 330 9020
                     </Link>
 
                     <Link
-                      href="mailto:support@example.com"
+                      href="mailto:info@suncitypalletsliquidation.com"
                       className="flex items-center gap-3 text-custom-xs text-dark font-medium transition duration-200 hover:text-blue-dark"
                     >
                       <EmailIcon className="w-5 h-5 text-blue shrink-0" />
-                      support@example.com
+                      info@suncitypalletsliquidation.com
                     </Link>
 
                     <div className="flex gap-3 text-custom-xs text-dark font-medium">
                       <MapIcon className="w-5 h-5 text-blue shrink-0" />
                       <span>
-                        685 Market Street, Las Vegas, NV 89128, United States
+                        12112 VILLAGE GATE DR, EL PASO, TX, 79936, United States
                       </span>
                     </div>
                   </div>

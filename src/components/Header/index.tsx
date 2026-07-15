@@ -13,6 +13,7 @@ import { menuData } from "./menuData";
 import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { UserIcon } from "../MyAccount/icons";
+import LanguageDropdown from "./LanguageDropdown";
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -49,7 +50,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 w-full z-999 bg-white transition-all ease-in-out duration-300 ${
+        className={`fixed isolate left-0 top-0 w-full z-999 bg-white transition-all ease-in-out duration-300 ${
           stickyMenu && "shadow-sm"
         }`}
       >
@@ -64,10 +65,10 @@ const Header = () => {
             <div className="flex flex-col w-full gap-5 xl:w-auto sm:flex-row xl:justify-between sm:items-center sm:gap-10">
               <Link className="shrink-0" href="/">
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/suncity_full_logo.png"
                   alt="Logo"
-                  width={165}
-                  height={36}
+                  width={164}
+                  height={50}
                 />
               </Link>
 
@@ -194,6 +195,10 @@ const Header = () => {
                         </span>
                       </span>
                     </button>
+
+                    <div className="hidden sm:block">
+                      <LanguageDropdown align="right" />
+                    </div>
                   </div>
                 </div>
 
@@ -298,10 +303,10 @@ const Header = () => {
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-3">
               <Link href="/">
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/suncity_full_logo.png"
                   alt="Logo"
-                  width={130}
-                  height={28}
+                  width={131}
+                  height={40}
                 />
               </Link>
               <button
@@ -396,6 +401,21 @@ const Header = () => {
                 </span>
                 Wishlist
               </Link>
+
+              <div
+                className={`flex items-center gap-2 text-dark px-2 py-1.5 transition-all duration-300 ease-out transform ${
+                  navigationOpen
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-4 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: navigationOpen
+                    ? `${(menuData.length + 2) * 50}ms`
+                    : "0ms",
+                }}
+              >
+                <LanguageDropdown align="left" />
+              </div>
             </div>
           </aside>
         </div>

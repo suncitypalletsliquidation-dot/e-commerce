@@ -3,9 +3,8 @@ import Error from "@/components/Error";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Error Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Error Page for NextMerce Template",
-  // other metadata
+  title: "Error | Suncity Pallets Liquidation Store",
+  description: "An error occurred on Suncity Pallets Liquidation Store.",
 };
 
 const ErrorPage = () => {

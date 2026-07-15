@@ -13,10 +13,10 @@ export default function PurchaseFAQ() {
             <p className="text-custom-sm sm:text-base text-dark-3 leading-relaxed">
               If your lot arrives damaged or with missing items, please contact{" "}
               <a
-                href="mailto:info@amazonliquidationexpress.com"
+                href="mailto:info@suncitypalletsliquidation.com"
                 className="font-bold text-dark hover:text-blue transition-colors"
               >
-                info@amazonliquidationexpress.com
+                info@suncitypalletsliquidation.com
               </a>{" "}
               for assistance.
             </p>

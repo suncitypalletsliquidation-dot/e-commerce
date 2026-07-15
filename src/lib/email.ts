@@ -37,7 +37,7 @@ export const formatEmail = (email: string) => {
 /**
  * Common HTML wrapper layout for emails.
  */
-const getEmailWrapper = (content: string, footerText: string = "Amazon Liquidation Express") => {
+const getEmailWrapper = (content: string, footerText: string = "SUNCITY PALLETS LIQUIDATION STORE LLC") => {
   return `
     <div style="background-color: #f3f4f6; padding: 40px 10px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #1f2937; line-height: 1.6;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid #e5e7eb;">
@@ -56,12 +56,12 @@ const getEmailWrapper = (content: string, footerText: string = "Amazon Liquidati
 export const getWelcomeEmailTemplate = (name: string, email: string) => {
   const content = `
     <div style="padding: 30px 40px 10px 40px;">
-      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">Amazon Liquidation Express</p>
-      <h1 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; line-height: 1.2;">Welcome to Amazon Liquidation Express</h1>
+      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">SUNCITY PALLETS LIQUIDATION STORE LLC</p>
+      <h1 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; line-height: 1.2;">Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC</h1>
     </div>
     <div style="padding: 20px 40px 40px 40px;">
       <p style="margin: 0 0 20px 0; font-size: 16px; color: #374151;">Hi ${name || "there"},</p>
-      <p style="margin: 0 0 20px 0; font-size: 15px; color: #4b5563;">Thanks for creating an account on Amazon Liquidation Express. Here's a copy of your user details:</p>
+      <p style="margin: 0 0 20px 0; font-size: 15px; color: #4b5563;">Thanks for creating an account on SUNCITY PALLETS LIQUIDATION STORE LLC. Here's a copy of your user details:</p>
       
       <div style="background-color: #f9fafb; border-radius: 8px; padding: 20px; border: 1px solid #f3f4f6; margin-bottom: 25px;">
         <span style="font-size: 15px; color: #4b5563;">Username: <strong style="color: #111827;">${email}</strong></span>
@@ -129,7 +129,7 @@ export const getClientOrderConfirmationTemplate = (order: any) => {
 
   const content = `
     <div style="padding: 30px 40px 10px 40px;">
-      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">Amazon Liquidation Express</p>
+      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">SUNCITY PALLETS LIQUIDATION STORE LLC</p>
       <h1 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; line-height: 1.2;">Thank you for your order</h1>
     </div>
     <div style="padding: 20px 40px 40px 40px;">
@@ -182,7 +182,7 @@ export const getClientOrderConfirmationTemplate = (order: any) => {
       </div>
 
       <p style="margin: 40px 0 0 0; font-size: 14px; color: #6b7280; text-align: center; line-height: 1.5;">
-        Thanks again! If you need any help with your order, please contact us at <a href="mailto:info@amazonliquidationexpress.com" style="color: #a855f7; text-decoration: none; font-weight: 500;">info@amazonliquidationexpress.com</a>.
+        Thanks again! If you need any help with your order, please contact us at <a href="mailto:info@suncitypalletsliquidation.com" style="color: #a855f7; text-decoration: none; font-weight: 500;">info@suncitypalletsliquidation.com</a>.
       </p>
     </div>
   `;
@@ -342,7 +342,7 @@ export const getClientContactConfirmationTemplate = (data: {
 }) => {
   const content = `
     <div style="padding: 30px 40px 10px 40px;">
-      <p style="color: #3b82f6; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">Amazon Liquidation Express</p>
+      <p style="color: #3b82f6; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">SUNCITY PALLETS LIQUIDATION STORE LLC</p>
       <h1 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; line-height: 1.2;">We've received your message</h1>
     </div>
     <div style="padding: 20px 40px 40px 40px;">
@@ -388,7 +388,7 @@ export const getOrderStatusUpdateTemplate = (order: any, newStatus: string) => {
 
   const content = `
     <div style="padding: 30px 40px 10px 40px;">
-      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">Amazon Liquidation Express</p>
+      <p style="color: #a855f7; font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 0.05em;">SUNCITY PALLETS LIQUIDATION STORE LLC</p>
       <h1 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; line-height: 1.2;">Order Status Updated</h1>
     </div>
     <div style="padding: 20px 40px 40px 40px;">
@@ -423,7 +423,7 @@ export const getOrderStatusUpdateTemplate = (order: any, newStatus: string) => {
       </table>
 
       <p style="margin: 40px 0 0 0; font-size: 14px; color: #6b7280; text-align: center; line-height: 1.5;">
-        If you have any questions or require assistance, please contact us at <a href="mailto:info@amazonliquidationexpress.com" style="color: #a855f7; text-decoration: none; font-weight: 500;">info@amazonliquidationexpress.com</a>.
+        If you have any questions or require assistance, please contact us at <a href="mailto:info@suncitypalletsliquidation.com" style="color: #a855f7; text-decoration: none; font-weight: 500;">info@suncitypalletsliquidation.com</a>.
       </p>
     </div>
   `;

@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Amazon Liquidation Express",
+  title: "Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC",
   description:
-    "Terms of Use and conditions for accessing and purchasing from Amazon Liquidation Express.",
+    "Terms of Use and conditions for accessing and purchasing from SUNCITY PALLETS LIQUIDATION STORE LLC.",
 };
 
 export default function TermsOfUsePage() {
@@ -16,8 +16,8 @@ export default function TermsOfUsePage() {
             Terms &amp; Conditions of Use
           </h2>
           <p className="text-base text-dark-3 leading-relaxed mb-4">
-            Welcome to Amazon Liquidation Express (&ldquo;Company&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). These
+            Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC (&ldquo;Company&rdquo;,
+            &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 12112 VILLAGE GATE DR, EL PASO, TX, 79936. These
             Terms of Use govern your access to and use of our website located at{" "}
             <span className="font-semibold text-blue">
               https://firebrick-dugong-592049.hostingersite.com
@@ -56,7 +56,7 @@ export default function TermsOfUsePage() {
               2. Liquidation &ldquo;AS-IS&rdquo; Disclaimer
             </h3>
             <p className="text-base text-dark-3 leading-relaxed mb-3">
-              You acknowledge and agree that Amazon Liquidation Express is a
+              You acknowledge and agree that SUNCITY PALLETS LIQUIDATION STORE LLC is a
               wholesale liquidation seller.
             </p>
             <ul className="list-disc pl-6 space-y-2 text-dark-3">
@@ -121,7 +121,7 @@ export default function TermsOfUsePage() {
               freight and international cargo shipping, the buyer is solely
               responsible for arranging freight forwarders (if applicable),
               clearing customs in the destination country, and paying all import
-              taxes, duties, and CBP inspection fees. Amazon Liquidation Express
+              taxes, duties, and CBP inspection fees. SUNCITY PALLETS LIQUIDATION STORE LLC
               is not responsible for shipments seized, delayed, or rejected by
               customs authorities.
             </p>
@@ -179,8 +179,8 @@ export default function TermsOfUsePage() {
               7. Limitation of Liability
             </h3>
             <p className="text-base text-dark-3 leading-relaxed">
-              To the fullest extent permitted by law, in no event shall Amazon
-              Liquidation Express, its directors, employees, or agents be liable
+              To the fullest extent permitted by law, in no event shall SUNCITY
+              PALLETS LIQUIDATION STORE LLC, its directors, employees, or agents be liable
               to you or any third party for any direct, indirect, consequential,
               exemplary, incidental, special, or punitive damages (including
               lost profits, lost revenue, loss of data, or damages arising from
@@ -198,11 +198,11 @@ export default function TermsOfUsePage() {
             </h3>
             <p className="text-base text-dark-3 leading-relaxed">
               These Terms of Use and your use of the Website are governed by and
-              construed in accordance with the laws of the State of Nevada,
+              construed in accordance with the laws of the State of Texas,
               United States, without regard to its conflict of law principles.
               Any legal action or proceeding arising out of or related to these
               Terms shall be brought exclusively in the state or federal courts
-              located in Las Vegas, Nevada.
+              located in El Paso, Texas.
             </p>
           </div>
 

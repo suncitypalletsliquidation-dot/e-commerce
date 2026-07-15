@@ -4,9 +4,8 @@ import { Metadata } from 'next';
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Blog Details Page for NextMerce Template",
-  // other metadata
+  title: "Blog Details | Suncity Pallets Liquidation Store",
+  description: "Read detailed blog articles and guides on Suncity Pallets Liquidation Store.",
 };
 
 const BlogDetailsPage = async () => {

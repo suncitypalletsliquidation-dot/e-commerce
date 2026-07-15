@@ -34,46 +34,7 @@ const cart = {
       validation: (Rule: any) => Rule.required(),
     },
 
-    {
-      name: "thumbnails",
-      title: "Thumbnails",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          name: "cartThumbnail",
-          title: "Cart Thumbnail",
-          fields: [
-            {
-              name: "image",
-              title: "Image",
-              type: "image",
-              options: {
-                hotspot: true,
-              },
-            },
-            {
-              name: "color",
-              title: "Color",
-              type: "string",
-            },
-          ],
-          preview: {
-            select: {
-              title: "color",
-              media: "image",
-            },
-            prepare(selection: any) {
-              const { title, media } = selection;
-              return {
-                title: title || "Thumbnail",
-                media,
-              };
-            },
-          },
-        },
-      ],
-    },
+
     {
       name: "previewImages",
       title: "Preview Images",

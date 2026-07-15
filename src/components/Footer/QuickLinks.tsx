@@ -31,6 +31,11 @@ const quickLinks = [
     label: 'Contact',
     href: '/contact',
   },
+  {
+    id: 7,
+    label: 'About Us',
+    href: '/about-us',
+  },
 ]
 
 export default function QuickLinks() {

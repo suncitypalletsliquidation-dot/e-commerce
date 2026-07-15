@@ -29,12 +29,6 @@ const HeroCarousal = ({ sliders }: any) => {
         <SwiperSlide key={key}>
           <div>
             <div className="max-w-[366px] absolute left-8 lg:left-20 top-1/2 -translate-y-1/2 z-[5]">
-              <div className="flex items-center gap-4 mb-5">
-                <span className="block font-medium text-lg uppercase text-white">
-                  {slider?.discount}
-                </span>
-              </div>
-
               <h1 className="font-semibold text-white text-xl sm:text-[40px] mb-3">
                 <Link href={`/products/${slider?.product?.slug.current}`}>
                   {slider?.product?.name}

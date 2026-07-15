@@ -9,9 +9,8 @@ import PurchaseFAQ from "@/components/Home/PurchaseFAQ";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Home for NextMerce Template",
-  // other metadata
+  title: "Suncity Pallets Liquidation Store | Bulk Pallets & Liquidation Stock",
+  description: "Welcome to Suncity Pallets Liquidation Store. Buy wholesale liquidation pallets of new and used stock directly from top manufacturers.",
 };
 
 export default function HomePage() {

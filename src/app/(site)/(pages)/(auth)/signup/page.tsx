@@ -3,9 +3,8 @@ import React from "react";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Signup Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Signup Page for NextMerce Template",
-  // other metadata
+  title: "Sign Up | Suncity Pallets Liquidation Store",
+  description: "Create an account on Suncity Pallets Liquidation Store to purchase and track wholesale liquidation pallets.",
 };
 
 const SignupPage = () => {
