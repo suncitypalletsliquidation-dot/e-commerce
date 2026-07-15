@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Refund Policy | Amazon Liquidation Express",
+  title: "Refund Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
   description:
-    "Refund and Return Policy for Amazon Liquidation Express. Review our terms for closeouts, returns, and exchanges.",
+    "Refund and Return Policy for SUNCITY PALLETS LIQUIDATION STORE LLC. Review our terms for closeouts, returns, and exchanges.",
 };
 
 export default function RefundPolicyPage() {
@@ -16,7 +16,7 @@ export default function RefundPolicyPage() {
             Refund &amp; Returns Policy
           </h2>
           <p className="text-base text-dark-3 leading-relaxed mb-4">
-            Thank you for shopping at Amazon Liquidation Express. Because our
+            Thank you for shopping at SUNCITY PALLETS LIQUIDATION STORE LLC. Because our
             inventory consists of wholesale liquidation, closeouts, overstocks,
             and customer return merchandise, our return policy differs
             significantly from traditional retail stores.
@@ -185,7 +185,7 @@ export default function RefundPolicyPage() {
               To file a claim for damaged transit cargo or manifest
               discrepancies, please email{" "}
               <span className="font-semibold text-blue">
-                support@example.com
+                info@suncitypalletsliquidation.com
               </span>{" "}
               with:
             </p>

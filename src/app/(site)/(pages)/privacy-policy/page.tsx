@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Amazon Liquidation Express",
-  description: "Privacy Policy for Amazon Liquidation Express. Learn how we collect, use, and protect your personal information.",
+  title: "Privacy Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
+  description: "Privacy Policy for SUNCITY PALLETS LIQUIDATION STORE LLC. Learn how we collect, use, and protect your personal information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
         <div>
           <h2 className="text-custom-2xl font-semibold text-dark mb-4">Privacy Policy</h2>
           <p className="text-base text-dark-3 leading-relaxed">
-            At Amazon Liquidation Express, accessible from <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Amazon Liquidation Express and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+            At SUNCITY PALLETS LIQUIDATION STORE LLC, accessible from <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span>, one of our main priorities is the privacy of our visitors. SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 12112 VILLAGE GATE DR, EL PASO, TX, 79936. This Privacy Policy document contains types of information that is collected and recorded by SUNCITY PALLETS LIQUIDATION STORE LLC and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
           </p>
         </div>
 
@@ -68,14 +68,14 @@ export default function PrivacyPolicyPage() {
           <div>
             <h3 className="text-custom-lg font-semibold text-dark mb-2">4. Log Files</h3>
             <p className="text-base text-dark-3 leading-relaxed">
-              Amazon Liquidation Express follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&rsquo; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&rsquo; movement on the website, and gathering demographic information.
+              SUNCITY PALLETS LIQUIDATION STORE LLC follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&rsquo; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&rsquo; movement on the website, and gathering demographic information.
             </p>
           </div>
 
           <div>
             <h3 className="text-custom-lg font-semibold text-dark mb-2">5. Cookies and Web Beacons</h3>
             <p className="text-base text-dark-3 leading-relaxed">
-              Like any other website, Amazon Liquidation Express uses &ldquo;cookies.&rdquo; These cookies are used to store information including visitors&rsquo; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&rsquo; experience by customizing our web page content based on visitors&rsquo; browser type and/or other information.
+              Like any other website, SUNCITY PALLETS LIQUIDATION STORE LLC uses &ldquo;cookies.&rdquo; These cookies are used to store information including visitors&rsquo; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&rsquo; experience by customizing our web page content based on visitors&rsquo; browser type and/or other information.
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
           <div>
             <h3 className="text-custom-lg font-semibold text-dark mb-2">8. Children&rsquo;s Information</h3>
             <p className="text-base text-dark-3 leading-relaxed">
-              Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. Amazon Liquidation Express does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+              Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. SUNCITY PALLETS LIQUIDATION STORE LLC does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
             </p>
           </div>
 

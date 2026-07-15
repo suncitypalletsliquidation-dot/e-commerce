@@ -64,17 +64,17 @@ const Contact = () => {
                 <div className="flex flex-col gap-4">
                   <p className="flex items-center gap-4">
                     <EmailIcon className="w-6 h-6 text-blue" />
-                    Email: jamse@example.com
+                    Email: info@suncitypalletsliquidation.com
                   </p>
 
                   <p className="flex items-center gap-4">
                     <CallIcon className="w-6 h-6 text-blue" />
-                    Phone: 1234 567890
+                    WhatsApp: 817 330 9020
                   </p>
 
                   <p className="flex gap-4">
                     <MapIcon className="w-6 h-6 text-blue shrink-0" />
-                    Address: 7398 Smoke Ranch RoadLas Vegas, Nevada 89128
+                    Address: 12112 VILLAGE GATE DR, EL PASO, TX, 79936
                   </p>
                 </div>
               </div>

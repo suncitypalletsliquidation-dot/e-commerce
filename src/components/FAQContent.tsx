@@ -12,24 +12,24 @@ export default function FAQContent() {
 
   const faqs: FAQItem[] = [
     {
-      question: "Where does Amazon Liquidation Express source their products?",
+      question: "Where does SUNCITY PALLETS LIQUIDATION STORE LLC source their products?",
       answer:
-        "Amazon Liquidation Express partners with top retailers from all over the United States. Our team sources product directly from the source so we can provide you with the most competitive pricing in the industry.",
+        "SUNCITY PALLETS LIQUIDATION STORE LLC partners with top retailers from all over the United States. Our team sources product directly from the source so we can provide you with the most competitive pricing in the industry.",
     },
     {
       question: "Is a resale certificate required for purchase?",
       answer:
-        "No, Amazon Liquidation Express does not require a resale certificate to make a purchase.",
+        "No, SUNCITY PALLETS LIQUIDATION STORE LLC does not require a resale certificate to make a purchase.",
     },
     {
-      question: "What payment methods does Amazon Liquidation Express accept?",
+      question: "What payment methods does SUNCITY PALLETS LIQUIDATION STORE LLC accept?",
       answer:
-        "Amazon Liquidation Express accepts CashApp, Zelle, Venmo and PayPal.",
+        "SUNCITY PALLETS LIQUIDATION STORE LLC accepts CashApp, Zelle, Venmo and PayPal.",
     },
     {
       question: "Do you accept returns?",
       answer:
-        "All sales at Amazon Liquidation Express are final, due to the nature of the products.",
+        "All sales at SUNCITY PALLETS LIQUIDATION STORE LLC are final, due to the nature of the products.",
     },
     {
       question: "Is your checkout secure?",

@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       const welcomeHtml = getWelcomeEmailTemplate(user.name || "", user.email || "");
       await sendEmail({
         to: user.email!,
-        subject: "Welcome to Amazon Liquidation Express!",
+        subject: "Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC!",
         html: welcomeHtml,
       });
     } catch (emailErr) {

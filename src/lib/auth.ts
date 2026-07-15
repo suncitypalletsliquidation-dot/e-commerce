@@ -115,7 +115,7 @@ export const authOptions: NextAuthOptions = {
         );
         await sendEmail({
           to: user.email!,
-          subject: "Welcome to Amazon Liquidation Express!",
+          subject: "Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC!",
           html: welcomeHtml,
         });
       } catch (emailErr) {

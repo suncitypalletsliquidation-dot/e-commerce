@@ -8,7 +8,7 @@ export default function LiquidationInfo() {
         <div className="text-center max-w-4xl mx-auto mb-12 lg:mb-16">
           <div className="inline-block border border-blue/20 bg-blue-light-5/50 px-5 py-2 rounded-full mb-6">
             <span className="font-semibold text-xs sm:text-custom-xs uppercase tracking-wider text-blue">
-              Amazon Liquidation Express - Top Most Trusted Bulk Pallets Store
+              SUNCITY PALLETS LIQUIDATION STORE LLC - Top Most Trusted Bulk Pallets Store
             </span>
           </div>
           
