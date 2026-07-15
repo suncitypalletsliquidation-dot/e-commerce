@@ -103,9 +103,8 @@ const ProductDetails = async ({ params }: Props) => {
     reviews: product?.reviews.length,
     category: product?.category,
     colors: product?.colors as [],
-    sizes: product?.sizes as [],
+    sizes: (product?.sizeVariants?.map((v) => v.size) ?? []) as [],
     _id: product?._id,
-    thumbnails: product?.thumbnails,
     status: product?.status,
     previewImages: product?.previewImages,
   });

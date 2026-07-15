@@ -23,8 +23,8 @@ const LatestProducts = async () => {
                 >
                   <Image
                     src={
-                      product?.thumbnails
-                        ? imageBuilder(product.thumbnails?.[0].image).url()!
+                      product?.previewImages
+                        ? imageBuilder(product.previewImages?.[0].image).url()!
                         : "/no image"
                     }
                     alt="product"

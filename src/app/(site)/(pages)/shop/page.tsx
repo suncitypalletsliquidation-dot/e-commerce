@@ -46,7 +46,7 @@ const ShopWithSidebarPage = async ({ searchParams }: PageProps) => {
 
 
   if (selectedSizes) {
-    queries.sizes = `&& count(sizes[ @ in ${JSON.stringify(selectedSizes)} ]) > 0`;
+    queries.sizes = `&& count(sizeVariants[ size in ${JSON.stringify(selectedSizes)} ]) > 0`;
   }
 
   if (selectedColors) {

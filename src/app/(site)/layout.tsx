@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 // import "../css/euclid-circular-a-font.css";
 import "../css/style.css";
 import Providers from "./Providers";
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -17,6 +18,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-inter" suppressHydrationWarning>
       <body>
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            window.googleTranslateElementInit = function() {
+              new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,fr,es',
+                autoDisplay: false
+              }, 'google_translate_element');
+            }
+          `}
+        </Script>
+        <Script
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        <div id="google_translate_element" style={{ display: "none" }} />
+
         <PreLoader />
 
         <Providers>

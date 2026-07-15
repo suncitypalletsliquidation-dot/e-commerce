@@ -13,6 +13,7 @@ import { menuData } from "./menuData";
 import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { UserIcon } from "../MyAccount/icons";
+import LanguageDropdown from "./LanguageDropdown";
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -194,6 +195,10 @@ const Header = () => {
                         </span>
                       </span>
                     </button>
+
+                    <div className="hidden sm:block">
+                      <LanguageDropdown align="right" />
+                    </div>
                   </div>
                 </div>
 
@@ -396,6 +401,21 @@ const Header = () => {
                 </span>
                 Wishlist
               </Link>
+
+              <div
+                className={`flex items-center gap-2 text-dark px-2 py-1.5 transition-all duration-300 ease-out transform ${
+                  navigationOpen
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-4 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: navigationOpen
+                    ? `${(menuData.length + 2) * 50}ms`
+                    : "0ms",
+                }}
+              >
+                <LanguageDropdown align="left" />
+              </div>
             </div>
           </aside>
         </div>

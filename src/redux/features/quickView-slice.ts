@@ -18,7 +18,6 @@ const initialState = {
     description: [],
     shortDescription: "",
     colors: [""],
-    thumbnails: [""],
     previewImages: [""],
     additionalInformation: {},
     customAttributes: {},

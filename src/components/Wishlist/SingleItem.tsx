@@ -21,8 +21,8 @@ const SingleItem = ({ item }: any) => {
     name: item.name,
     price: item.discountedPrice * 100,
     currency: "usd",
-    image: item?.thumbnails
-      ? imageBuilder(item?.thumbnails[0]?.image).url()
+    image: item?.previewImages
+      ? imageBuilder(item?.previewImages[0]?.image).url()
       : "",
     price_id: item?.price_id,
     slug: item?.slug?.current,
@@ -54,8 +54,8 @@ const SingleItem = ({ item }: any) => {
           <div className="flex items-center justify-center rounded-lg bg-gray-2 w-16 h-16 overflow-hidden flex-shrink-0">
             <Image
               src={
-                item?.thumbnails
-                  ? imageBuilder(item?.thumbnails[0]?.image).url()!
+                item?.previewImages
+                  ? imageBuilder(item?.previewImages[0]?.image).url()!
                   : ""
               }
               alt={item.name}
@@ -98,10 +98,11 @@ const SingleItem = ({ item }: any) => {
         <button
           onClick={() => handleAddToCart()}
           disabled={!item?.status}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 ${item?.status
-            ? "text-white bg-blue hover:bg-blue-dark shadow-sm hover:shadow-md"
-            : "text-gray-4 bg-gray-2 cursor-not-allowed"
-            }`}
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 ${
+            item?.status
+              ? "text-white bg-blue hover:bg-blue-dark shadow-sm hover:shadow-md"
+              : "text-gray-4 bg-gray-2 cursor-not-allowed"
+          }`}
         >
           Add to Cart
         </button>

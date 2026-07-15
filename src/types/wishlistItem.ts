@@ -11,7 +11,7 @@ export type WishlistItem = {
   description?: PortableTextBlock[];
   shortDescription?: string;
   colors?: string[];
-  thumbnails?: any;
+
   previewImages?: any;
   additionalInformation?: {
     name: string;

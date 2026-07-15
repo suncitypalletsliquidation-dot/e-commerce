@@ -475,3 +475,22 @@ input[type="search"]::-webkit-search-results-decoration {
 .testimonial-swiper .swiper-wrapper {
   @apply py-5!;
 }
+
+/* Google Translate Widget Overrides */
+body {
+  top: 0px !important;
+  position: static !important;
+}
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.goog-te-banner,
+.goog-te-gadget,
+#goog-gt-tt,
+.goog-te-balloon-frame, iframe.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}

@@ -11,10 +11,10 @@ export const productData = `
   slug,
   tags,
   colors,
-  sizes,
+  sizeVariants[]{ size, price, discountedPrice },
   customAttributes,
   additionalInformation,
-  thumbnails,
+
   previewImages,
   publishedAt,
   price,

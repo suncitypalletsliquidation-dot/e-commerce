@@ -42,6 +42,7 @@ const ShopDetails = ({ product }: { product: Product }) => {
   const [mounted, setMounted] = useState(false);
   const [selectedAttributes, setSelectedAttributes] =
     useState<SelectedAttributesType>({});
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const { cartItems, addItem, handleCartClick } = useCart();
   const { addItemWithAutoOpen } = useAutoOpenCart();
@@ -63,15 +64,25 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  // Resolve active prices based on selected size variant
+  const activeSizeVariant = product.sizeVariants?.find(
+    (v) => v.size === selectedSize,
+  );
+  const activePrice = activeSizeVariant?.price ?? product.price;
+  const activeDiscountedPrice =
+    activeSizeVariant?.discountedPrice ??
+    (activeSizeVariant ? activeSizeVariant.price : product.discountedPrice);
+
   const cartItem = {
     id: product._id,
     name: product.name,
-    price: product.discountedPrice * 100,
+    price: activeDiscountedPrice * 100,
     image: product?.previewImages
       ? imageBuilder(product?.previewImages[0]?.image).url() || ""
       : "",
     slug: product?.slug?.current,
     color: activeColor,
+    size: selectedSize ?? undefined,
     attribute: selectedAttributes,
     quantity: 1,
   };
@@ -124,8 +135,8 @@ const ShopDetails = ({ product }: { product: Product }) => {
           _id: product._id,
           name: product.name,
           price: product.price,
+          previewImages: product.previewImages,
           discountedPrice: product.discountedPrice,
-          thumbnails: product.thumbnails,
           status: product.status,
           quantity: 1,
           reviews: product.reviews || [],
@@ -144,9 +155,9 @@ const ShopDetails = ({ product }: { product: Product }) => {
     }));
   };
 
-  const hasDiscount = product?.discountedPrice < product?.price;
+  const hasDiscount = activeDiscountedPrice < activePrice;
   const discountPercentage = Math.round(
-    ((product?.price - product?.discountedPrice) / product?.price) * 100,
+    ((activePrice - activeDiscountedPrice) / activePrice) * 100,
   );
 
   return (
@@ -184,7 +195,7 @@ const ShopDetails = ({ product }: { product: Product }) => {
               </div>
 
               <div className="flex flex-wrap sm:flex-nowrap gap-4.5 mt-6">
-                {product.thumbnails?.map((item: any, key: number) => (
+                {product.previewImages?.map((item: any, key: number) => (
                   <button
                     onClick={() => setPreviewImg(key)}
                     key={key}
@@ -245,14 +256,14 @@ const ShopDetails = ({ product }: { product: Product }) => {
                   {hasDiscount ? (
                     <>
                       <span className="line-through text-gray-6">
-                        ${product.price}
+                        ${activePrice}
                       </span>{" "}
                       {""}
-                      <span>${product.discountedPrice}</span>
+                      <span>${activeDiscountedPrice}</span>
                     </>
                   ) : (
                     <>
-                      <span className="">${product.price}</span>{" "}
+                      <span className="">${activePrice}</span>{" "}
                     </>
                   )}
                 </span>
@@ -271,7 +282,40 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-4.5 border-y border-gray-3 mt-7.5 mb-9 py-9">
-                  {/* <!-- details item --> */}
+                  {/* Size Variants */}
+                  {product?.sizeVariants && product.sizeVariants.length > 0 && (
+                    <div className="flex items-center gap-4">
+                      <div className="min-w-[65px]">
+                        <h4 className="font-medium text-dark capitalize">
+                          Size:
+                        </h4>
+                      </div>
+                      <div className="flex items-center flex-wrap gap-2">
+                        {product.sizeVariants.map((variant, idx) => {
+                          const isSelected = selectedSize === variant.size;
+                          return (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() =>
+                                setSelectedSize(
+                                  isSelected ? null : variant.size,
+                                )
+                              }
+                              className={`px-3 py-1 h-8 items-center inline-flex justify-center rounded-full text-sm font-medium transition-all duration-200 border ${
+                                isSelected
+                                  ? "bg-blue text-white border-blue shadow-sm"
+                                  : "bg-white text-dark border-gray-3 hover:border-blue hover:text-blue"
+                              }`}
+                            >
+                              {variant.size.toUpperCase()}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                  {/* Custom Attributes */}
                   {product?.customAttributes?.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex items-center gap-4">
                       <div className="min-w-[65px]">
