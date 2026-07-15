@@ -3,9 +3,8 @@ import { Wishlist } from "@/components/Wishlist";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Wishlist Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Wishlist Page for NextMerce Template",
-  // other metadata
+  title: "Wishlist | Suncity Pallets Liquidation Store",
+  description: "View your saved items and liquidation pallets in your Suncity Pallets Liquidation Store wishlist.",
 };
 
 const WishlistPage = () => {

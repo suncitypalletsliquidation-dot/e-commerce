@@ -9,12 +9,7 @@ const heroSlider = {
       type: "string",
       validation: (Rule: any) => Rule.required(),
     },
-    {
-      name: "discount",
-      title: "Discount Rate",
-      type: "string",
-      validation: (Rule: any) => Rule.required(),
-    },
+
     {
       name: "slug",
       title: "Slug",

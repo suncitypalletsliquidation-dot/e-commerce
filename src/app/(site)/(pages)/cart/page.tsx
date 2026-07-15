@@ -3,9 +3,8 @@ import Cart from "@/components/Cart";
 
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Cart Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Cart Page for NextMerce Template",
-  // other metadata
+  title: "Cart | Suncity Pallets Liquidation Store",
+  description: "View and edit your shopping cart before checking out at Suncity Pallets Liquidation Store.",
 };
 
 const CartPage = () => {

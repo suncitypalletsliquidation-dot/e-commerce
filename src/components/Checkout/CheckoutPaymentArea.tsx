@@ -63,7 +63,7 @@ const CheckoutPaymentArea = ({ amount }: { amount: number }) => {
       productQuantity: cartItems
         .reduce((sum, item) => sum + item.quantity, 0)
         .toString(),
-      orderTitle: "Order from NextMerce",
+      orderTitle: "Order from Suncity Pallets Liquidation Store",
       country: data.billing?.country,
       city: data.billing?.town,
       line1: data.billing?.address?.street,

@@ -51,43 +51,6 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-
-            {/* <!-- Social Links start --> */}
-            <div className="flex items-center gap-4 mt-7.5">
-              <Link
-                href="#"
-                className="flex duration-200 ease-out hover:text-blue"
-              >
-                <span className="sr-only">Facebook link</span>
-                <FacebookIcon />
-              </Link>
-
-              <Link
-                href="#"
-                className="flex duration-200 ease-out hover:text-blue"
-              >
-                <span className="sr-only">Twitter link</span>
-                <TwitterIcon />
-              </Link>
-
-              <Link
-                href="#"
-                className="flex duration-200 ease-out hover:text-blue"
-              >
-                <span className="sr-only">Instagram link</span>
-                <InstagramIcon />
-              </Link>
-
-              <Link
-                href="#"
-                aria-label="Linkedin Social Link"
-                className="flex duration-200 ease-out hover:text-blue"
-              >
-                <span className="sr-only">LinkedIn link</span>
-                <LinkedInIcon />
-              </Link>
-            </div>
-            {/* <!-- Social Links end --> */}
           </div>
 
           <AccountLinks />

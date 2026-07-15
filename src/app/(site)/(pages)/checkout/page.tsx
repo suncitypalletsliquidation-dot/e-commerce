@@ -4,9 +4,8 @@ import Checkout from "@/components/Checkout";
 import { Metadata } from "next";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 export const metadata: Metadata = {
-  title: "Checkout Page | NextMerce | Next.js E-commerce Boilerplate",
-  description: "This is Checkout Page for NextMerce Template",
-  // other metadata
+  title: "Checkout | Suncity Pallets Liquidation Store",
+  description: "Secure checkout page for Suncity Pallets Liquidation Store.",
 };
 
 const CheckoutPage = () => {

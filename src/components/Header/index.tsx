@@ -50,7 +50,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed left-0 top-0 w-full z-999 bg-white transition-all ease-in-out duration-300 ${
+        className={`fixed isolate left-0 top-0 w-full z-999 bg-white transition-all ease-in-out duration-300 ${
           stickyMenu && "shadow-sm"
         }`}
       >
@@ -65,10 +65,10 @@ const Header = () => {
             <div className="flex flex-col w-full gap-5 xl:w-auto sm:flex-row xl:justify-between sm:items-center sm:gap-10">
               <Link className="shrink-0" href="/">
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/suncity_full_logo.png"
                   alt="Logo"
-                  width={165}
-                  height={36}
+                  width={164}
+                  height={50}
                 />
               </Link>
 
@@ -303,10 +303,10 @@ const Header = () => {
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-3">
               <Link href="/">
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/suncity_full_logo.png"
                   alt="Logo"
-                  width={130}
-                  height={28}
+                  width={131}
+                  height={40}
                 />
               </Link>
               <button

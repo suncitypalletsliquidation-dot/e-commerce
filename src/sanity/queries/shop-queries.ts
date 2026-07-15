@@ -95,7 +95,7 @@ export const heroSliderQuery = groq`*[_type == "heroSlider"] | order(_createdAt 
   _id,
   name,
   image,
-  discount,
+
   product->{
     shortDescription,
     slug,

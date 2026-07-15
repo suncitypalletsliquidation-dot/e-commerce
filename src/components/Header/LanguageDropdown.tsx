@@ -13,9 +13,13 @@ interface LanguageDropdownProps {
   align?: "left" | "right";
 }
 
-export default function LanguageDropdown({ align = "right" }: LanguageDropdownProps) {
+export default function LanguageDropdown({
+  align = "right",
+}: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState<"en" | "fr" | "es" | null>(null);
+  const [currentLang, setCurrentLang] = useState<"en" | "fr" | "es" | null>(
+    null,
+  );
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,7 +28,10 @@ export default function LanguageDropdown({ align = "right" }: LanguageDropdownPr
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
@@ -43,10 +50,11 @@ export default function LanguageDropdown({ align = "right" }: LanguageDropdownPr
     );
   }
 
-  const selected = languages.find((l) => l.code === currentLang) || languages[0];
+  const selected =
+    languages.find((l) => l.code === currentLang) || languages[0];
 
   return (
-    <div ref={dropdownRef} className="relative inline-block text-left z-999">
+    <div ref={dropdownRef} className="relative inline-block text-left z-[997]">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-3 bg-white text-dark font-medium text-custom-sm transition-all duration-200 hover:bg-gray-1 hover:border-gray-4"
