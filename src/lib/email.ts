@@ -25,7 +25,7 @@ export const sendEmail = async (data: EmailPayload) => {
   });
 
   return await transporter.sendMail({
-    from: process.env.EMAIL_FROM || "onboarding@resend.dev",
+    from: `SUNCITY PALLETS LIQUIDATION <${process.env.EMAIL_FROM || "info@suncitypalletsliquidation.com"}>`,
     ...data,
   });
 };
@@ -37,7 +37,10 @@ export const formatEmail = (email: string) => {
 /**
  * Common HTML wrapper layout for emails.
  */
-const getEmailWrapper = (content: string, footerText: string = "SUNCITY PALLETS LIQUIDATION STORE LLC") => {
+const getEmailWrapper = (
+  content: string,
+  footerText: string = "SUNCITY PALLETS LIQUIDATION STORE LLC",
+) => {
   return `
     <div style="background-color: #f3f4f6; padding: 40px 10px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #1f2937; line-height: 1.6;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid #e5e7eb;">
@@ -100,13 +103,17 @@ const getPaymentLabel = (method: string) => {
 export const getClientOrderConfirmationTemplate = (order: any) => {
   const paymentLabel = getPaymentLabel(order.paymentMethod);
   const products = Array.isArray(order.products) ? order.products : [];
-  
+
   let productsListHTML = "";
   products.forEach((p: any) => {
-    const attrs = [p.color && `Color: ${p.color}`, p.size && `Size: ${p.size}`, p.attribute && `Attr: ${p.attribute}`]
+    const attrs = [
+      p.color && `Color: ${p.color}`,
+      p.size && `Size: ${p.size}`,
+      p.attribute && `Attr: ${p.attribute}`,
+    ]
       .filter(Boolean)
       .join(", ");
-    
+
     productsListHTML += `
       <tr style="border-bottom: 1px solid #f3f4f6;">
         <td style="padding: 12px 0; color: #111827; font-weight: 500;">
@@ -120,12 +127,17 @@ export const getClientOrderConfirmationTemplate = (order: any) => {
   });
 
   const totalUSD = (order.totalPrice / 100).toFixed(2);
-  const billingName = `${order.firstName || ""} ${order.lastName || ""}`.trim() || order.userEmail;
-  const orderDate = new Date(order.createdAt || new Date()).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+  const billingName =
+    `${order.firstName || ""} ${order.lastName || ""}`.trim() ||
+    order.userEmail;
+  const orderDate = new Date(order.createdAt || new Date()).toLocaleDateString(
+    "en-US",
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    },
+  );
 
   const content = `
     <div style="padding: 30px 40px 10px 40px;">
@@ -195,13 +207,17 @@ export const getClientOrderConfirmationTemplate = (order: any) => {
 export const getAdminOrderNotificationTemplate = (order: any) => {
   const paymentLabel = getPaymentLabel(order.paymentMethod);
   const products = Array.isArray(order.products) ? order.products : [];
-  
+
   let productsListHTML = "";
   products.forEach((p: any) => {
-    const attrs = [p.color && `Color: ${p.color}`, p.size && `Size: ${p.size}`, p.attribute && `Attr: ${p.attribute}`]
+    const attrs = [
+      p.color && `Color: ${p.color}`,
+      p.size && `Size: ${p.size}`,
+      p.attribute && `Attr: ${p.attribute}`,
+    ]
       .filter(Boolean)
       .join(", ");
-    
+
     productsListHTML += `
       <tr style="border-bottom: 1px solid #f3f4f6;">
         <td style="padding: 12px 0; color: #111827; font-weight: 500;">
@@ -215,8 +231,12 @@ export const getAdminOrderNotificationTemplate = (order: any) => {
   });
 
   const totalUSD = (order.totalPrice / 100).toFixed(2);
-  const billingName = `${order.firstName || ""} ${order.lastName || ""}`.trim() || order.userEmail;
-  const orderDate = new Date(order.createdAt || new Date()).toLocaleString("en-US");
+  const billingName =
+    `${order.firstName || ""} ${order.lastName || ""}`.trim() ||
+    order.userEmail;
+  const orderDate = new Date(order.createdAt || new Date()).toLocaleString(
+    "en-US",
+  );
 
   const notesHTML = order.notes
     ? `
@@ -362,11 +382,14 @@ export const getClientContactConfirmationTemplate = (data: {
  * 6. Order Status Update Email HTML (Client Copy)
  */
 export const getOrderStatusUpdateTemplate = (order: any, newStatus: string) => {
-  const orderDate = new Date(order.createdAt || new Date()).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+  const orderDate = new Date(order.createdAt || new Date()).toLocaleDateString(
+    "en-US",
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    },
+  );
 
   const getStatusColor = (status: string) => {
     switch (status?.toLowerCase()) {
