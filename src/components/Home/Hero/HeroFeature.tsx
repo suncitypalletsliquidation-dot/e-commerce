@@ -9,8 +9,8 @@ const featureData = [
   },
   {
     img: "/images/icons/icon-02.svg",
-    title: "1 & 1 Returns",
-    description: "Cancellation after 1 day",
+    title: "15 Days Exchange",
+    description: "Shop with Confidence",
   },
   {
     img: "/images/icons/icon-03.svg",
