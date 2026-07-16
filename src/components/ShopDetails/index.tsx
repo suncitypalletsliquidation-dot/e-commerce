@@ -29,6 +29,7 @@ import { useAutoOpenCart } from "../Providers/AutoOpenCartProvider";
 import ReviewStar from "../Shop/ReviewStar";
 import DetailsTabs from "./DetailsTabs";
 import RecentlyViewedItems from "./RecentlyViewed";
+import { useRouter } from "nextjs-toploader/app";
 
 type SelectedAttributesType = {
   [key: number]: string | undefined;
@@ -36,6 +37,7 @@ type SelectedAttributesType = {
 
 const ShopDetails = ({ product }: { product: Product }) => {
   const { openPreviewModal } = usePreviewSlider();
+  const router = useRouter();
   const [previewImg, setPreviewImg] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeColor, setActiveColor] = useState("");
@@ -95,30 +97,7 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
   const handleCheckout = async () => {
     addItemWithAutoOpen(cartItem, quantity);
-
-    try {
-      const checkoutData = [
-        {
-          ...cartItem,
-          quantity,
-        },
-      ];
-
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        body: JSON.stringify(checkoutData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (data?.url) {
-        window.location.href = data?.url;
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    router.push("/checkout");
   };
 
   const handleAddToCart = async () => {
@@ -139,7 +118,6 @@ const ShopDetails = ({ product }: { product: Product }) => {
           discountedPrice: product.discountedPrice,
           status: product.status,
           quantity: 1,
-          reviews: product.reviews || [],
           slug: product.slug,
         }),
       );
@@ -229,13 +207,6 @@ const ShopDetails = ({ product }: { product: Product }) => {
               </div>
 
               <div className="flex flex-wrap items-center gap-5.5 mb-4.5">
-                <div className="flex items-center gap-2.5">
-                  {/* <!-- stars --> */}
-                  <ReviewStar reviews={product.reviews?.length} />
-
-                  <span> ( {product.reviews?.length} customer reviews ) </span>
-                </div>
-
                 <div className="flex items-center gap-1.5">
                   {product.status ? (
                     <>

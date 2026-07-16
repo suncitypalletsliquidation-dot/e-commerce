@@ -48,7 +48,7 @@ export default function FooterBottom() {
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-3">
               <span className="font-medium text-sm text-dark-3">Language:</span>
-              <LanguageDropdown align="left" />
+              <LanguageDropdown align="left" direction="up" />
             </div>
 
             <span className="hidden md:inline w-[1px] h-6 bg-gray-3" />

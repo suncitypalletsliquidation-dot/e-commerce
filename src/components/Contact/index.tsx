@@ -74,7 +74,7 @@ const Contact = () => {
 
                   <p className="flex gap-4">
                     <MapIcon className="w-6 h-6 text-blue shrink-0" />
-                    Address: 12112 VILLAGE GATE DR, EL PASO, TX, 79936
+                    Address: 328 Thomas Pl, Everman, TX 76140, USA
                   </p>
                 </div>
               </div>

@@ -193,7 +193,7 @@ export default function PolicyLayout({ title, children }: PolicyLayoutProps) {
                     <div className="flex gap-3 text-custom-xs text-dark font-medium">
                       <MapIcon className="w-5 h-5 text-blue shrink-0" />
                       <span>
-                        12112 VILLAGE GATE DR, EL PASO, TX, 79936, United States
+                        328 Thomas Pl, Everman, TX 76140, USA
                       </span>
                     </div>
                   </div>
