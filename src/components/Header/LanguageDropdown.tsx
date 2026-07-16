@@ -11,10 +11,12 @@ const languages = [
 
 interface LanguageDropdownProps {
   align?: "left" | "right";
+  direction?: "up" | "down";
 }
 
 export default function LanguageDropdown({
   align = "right",
+  direction = "down",
 }: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<"en" | "fr" | "es" | null>(
@@ -81,7 +83,11 @@ export default function LanguageDropdown({
         <div
           className={`absolute ${
             align === "right" ? "right-0" : "left-0"
-          } mt-1.5 w-36 bg-white border border-gray-3 rounded-xl shadow-2 p-1 animate-in fade-in slide-in-from-top-1 duration-100 z-9999`}
+          } ${
+            direction === "up" ? "bottom-full mb-1.5" : "top-full mt-1.5"
+          } w-36 bg-white border border-gray-3 rounded-xl shadow-2 p-1 animate-in fade-in ${
+            direction === "up" ? "slide-in-from-bottom-1" : "slide-in-from-top-1"
+          } duration-100 z-9999`}
         >
           {languages.map((lang) => (
             <button

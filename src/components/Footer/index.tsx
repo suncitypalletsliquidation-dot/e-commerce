@@ -27,7 +27,7 @@ const Footer = () => {
                 <span className="shrink-0">
                   <MapIcon className="w-6 h-6 text-blue" />
                 </span>
-                12112 VILLAGE GATE DR, EL PASO, TX, 79936, United States
+                328 Thomas Pl, Everman, TX 76140, USA
               </li>
 
               <li>

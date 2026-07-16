@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import EmptyCart from "./EmptyCart";
 import SingleItem from "./SingleItem";
+import { useRouter } from "nextjs-toploader/app";
 
 const CartSidebarModal = () => {
   const {
@@ -13,6 +14,7 @@ const CartSidebarModal = () => {
     totalPrice,
     handleCartClick,
   } = useCart();
+  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(event: any) {
@@ -32,32 +34,8 @@ const CartSidebarModal = () => {
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault();
-
-    try {
-      const checkoutData = cartItems.map((item) => ({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity,
-        image: item.image,
-        slug: item.slug,
-      }));
-
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        body: JSON.stringify(checkoutData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (data?.url) {
-        window.location.href = data?.url;
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    handleCartClick();
+    router.push("/checkout");
   }
 
   return (

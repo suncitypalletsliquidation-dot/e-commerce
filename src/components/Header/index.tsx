@@ -414,7 +414,7 @@ const Header = () => {
                     : "0ms",
                 }}
               >
-                <LanguageDropdown align="left" />
+                <LanguageDropdown align="left" direction="up" />
               </div>
             </div>
           </aside>

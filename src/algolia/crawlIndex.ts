@@ -29,6 +29,9 @@ export const structuredAlgoliaHtmlData = async ({
   status = true,
   offers = [],
 }) => {
+  if (process.env.NODE_ENV === "development") {
+    return;
+  }
   try {
     const c$ = load(htmlString).text();
     const data = {
@@ -75,6 +78,9 @@ async function addToAlgolia(record: any) {
 }
 
 export const updateIndex = async (data: any) => {
+  if (process.env.NODE_ENV === "development") {
+    return;
+  }
   try {
     await index.partialUpdateObject(data);
   } catch (error) {

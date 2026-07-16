@@ -4,13 +4,12 @@ import React from "react";
 
 type InitialState = {
   value: Product;
-}; 
+};
 
 const initialState = {
   value: {
     _id: 0,
     name: "",
-    reviews: [""],
     price: 0,
     discountedPrice: 0,
     category: "",

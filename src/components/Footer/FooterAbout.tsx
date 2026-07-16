@@ -5,7 +5,7 @@ const aboutData = [
   {
     id: 1,
     icon: MapIcon,
-    text: "12112 VILLAGE GATE DR, EL PASO, TX, 79936, United States",
+    text: "328 Thomas Pl, Everman, TX 76140, USA",
   },
   {
     id: 2,

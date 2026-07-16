@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
         <div>
           <h2 className="text-custom-2xl font-semibold text-dark mb-4">Privacy Policy</h2>
           <p className="text-base text-dark-3 leading-relaxed">
-            At SUNCITY PALLETS LIQUIDATION STORE LLC, accessible from <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span>, one of our main priorities is the privacy of our visitors. SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 12112 VILLAGE GATE DR, EL PASO, TX, 79936. This Privacy Policy document contains types of information that is collected and recorded by SUNCITY PALLETS LIQUIDATION STORE LLC and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+            At SUNCITY PALLETS LIQUIDATION STORE LLC, accessible from <span className="font-semibold text-blue">https://firebrick-dugong-592049.hostingersite.com</span>, one of our main priorities is the privacy of our visitors. SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 328 Thomas Pl, Everman, TX 76140, USA. This Privacy Policy document contains types of information that is collected and recorded by SUNCITY PALLETS LIQUIDATION STORE LLC and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
           </p>
         </div>
 

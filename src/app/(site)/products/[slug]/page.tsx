@@ -100,7 +100,6 @@ const ProductDetails = async ({ params }: Props) => {
     imageURL: imageBuilder(product?.previewImages[0]?.image).url() as string,
     price: product?.price,
     discountedPrice: product?.discountedPrice,
-    reviews: product?.reviews.length,
     category: product?.category,
     colors: product?.colors as [],
     sizes: (product?.sizeVariants?.map((v) => v.size) ?? []) as [],

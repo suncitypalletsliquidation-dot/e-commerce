@@ -17,7 +17,7 @@ export default function TermsOfUsePage() {
           </h2>
           <p className="text-base text-dark-3 leading-relaxed mb-4">
             Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC (&ldquo;Company&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 12112 VILLAGE GATE DR, EL PASO, TX, 79936. These
+            &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States on 2025-05-03 with registry number 0806021894. Our legal address is 328 Thomas Pl, Everman, TX 76140, USA. These
             Terms of Use govern your access to and use of our website located at{" "}
             <span className="font-semibold text-blue">
               https://firebrick-dugong-592049.hostingersite.com
@@ -202,7 +202,7 @@ export default function TermsOfUsePage() {
               United States, without regard to its conflict of law principles.
               Any legal action or proceeding arising out of or related to these
               Terms shall be brought exclusively in the state or federal courts
-              located in El Paso, Texas.
+              located in Fort Worth, Texas.
             </p>
           </div>
 

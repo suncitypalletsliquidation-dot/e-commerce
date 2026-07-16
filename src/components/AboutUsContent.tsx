@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 
 export default function AboutUsContent() {
@@ -86,7 +87,7 @@ export default function AboutUsContent() {
                 Suncity Pallets Liquidation
               </h2>
               <p className="text-base sm:text-custom-lg leading-relaxed text-dark-3 mb-4">
-                SUNCITY PALLETS LIQUIDATION STORE LLC is El Paso's premier wholesale liquidator,
+                SUNCITY PALLETS LIQUIDATION STORE LLC is Everman, TX's premier wholesale liquidator,
                 specializing in high-yield liquidation pallets, freight-ready surplus merchandise,
                 and retail store services featuring secondary products.
               </p>
@@ -119,6 +120,79 @@ export default function AboutUsContent() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Facility & Warehouse Gallery Section */}
+          <div className="bg-white rounded-2xl shadow-1 border border-gray-3 p-8 sm:p-12 mb-10">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="text-blue font-semibold text-custom-sm uppercase tracking-wider block mb-3">
+                Our Physical Location
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-dark mb-4">
+                Everman Distribution Center & Liquidation Yard
+              </h3>
+              <p className="text-base leading-relaxed text-dark-3">
+                Explore our fully operational wholesale facility. Designed for high-volume cargo staging and sorting, 
+                our yard handles everything from daily freight arrivals to client loading with efficiency and security.
+              </p>
+            </div>
+
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Image 1: Front View */}
+              <div className="group overflow-hidden rounded-2xl border border-gray-3 bg-gray-2 shadow-sm transition-all duration-300 hover:shadow-md">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src="/images/about/lot_front_view.jpeg"
+                    alt="Suncity Pallets Liquidation Store Front View"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
+                    <p className="text-white text-custom-sm font-medium">
+                      Front view of our Everman storefront and customer loading zone
+                    </p>
+                  </div>
+                  <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-dark text-xs font-semibold px-3.5 py-1.5 rounded-full border border-gray-3 shadow-sm z-10">
+                    Storefront & Loading
+                  </span>
+                </div>
+                <div className="p-6 bg-white">
+                  <h4 className="text-lg font-bold text-dark mb-2">Main Office & Storefront</h4>
+                  <p className="text-sm leading-relaxed text-dark-3">
+                    Our primary commercial storefront in Everman, TX, featuring secure customer loading docks, commercial scale access, and our physical liquidation outlet store.
+                  </p>
+                </div>
+              </div>
+
+              {/* Image 2: Aerial View */}
+              <div className="group overflow-hidden rounded-2xl border border-gray-3 bg-gray-2 shadow-sm transition-all duration-300 hover:shadow-md">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src="/images/about/lot_aerail.jpeg"
+                    alt="Suncity Pallets Liquidation Aerial Lot View"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
+                    <p className="text-white text-custom-sm font-medium">
+                      Comprehensive aerial view of our freight lot and staging yard
+                    </p>
+                  </div>
+                  <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-dark text-xs font-semibold px-3.5 py-1.5 rounded-full border border-gray-3 shadow-sm z-10">
+                    Aerial Overview
+                  </span>
+                </div>
+                <div className="p-6 bg-white">
+                  <h4 className="text-lg font-bold text-dark mb-2">Freight Staging & Liquidation Yard</h4>
+                  <p className="text-sm leading-relaxed text-dark-3">
+                    Our expansive yard configured for holding incoming truckloads, organizing bulk pallet stock, and dispatching high-yield logistics shipments nationwide.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

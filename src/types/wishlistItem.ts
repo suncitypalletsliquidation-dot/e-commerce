@@ -3,7 +3,6 @@ import { PortableTextBlock } from "sanity";
 export type WishlistItem = {
   _id: string;
   name: string;
-  reviews: string[];
   price: number;
   discountedPrice: number;
   category?: string;

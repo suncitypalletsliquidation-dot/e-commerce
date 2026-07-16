@@ -23,7 +23,8 @@ export async function POST(request: Request) {
     throw new Error("Email already exists");
   }
 
-  const adminEmails = process.env.ADMIN_EMAILS?.split(",") || [];
+  const adminEmails =
+    process.env.ADMIN_EMAILS?.split(",")?.map((e) => e.trim()) || [];
 
   // Function to check if an email is in the list of admin emails
   function isAdminEmail(email: string) {
@@ -52,7 +53,10 @@ export async function POST(request: Request) {
 
     // Send welcome email
     try {
-      const welcomeHtml = getWelcomeEmailTemplate(user.name || "", user.email || "");
+      const welcomeHtml = getWelcomeEmailTemplate(
+        user.name || "",
+        user.email || "",
+      );
       await sendEmail({
         to: user.email!,
         subject: "Welcome to SUNCITY PALLETS LIQUIDATION STORE LLC!",

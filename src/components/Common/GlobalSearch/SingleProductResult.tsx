@@ -43,14 +43,9 @@ export default function SingleProductResult({
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <div className=" border-r-2 border-gray-3 pr-3">
+              <div className="pr-3">
                 <span className="text-dark">${hit?.discountedPrice}</span>{" "}
                 <span className="text-dark-4 line-through">${hit?.price}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {/* @ts-ignore */}
-                <ReviewStar rating={hit?.reviews} />{" "}
-                <span>({hit?.reviews.length})</span>
               </div>
             </div>
           )}
