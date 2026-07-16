@@ -37,7 +37,6 @@ export const wishlist = createSlice({
           previewImages,
           status,
           quantity: 1,
-          reviews: [],
           slug,
         });
 

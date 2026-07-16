@@ -28,7 +28,9 @@ const QuickViewModal = () => {
   const { addItemWithAutoOpen } = useAutoOpenCart();
 
   // get the product data
-  const product = useAppSelector((state: RootState) => state.quickViewReducer.value);
+  const product = useAppSelector(
+    (state: RootState) => state.quickViewReducer.value,
+  );
   const [activePreview, setActivePreview] = useState(0);
 
   // preview modal
@@ -63,7 +65,7 @@ const QuickViewModal = () => {
       addItemToWishlist({
         ...product,
         quantity: 1,
-      })
+      }),
     );
     toast.success("Product added to wishlist!");
     closeModal();
@@ -87,6 +89,13 @@ const QuickViewModal = () => {
       setActivePreview(0);
     };
   }, [isModalOpen, closeModal]);
+
+  const hasDiscount = product.discountedPrice < product.price;
+  const discountPercentage = hasDiscount
+    ? Math.round(
+        ((product.price - product.discountedPrice) / product.price) * 100,
+      )
+    : 0;
 
   return (
     <>
@@ -142,7 +151,9 @@ const QuickViewModal = () => {
                         <Image
                           src={
                             product?.previewImages?.[activePreview]?.image
-                              ? imageBuilder(product.previewImages[activePreview].image).url() || ""
+                              ? imageBuilder(
+                                  product.previewImages[activePreview].image,
+                                ).url() || ""
                               : ""
                           }
                           alt="products-details"
@@ -155,38 +166,17 @@ const QuickViewModal = () => {
                 </div>
 
                 <div className="max-w-[445px] w-full">
-                  <span className="inline-block text-custom-xs rounded-full font-medium text-white py-1 px-3 bg-green mb-6.5">
-                    SALE 20% OFF
-                  </span>
+                  {hasDiscount && (
+                    <span className="inline-block text-custom-xs rounded-full font-medium text-white py-1 px-3 bg-green mb-6.5">
+                      SALE {discountPercentage}% OFF
+                    </span>
+                  )}
 
                   <h3 className="mb-4 text-xl font-semibold xl:text-heading-5 text-dark">
                     {product.name}
                   </h3>
 
                   <div className="flex flex-wrap items-center gap-5 mb-6">
-                    <div className="flex items-center gap-1.5">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, index) => (
-                          <StarIcon
-                            key={index}
-                            className={
-                              product.reviews?.length
-                                ? "fill-[#FFA645]"
-                                : "fill-gray-4"
-                            }
-                          />
-                        ))}
-                      </div>
-
-                      <span>
-                        <span className="font-medium text-dark">0 Rating </span>
-                        <span className="text-dark-2">
-                          {" "}
-                          ( {product.reviews?.length || 0} reviews )
-                        </span>
-                      </span>
-                    </div>
-
                     <div className="flex items-center gap-2">
                       {product.status ? (
                         <>
@@ -210,12 +200,20 @@ const QuickViewModal = () => {
                       </h4>
 
                       <span className="flex items-center gap-2">
-                        <span className="text-lg font-medium line-through text-dark-4 xl:text-2xl">
-                          ${product.price}
-                        </span>
-                        <span className="text-xl font-semibold text-dark xl:text-heading-4">
-                          ${product.discountedPrice}
-                        </span>
+                        {hasDiscount ? (
+                          <>
+                            <span className="text-lg font-medium line-through text-dark-4 xl:text-2xl">
+                              ${product.price}
+                            </span>
+                            <span className="text-xl font-semibold text-dark xl:text-heading-4">
+                              ${product.discountedPrice}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-xl font-semibold text-dark xl:text-heading-4">
+                            ${product.price}
+                          </span>
+                        )}
                       </span>
                     </div>
 
