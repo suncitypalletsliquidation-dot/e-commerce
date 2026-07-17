@@ -1,37 +1,12 @@
 import React from "react";
-import { useCart } from "@/hooks/useCart";
+import { useRouter } from "nextjs-toploader/app";
 
 const CheckoutBtn = () => {
-  const { cartItems } = useCart();
+  const router = useRouter();
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault();
-
-    const checkoutData = cartItems.map((item) => ({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-      image: item.image,
-      slug: item.slug,
-    }));
-
-    try {
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        body: JSON.stringify(checkoutData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (data?.url) {
-        window.location.href = data?.url;
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    router.push("/checkout");
   }
 
   return (

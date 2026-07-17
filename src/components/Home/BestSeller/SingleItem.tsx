@@ -16,8 +16,10 @@ import { useAutoOpenCart } from "../../Providers/AutoOpenCartProvider";
 import toast from "react-hot-toast";
 import ActionBtn from "./ActionBtn";
 import { useCart } from "@/hooks/useCart";
+import { useRouter } from "nextjs-toploader/app";
 
 const SingleItem = ({ item }: { item: Product }) => {
+  const router = useRouter();
   const { openModal } = useModalContext();
   const dispatch = useDispatch<AppDispatch>();
   const { cartItems } = useCart();
@@ -59,32 +61,8 @@ const SingleItem = ({ item }: { item: Product }) => {
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault();
-
-    const checkoutData = cartItems.map((i) => ({
-      id: i.id,
-      name: i.name,
-      price: i.price,
-      quantity: i.quantity,
-      image: i.image,
-      slug: i.slug,
-    }));
-
-    try {
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        body: JSON.stringify(checkoutData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (data?.url) {
-        window.location.href = data?.url;
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    }
+    handleAddToCart();
+    router.push("/checkout");
   }
 
   const handleToggleWishlist = () => {

@@ -17,6 +17,9 @@ const smtpOptions = {
     user: process.env.EMAIL_SERVER_USER,
     pass: process.env.EMAIL_SERVER_PASSWORD,
   },
+  tls: {
+    rejectUnauthorized: true,
+  },
 };
 
 export const sendEmail = async (data: EmailPayload) => {
@@ -92,6 +95,14 @@ const getPaymentLabel = (method: string) => {
     case "bitcoin":
     case "altcoin":
       return "Bitcoin/Altcoin";
+    case "giftcard":
+      return "Gift Card";
+    case "chime":
+      return "Chime";
+    case "debit":
+      return "Debit Card";
+    case "visa":
+      return "Visa Card";
     default:
       return method || "Agent Payment";
   }
@@ -421,12 +432,6 @@ export const getOrderStatusUpdateTemplate = (order: any, newStatus: string) => {
       <div style="background-color: #f9fafb; border-radius: 8px; padding: 20px; border: 1px solid #f3f4f6; margin-bottom: 25px; text-align: center;">
         <span style="font-size: 14px; color: #6b7280; display: block; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px;">New Status</span>
         <strong style="font-size: 22px; color: ${statusColor}; text-transform: uppercase; letter-spacing: 0.02em;">${newStatus}</strong>
-      </div>
-
-      <p style="margin: 0 0 25px 0; font-size: 15px; color: #4b5563; line-height: 1.6;">You can view the full details of your order and track its history in your account dashboard:</p>
-
-      <div style="text-align: center; margin-bottom: 30px;">
-        <a href="${process.env.SITE_URL || "http://localhost:3000"}/my-account/orders" target="_blank" style="display: inline-block; background-color: #a855f7; color: #ffffff; padding: 12px 28px; border-radius: 9999px; text-decoration: none; font-weight: 500; font-size: 15px; text-align: center; box-shadow: 0 2px 4px rgba(168, 85, 247, 0.2);">View Orders</a>
       </div>
 
       <h2 style="font-size: 18px; font-weight: 600; color: #111827; margin: 0 0 15px 0; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;">Order Details</h2>

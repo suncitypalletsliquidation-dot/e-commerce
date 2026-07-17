@@ -32,7 +32,7 @@ const Signin = () => {
           toast.success("Sign in Successful!");
           reset();
 
-          router.push("/my-account");
+          router.push("/");
         }
       })
       .catch((err) => {
@@ -130,9 +130,7 @@ const Signin = () => {
                 <div className="flex flex-col gap-4.5 mt-4.5">
                   <button
                     type="button"
-                    onClick={() =>
-                      signIn("google", { callbackUrl: "/my-account" })
-                    }
+                    onClick={() => signIn("google", { callbackUrl: "/" })}
                     className="flex justify-center items-center gap-3.5 rounded-full border border-gray-3 bg-gray-1 p-3 ease-out duration-200 hover:text-dark hover:bg-gray-2 disabled:pointer-events-none disabled:opacity-60"
                     disabled={isLoading}
                   >
