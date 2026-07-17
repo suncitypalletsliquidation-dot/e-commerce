@@ -70,23 +70,10 @@ const CheckoutSuccess = () => {
 
               <p className="max-w-[491px] w-full mx-auto mb-7.5 text-dark-2">
                 Congratulations! Your order has been placed successfully. You
-                will receive an email with your order details and you can track
-                your order right here from{" "}
-                <Link href={"/my-account"} className="text-blue underline">
-                  your account
-                </Link>
-                .
+                will receive an email with your order details. .
               </p>
 
               <div className="flex justify-center flex-wrap gap-5">
-                <Link
-                  href={`${session?.user ? "/my-account" : "/signin"}`}
-                  className="inline-flex items-center gap-2 font-medium text-white bg-dark py-3 px-8 rounded-full ease-out duration-200 hover:bg-opacity-90 transition-all shadow-md active:scale-95"
-                >
-                  <ArrowLeftIcon />
-                  {`${session?.user ? "Account" : "Sign In"}`}
-                </Link>
-
                 <Link
                   href="/shop"
                   className="inline-flex items-center gap-2 font-medium text-white bg-blue py-3 px-8 rounded-full ease-out duration-200 hover:bg-blue-dark transition-all shadow-md active:scale-95"

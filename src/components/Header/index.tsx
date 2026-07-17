@@ -110,35 +110,6 @@ const Header = () => {
 
               <div className="flex items-center justify-between w-full gap-8 lg:w-auto">
                 <div className="items-center gap-5 flex">
-                  <Link
-                    href={`${session?.user ? "/my-account" : "/signin"}`}
-                    className=" items-center gap-2.5 hidden xl:flex"
-                  >
-                    <div className="flex items-center justify-center w-9 h-9 border border-gray-3 rounded-full">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                      >
-                        <path
-                          d="M10.5186 10.0869C13.8936 10.087 16.6296 12.8232 16.6299 16.1982V16.5107C16.6297 16.9248 16.2939 17.2607 15.8799 17.2607C15.466 17.2605 15.13 16.9247 15.1299 16.5107V16.1982C15.1296 13.6516 13.0652 11.587 10.5186 11.5869H7.48047C4.93384 11.587 2.86939 13.6516 2.86914 16.1982V16.5107C2.86899 16.9248 2.5332 17.2607 2.11914 17.2607C1.70502 17.2607 1.36929 16.9248 1.36914 16.5107V16.1982C1.36939 12.8232 4.10541 10.087 7.48047 10.0869H10.5186ZM8.99902 0.740234C11.2345 0.740301 13.0469 2.55263 13.0469 4.78809C13.0465 7.02326 11.2343 8.83587 8.99902 8.83594C6.76376 8.83589 4.9515 7.02328 4.95117 4.78809C4.95117 2.55261 6.76356 0.740277 8.99902 0.740234ZM8.99902 2.24023C7.59199 2.24028 6.45117 3.38104 6.45117 4.78809C6.4515 6.19485 7.59219 7.33589 8.99902 7.33594C10.4058 7.33587 11.5465 6.19484 11.5469 4.78809C11.5469 3.38105 10.406 2.2403 8.99902 2.24023Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div className="group">
-                      <span className="block uppercase font-medium text-2xs text-dark-4">
-                        account
-                      </span>
-                      <p className="font-medium text-custom-sm text-dark hover:text-blue">
-                        {session?.user.name?.split(" ")[0] ||
-                          "Sign In / Register"}
-                      </p>
-                    </div>
-                  </Link>
-
                   <div className="flex items-center gap-2.5">
                     {/* Wishlist */}
                     <Link
@@ -363,25 +334,6 @@ const Header = () => {
               </ul>
             </nav>{" "}
             <div className="px-3 py-4 border-t space-y-1 border-gray-3 flex flex-col gap-2">
-              <Link
-                href={session?.user ? "/my-account" : "/signin"}
-                className={`flex items-center gap-2 text-dark px-2 py-1 hover:bg-blue/10 rounded-md hover:text-blue font-medium text-sm transition-all duration-300 ease-out transform ${
-                  navigationOpen
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-4 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: navigationOpen
-                    ? `${menuData.length * 50}ms`
-                    : "0ms",
-                }}
-                onClick={() => setNavigationOpen(false)}
-              >
-                <span className="inline-flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full">
-                  <UserIcon className="w-5 h-5" />
-                </span>
-                {session?.user?.name?.split(" ")[0] || "Sign In / Register"}
-              </Link>
               <Link
                 href="/wishlist"
                 className={`flex items-center gap-2 text-dark hover:text-blue px-2 py-1 hover:bg-blue/10 rounded-md font-medium text-sm transition-all duration-300 ease-out transform ${

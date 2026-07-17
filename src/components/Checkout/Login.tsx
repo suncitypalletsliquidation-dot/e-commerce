@@ -30,7 +30,7 @@ const Login = () => {
         toast.success("Sign in Successful!");
         form.reset();
 
-        router.push("/my-account");
+        router.push("/");
       }
     } catch (error) {
       if (error instanceof Error) {

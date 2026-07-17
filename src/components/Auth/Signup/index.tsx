@@ -42,7 +42,7 @@ const Signup = () => {
         toast.success("Sign Up Successful!");
       }
 
-      router.push("/my-account");
+      router.push("/");
       form.reset();
     } catch (error) {
       if (error instanceof AxiosError) {
