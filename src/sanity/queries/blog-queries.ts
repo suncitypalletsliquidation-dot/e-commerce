@@ -17,7 +17,8 @@ export const postData = `{
   },
   mainImage,
   publishedAt,
-  body
+  body,
+  seo
 }`;
 
 export const postCategoryQuery = groq`

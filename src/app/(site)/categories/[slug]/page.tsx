@@ -30,11 +30,19 @@ export async function generateMetadata({ params }: Params) {
   const siteURL = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (categoryData) {
+    const resolvedTitle =
+      categoryData.seo?.metaTitle ||
+      `${categoryData?.title || "Category Page"} | Suncity Pallets Liquidation Store`;
+    const resolvedDescription =
+      categoryData.seo?.metaDescription ||
+      `${categoryData?.description?.slice(0, 136)}...`;
+    const resolvedOgImage = categoryData.seo?.ogImage
+      ? imageBuilder(categoryData.seo.ogImage).url()
+      : imageBuilder(categoryData.image).url();
+
     return {
-      title: `${
-        categoryData?.title || "Category Page"
-      } | Suncity Pallets Liquidation Store`,
-      description: `${categoryData?.description?.slice(0, 136)}...`,
+      title: resolvedTitle,
+      description: resolvedDescription,
       author: "Suncity Pallets Liquidation Store",
       alternates: {
         canonical: `${siteURL}/categories/${categoryData?.slug?.current}`,
@@ -58,13 +66,13 @@ export async function generateMetadata({ params }: Params) {
       },
 
       openGraph: {
-        title: `${categoryData?.title} | Suncity Pallets Liquidation Store`,
-        description: categoryData.description,
+        title: resolvedTitle,
+        description: resolvedDescription,
         url: `${siteURL}/categories/${categoryData?.slug?.current}`,
         siteName: "Suncity Pallets Liquidation Store",
         images: [
           {
-            url: imageBuilder(categoryData.image).url(),
+            url: resolvedOgImage,
             width: 1800,
             height: 1600,
             alt: categoryData?.title,
@@ -76,11 +84,11 @@ export async function generateMetadata({ params }: Params) {
 
       twitter: {
         card: "summary_large_image",
-        title: `${categoryData?.title} | Suncity Pallets Liquidation Store`,
-        description: `${categoryData?.description?.slice(0, 136)}...`,
+        title: resolvedTitle,
+        description: resolvedDescription,
         creator: "Suncity Pallets Liquidation Store",
         site: "Suncity Pallets Liquidation Store",
-        images: [imageBuilder(categoryData.image).url()],
+        images: [resolvedOgImage],
         url: `${siteURL}/categories/${categoryData?.slug?.current}`,
       },
     };

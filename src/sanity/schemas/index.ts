@@ -10,6 +10,8 @@ import heroBanner from "./hero-banner";
 import heroSlider from "./hero-slider";
 import coupon from "./coupon";
 import countdown from "./countdown";
+import seo from "./objects/seo";
+import siteSettings from "./siteSettings";
 
 const schemas = [
   product,
@@ -24,6 +26,8 @@ const schemas = [
   heroSlider,
   coupon,
   countdown,
+  seo,
+  siteSettings,
 ];
 
 export default schemas;

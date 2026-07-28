@@ -4,6 +4,31 @@ import PolicyLayout from "@/components/PolicyLayout";
 export const metadata: Metadata = {
   title: "Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
   description: "Shipping Policy, delivery timeframes, rates, and customs guidelines for SUNCITY PALLETS LIQUIDATION STORE LLC.",
+  alternates: {
+    canonical: "/shipping-policy",
+  },
+  openGraph: {
+    title: "Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
+    description: "Shipping Policy, delivery timeframes, rates, and customs guidelines for SUNCITY PALLETS LIQUIDATION STORE LLC.",
+    url: "/shipping-policy",
+    siteName: "Suncity Pallets Liquidation Store",
+    images: [
+      {
+        url: "/suncity_full_logo.png",
+        width: 1328,
+        height: 404,
+        alt: "Suncity Pallets Liquidation Store",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
+    description: "Shipping Policy, delivery timeframes, rates, and customs guidelines for SUNCITY PALLETS LIQUIDATION STORE LLC.",
+    images: ["/suncity_full_logo.png"],
+  },
 };
 
 export default function ShippingPolicyPage() {

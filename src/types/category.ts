@@ -1,3 +1,5 @@
+import { Seo } from "./seo";
+
 type Slug = {
   current: string;
   _type: string;
@@ -11,4 +13,5 @@ export type Category = {
   description?: string;
   productCount: number;
   postCount?: number;
+  seo?: Seo;
 };

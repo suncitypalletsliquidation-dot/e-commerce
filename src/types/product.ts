@@ -1,4 +1,5 @@
 import { PortableTextBlock } from "sanity";
+import { Seo } from "./seo";
 
 export type Product = {
   _id: string;
@@ -39,4 +40,5 @@ export type Product = {
   }[];
   inStock?: boolean;
   quantity?: number;
+  seo?: Seo;
 };

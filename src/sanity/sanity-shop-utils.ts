@@ -15,6 +15,7 @@ import {
   orderByIdQuery,
   orderData,
   productData,
+  singleCategoryQuery,
 } from "./queries/shop-queries";
 import { sanityFetch } from "./sanity-utils";
 
@@ -31,7 +32,7 @@ export async function getCategories() {
 
 export async function getCategoryBySlug(slug: string) {
   const data: Category = await sanityFetch({
-    query: allCategoriesQuery,
+    query: singleCategoryQuery,
     qParams: { slug },
     tags: ["category"],
   });
