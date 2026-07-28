@@ -10,6 +10,9 @@ import "../css/style.css";
 import Providers from "./Providers";
 import Script from "next/script";
 import type { Metadata } from "next";
+import JsonLd from "@/components/Common/JsonLd";
+import { buildOrganizationJsonLd } from "@/lib/structuredData";
+import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 
 const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -28,14 +31,19 @@ export const metadata: Metadata = {
   }),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const siteSettings = await getSiteSettings().catch(() => null);
+  const organizationJsonLd = buildOrganizationJsonLd(siteSettings, siteURL);
+
   return (
     <html lang="en" className="font-inter" suppressHydrationWarning>
       <body>
+        <JsonLd data={organizationJsonLd} />
+
         <Script id="google-translate-init" strategy="afterInteractive">
           {`
             window.googleTranslateElementInit = function() {

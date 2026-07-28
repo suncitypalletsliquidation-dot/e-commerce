@@ -1,5 +1,7 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import JsonLd from "@/components/Common/JsonLd";
 import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
+import { buildBreadcrumbJsonLd } from "@/lib/structuredData";
 import {
   getCategories,
   getCategoryBySlug,
@@ -123,8 +125,18 @@ const CategoryPage = async ({ params, searchParams }: Params) => {
         .trim()
     : "Category Page";
 
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: siteURL },
+    {
+      name: categoryData?.title || cleanSlug,
+      url: `${siteURL}/categories/${slug}`,
+    },
+  ]);
+
   return (
     <main>
+      <JsonLd data={breadcrumbJsonLd} />
       <Breadcrumb title={cleanSlug} pages={["category", "/", cleanSlug]} />
       <ShopWithoutSidebar shopData={data} />
     </main>
