@@ -9,6 +9,24 @@ import Header from "../../components/Header";
 import "../css/style.css";
 import Providers from "./Providers";
 import Script from "next/script";
+import type { Metadata } from "next";
+
+const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteURL),
+  // Every page in this app already sets its own full title (e.g. "X | Suncity
+  // Pallets Liquidation Store"), so this is a plain fallback default rather
+  // than a `template` — a template would double up the site-name suffix.
+  title: "Suncity Pallets Liquidation Store | Bulk Pallets & Liquidation Stock",
+  description:
+    "Suncity Pallets Liquidation Store — buy wholesale liquidation pallets of new and used stock directly from top manufacturers.",
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
+  }),
+};
 
 export default function RootLayout({
   children,

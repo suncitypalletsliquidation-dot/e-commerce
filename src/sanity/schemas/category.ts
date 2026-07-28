@@ -50,6 +50,11 @@ const category = {
       title: "Description",
       type: "text",
     },
+    {
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+    },
   ],
 };
 export default category;

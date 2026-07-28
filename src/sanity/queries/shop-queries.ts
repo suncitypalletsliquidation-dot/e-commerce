@@ -22,8 +22,9 @@ export const productData = `
   offers,
   status,
   price_id,
-  body, 
+  body,
   currency,
+  seo,
   'reviews': *[_type == "review" &&  references(^._id)] | order(publishedAt desc) {_id, name, email, comment}
 }
 `;
@@ -55,6 +56,8 @@ export const singleCategoryQuery = groq`
   title,
   image,
   slug,
+  description,
+  seo,
   "productCount": count(*[_type == "product" && references(^._id)])
 }
 `;

@@ -30,11 +30,19 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
+  const resolvedTitle =
+    product.seo?.metaTitle ||
+    `${product.name || "Single Product Page"} | Suncity Pallets Liquidation Store`;
+  const resolvedDescription =
+    product.seo?.metaDescription ||
+    `${product?.shortDescription?.slice(0, 136)}...`;
+  const resolvedOgImage = product.seo?.ogImage
+    ? imageBuilder(product.seo.ogImage).url()
+    : imageBuilder(product?.previewImages[0]?.image).url();
+
   return {
-    title: `${
-      product.name || "Single Product Page"
-    } | Suncity Pallets Liquidation Store`,
-    description: `${product?.shortDescription?.slice(0, 136)}...`,
+    title: resolvedTitle,
+    description: resolvedDescription,
     author: "Suncity Pallets Liquidation Store",
     alternates: {
       canonical: `${siteURL}/products/${product?.slug?.current}`,
@@ -58,13 +66,13 @@ export async function generateMetadata({ params }: Props) {
     },
 
     openGraph: {
-      title: `${product?.name} | Suncity Pallets Liquidation Store`,
-      description: product.shortDescription,
+      title: resolvedTitle,
+      description: resolvedDescription,
       url: `${siteURL}/products/${product?.slug?.current}`,
       siteName: "Suncity Pallets Liquidation Store",
       images: [
         {
-          url: imageBuilder(product?.previewImages[0]?.image).url(),
+          url: resolvedOgImage,
           width: 1800,
           height: 1600,
           alt: product?.name,
@@ -76,11 +84,11 @@ export async function generateMetadata({ params }: Props) {
 
     twitter: {
       card: "summary_large_image",
-      title: `${product?.name} | Suncity Pallets Liquidation Store`,
-      description: `${product?.shortDescription?.slice(0, 136)}...`,
+      title: resolvedTitle,
+      description: resolvedDescription,
       creator: "Suncity Pallets Liquidation Store",
       site: "Suncity Pallets Liquidation Store",
-      images: [imageBuilder(product?.previewImages[0]?.image).url()],
+      images: [resolvedOgImage],
       url: `${siteURL}/products/${product?.slug?.current}`,
     },
   };
