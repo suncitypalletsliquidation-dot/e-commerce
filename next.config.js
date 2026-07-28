@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -23,6 +24,11 @@ const nextConfig = {
         hostname: 'res.cloudinary.com',
       },
     ],
+  },
+  // Add permanent (301) redirects here as old URLs need to move, e.g.:
+  // { source: '/old-path', destination: '/new-path', permanent: true }
+  async redirects() {
+    return [];
   },
 };
 

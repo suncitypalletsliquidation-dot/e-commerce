@@ -15,6 +15,7 @@ import { buildOrganizationJsonLd } from "@/lib/structuredData";
 import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 
 const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteURL),
@@ -43,6 +44,23 @@ export default async function RootLayout({
     <html lang="en" className="font-inter" suppressHydrationWarning>
       <body>
         <JsonLd data={organizationJsonLd} />
+
+        {gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}');
+              `}
+            </Script>
+          </>
+        )}
 
         <Script id="google-translate-init" strategy="afterInteractive">
           {`
