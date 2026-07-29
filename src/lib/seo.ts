@@ -39,13 +39,9 @@ export function buildPageMetadata({
     robots: {
       index,
       follow: true,
-      googleBot: {
-        index,
-        follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
     openGraph: {
       title,
