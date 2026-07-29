@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: Props) {
     path: `/products/${product?.slug?.current}`,
     image: resolvedOgImage,
     type: "article",
+    index: !product.seo?.noIndex,
   });
 }
 

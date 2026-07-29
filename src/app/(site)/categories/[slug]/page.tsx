@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: Params) {
     path: `/categories/${categoryData?.slug?.current}`,
     image: resolvedOgImage,
     type: "article",
+    index: !categoryData.seo?.noIndex,
   });
 }
 

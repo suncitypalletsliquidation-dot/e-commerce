@@ -30,6 +30,24 @@ const nextConfig = {
   async redirects() {
     return [];
   },
+  // Sitewide X-Robots-Tag header, mirroring robots.ts. Per-page index/noindex
+  // (e.g. a product marked noindex in Sanity) is controlled via the <meta
+  // name="robots"> tag in src/lib/seo.ts instead, since that needs per-request
+  // CMS data these static header rules don't have access to.
+  async headers() {
+    const noIndexPaths = ['/admin', '/api', '/my-account', '/checkout', '/cart'];
+
+    return [
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'index, follow' }],
+      },
+      ...noIndexPaths.map((path) => ({
+        source: `${path}/:path*`,
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      })),
+    ];
+  },
 };
 
 module.exports = nextConfig;

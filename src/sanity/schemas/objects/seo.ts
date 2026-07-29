@@ -30,6 +30,14 @@ const seo = {
         hotspot: true,
       },
     },
+    {
+      name: "noIndex",
+      title: "Hide from search engines (noindex)",
+      type: "boolean",
+      description:
+        "Turn on to tell Google and other search engines not to index this page. Leave off for normal pages that should appear in search results.",
+      initialValue: false,
+    },
   ],
   options: {
     collapsible: true,

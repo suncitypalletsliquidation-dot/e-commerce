@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: Params) {
     path: `/blogs/${post?.slug?.current}`,
     image: resolvedOgImage,
     type: 'article',
+    index: !post.seo?.noIndex,
   });
 }
 
