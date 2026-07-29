@@ -1,5 +1,7 @@
 import { structuredAlgoliaHtmlData } from '@/algolia/crawlIndex';
 import BlogDetails from '@/components/BlogDetails';
+import JsonLd from '@/components/Common/JsonLd';
+import { buildArticleJsonLd } from '@/lib/structuredData';
 import { getPost, getPosts } from '@/sanity/sanity-blog-utils';
 import { imageBuilder } from '@/sanity/sanity-shop-utils';
 import { notFound } from 'next/navigation';
@@ -109,8 +111,12 @@ const BlogDetailsPage = async ({ params }: Params) => {
     imageURL: imageBuilder(post?.mainImage).url() as string,
   });
 
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const articleJsonLd = buildArticleJsonLd({ post, siteUrl: siteURL });
+
   return (
     <main>
+      <JsonLd data={articleJsonLd} />
       <BlogDetails blogData={post} />
     </main>
   );

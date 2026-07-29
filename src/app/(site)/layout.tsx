@@ -10,8 +10,12 @@ import "../css/style.css";
 import Providers from "./Providers";
 import Script from "next/script";
 import type { Metadata } from "next";
+import JsonLd from "@/components/Common/JsonLd";
+import { buildOrganizationJsonLd } from "@/lib/structuredData";
+import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 
 const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteURL),
@@ -28,14 +32,36 @@ export const metadata: Metadata = {
   }),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const siteSettings = await getSiteSettings().catch(() => null);
+  const organizationJsonLd = buildOrganizationJsonLd(siteSettings, siteURL);
+
   return (
     <html lang="en" className="font-inter" suppressHydrationWarning>
       <body>
+        <JsonLd data={organizationJsonLd} />
+
+        {gaMeasurementId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}');
+              `}
+            </Script>
+          </>
+        )}
+
         <Script id="google-translate-init" strategy="afterInteractive">
           {`
             window.googleTranslateElementInit = function() {

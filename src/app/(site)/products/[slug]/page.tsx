@@ -1,10 +1,13 @@
 import { structuredAlgoliaHtmlData } from "@/algolia/crawlIndex";
 import ShopDetails from "@/components/ShopDetails";
+import JsonLd from "@/components/Common/JsonLd";
 import {
   getAllProducts,
   getProduct,
   imageBuilder,
 } from "@/sanity/sanity-shop-utils";
+import { getProductReviewStats } from "@/lib/reviews";
+import { buildBreadcrumbJsonLd, buildProductJsonLd } from "@/lib/structuredData";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -116,8 +119,36 @@ const ProductDetails = async ({ params }: Props) => {
     previewImages: product?.previewImages,
   });
 
+  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const reviewStats = await getProductReviewStats(product._id).catch(
+    () => null
+  );
+  const productJsonLd = buildProductJsonLd({ product, siteUrl: siteURL, reviewStats });
+
+  const category = product.category as unknown as
+    | { title?: string; slug?: { current?: string } }
+    | undefined;
+  const breadcrumbItems = [
+    { name: "Home", url: siteURL },
+    ...(category?.title && category?.slug?.current
+      ? [
+          {
+            name: category.title,
+            url: `${siteURL}/categories/${category.slug.current}`,
+          },
+        ]
+      : []),
+    {
+      name: product.name,
+      url: `${siteURL}/products/${product.slug?.current}`,
+    },
+  ];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbItems);
+
   return (
     <main>
+      <JsonLd data={productJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <ShopDetails product={product} />
     </main>
   );
