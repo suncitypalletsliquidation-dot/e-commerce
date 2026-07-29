@@ -32,7 +32,7 @@ export function buildPageMetadata({
   return {
     title,
     description,
-    author: SITE_NAME,
+    authors: [{ name: SITE_NAME }],
     alternates: {
       canonical: path,
     },
