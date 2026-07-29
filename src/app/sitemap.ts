@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 import { getAllProducts, getCategories } from "@/sanity/sanity-shop-utils";
+import { getSiteUrl } from "@/lib/siteUrl";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+const siteUrl = getSiteUrl();
 
 const staticRoutes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1, changeFrequency: "daily" },
