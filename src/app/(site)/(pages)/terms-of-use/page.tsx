@@ -1,38 +1,13 @@
 import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC",
   description:
     "Terms of Use and conditions for accessing and purchasing from SUNCITY PALLETS LIQUIDATION STORE LLC.",
-  alternates: {
-    canonical: "/terms-of-use",
-  },
-  openGraph: {
-    title: "Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC",
-    description:
-      "Terms of Use and conditions for accessing and purchasing from SUNCITY PALLETS LIQUIDATION STORE LLC.",
-    url: "/terms-of-use",
-    siteName: "Suncity Pallets Liquidation Store",
-    images: [
-      {
-        url: "/suncity_full_logo.png",
-        width: 1328,
-        height: 404,
-        alt: "Suncity Pallets Liquidation Store",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC",
-    description:
-      "Terms of Use and conditions for accessing and purchasing from SUNCITY PALLETS LIQUIDATION STORE LLC.",
-    images: ["/suncity_full_logo.png"],
-  },
-};
+  path: "/terms-of-use",
+});
 
 export default function TermsOfUsePage() {
   return (

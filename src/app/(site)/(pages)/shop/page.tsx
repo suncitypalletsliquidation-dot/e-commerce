@@ -7,36 +7,13 @@ import {
   getProductsByFilter,
 } from '@/sanity/sanity-shop-utils';
 import { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Shop | Suncity Pallets Liquidation Store',
   description: 'Shop wholesale liquidation pallets of tools, apparel, electronics, toys, and home goods on Suncity Pallets Liquidation Store.',
-  alternates: {
-    canonical: '/shop',
-  },
-  openGraph: {
-    title: 'Shop | Suncity Pallets Liquidation Store',
-    description: 'Shop wholesale liquidation pallets of tools, apparel, electronics, toys, and home goods on Suncity Pallets Liquidation Store.',
-    url: '/shop',
-    siteName: 'Suncity Pallets Liquidation Store',
-    images: [
-      {
-        url: '/suncity_full_logo.png',
-        width: 1328,
-        height: 404,
-        alt: 'Suncity Pallets Liquidation Store',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Shop | Suncity Pallets Liquidation Store',
-    description: 'Shop wholesale liquidation pallets of tools, apparel, electronics, toys, and home goods on Suncity Pallets Liquidation Store.',
-    images: ['/suncity_full_logo.png'],
-  },
-};
+  path: '/shop',
+});
 
 type PageProps = {
   searchParams: Promise<{

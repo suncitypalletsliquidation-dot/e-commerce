@@ -2,6 +2,7 @@ import Breadcrumb from "@/components/Common/Breadcrumb";
 import JsonLd from "@/components/Common/JsonLd";
 import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
 import { buildBreadcrumbJsonLd } from "@/lib/structuredData";
+import { buildPageMetadata } from "@/lib/seo";
 import {
   getCategories,
   getCategoryBySlug,
@@ -29,77 +30,31 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
   const categoryData = await getCategoryBySlug(slug);
-  const siteURL = process.env.NEXT_PUBLIC_SITE_URL;
 
-  if (categoryData) {
-    const resolvedTitle =
-      categoryData.seo?.metaTitle ||
-      `${categoryData?.title || "Category Page"} | Suncity Pallets Liquidation Store`;
-    const resolvedDescription =
-      categoryData.seo?.metaDescription ||
-      `${categoryData?.description?.slice(0, 136)}...`;
-    const resolvedOgImage = categoryData.seo?.ogImage
-      ? imageBuilder(categoryData.seo.ogImage).url()
-      : imageBuilder(categoryData.image).url();
-
-    return {
-      title: resolvedTitle,
-      description: resolvedDescription,
-      author: "Suncity Pallets Liquidation Store",
-      alternates: {
-        canonical: `${siteURL}/categories/${categoryData?.slug?.current}`,
-        languages: {
-          "en-US": "/en-US",
-          "de-DE": "/de-DE",
-        },
-      },
-
-      robots: {
-        index: true,
-        follow: true,
-        nocache: true,
-        googleBot: {
-          index: true,
-          follow: false,
-          "max-video-preview": -1,
-          "max-image-preview": "large",
-          "max-snippet": -1,
-        },
-      },
-
-      openGraph: {
-        title: resolvedTitle,
-        description: resolvedDescription,
-        url: `${siteURL}/categories/${categoryData?.slug?.current}`,
-        siteName: "Suncity Pallets Liquidation Store",
-        images: [
-          {
-            url: resolvedOgImage,
-            width: 1800,
-            height: 1600,
-            alt: categoryData?.title,
-          },
-        ],
-        locale: "en_US",
-        type: "article",
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: resolvedTitle,
-        description: resolvedDescription,
-        creator: "Suncity Pallets Liquidation Store",
-        site: "Suncity Pallets Liquidation Store",
-        images: [resolvedOgImage],
-        url: `${siteURL}/categories/${categoryData?.slug?.current}`,
-      },
-    };
-  } else {
+  if (!categoryData) {
     return {
       title: "Not Found",
       description: "No product category has been found",
     };
   }
+
+  const resolvedTitle =
+    categoryData.seo?.metaTitle ||
+    `${categoryData?.title || "Category Page"} | Suncity Pallets Liquidation Store`;
+  const resolvedDescription =
+    categoryData.seo?.metaDescription ||
+    `${categoryData?.description?.slice(0, 136)}...`;
+  const resolvedOgImage = categoryData.seo?.ogImage
+    ? imageBuilder(categoryData.seo.ogImage).url()
+    : imageBuilder(categoryData.image).url();
+
+  return buildPageMetadata({
+    title: resolvedTitle,
+    description: resolvedDescription,
+    path: `/categories/${categoryData?.slug?.current}`,
+    image: resolvedOgImage,
+    type: "article",
+  });
 }
 
 const CategoryPage = async ({ params, searchParams }: Params) => {

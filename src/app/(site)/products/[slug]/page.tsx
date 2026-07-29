@@ -8,6 +8,7 @@ import {
 } from "@/sanity/sanity-shop-utils";
 import { getProductReviewStats } from "@/lib/reviews";
 import { buildBreadcrumbJsonLd, buildProductJsonLd } from "@/lib/structuredData";
+import { buildPageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -24,7 +25,6 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const product = await getProduct(slug);
-  const siteURL = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!product) {
     return {
@@ -43,58 +43,13 @@ export async function generateMetadata({ params }: Props) {
     ? imageBuilder(product.seo.ogImage).url()
     : imageBuilder(product?.previewImages[0]?.image).url();
 
-  return {
+  return buildPageMetadata({
     title: resolvedTitle,
     description: resolvedDescription,
-    author: "Suncity Pallets Liquidation Store",
-    alternates: {
-      canonical: `${siteURL}/products/${product?.slug?.current}`,
-      languages: {
-        "en-US": "/en-US",
-        "de-DE": "/de-DE",
-      },
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-      nocache: true,
-      googleBot: {
-        index: true,
-        follow: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-
-    openGraph: {
-      title: resolvedTitle,
-      description: resolvedDescription,
-      url: `${siteURL}/products/${product?.slug?.current}`,
-      siteName: "Suncity Pallets Liquidation Store",
-      images: [
-        {
-          url: resolvedOgImage,
-          width: 1800,
-          height: 1600,
-          alt: product?.name,
-        },
-      ],
-      locale: "en_US",
-      type: "article",
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: resolvedTitle,
-      description: resolvedDescription,
-      creator: "Suncity Pallets Liquidation Store",
-      site: "Suncity Pallets Liquidation Store",
-      images: [resolvedOgImage],
-      url: `${siteURL}/products/${product?.slug?.current}`,
-    },
-  };
+    path: `/products/${product?.slug?.current}`,
+    image: resolvedOgImage,
+    type: "article",
+  });
 }
 
 const ProductDetails = async ({ params }: Props) => {

@@ -1,38 +1,13 @@
 import { Metadata } from "next";
 import PolicyLayout from "@/components/PolicyLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Refund Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
   description:
     "Refund and Return Policy for SUNCITY PALLETS LIQUIDATION STORE LLC. Review our terms for closeouts, returns, and exchanges.",
-  alternates: {
-    canonical: "/refund-policy",
-  },
-  openGraph: {
-    title: "Refund Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
-    description:
-      "Refund and Return Policy for SUNCITY PALLETS LIQUIDATION STORE LLC. Review our terms for closeouts, returns, and exchanges.",
-    url: "/refund-policy",
-    siteName: "Suncity Pallets Liquidation Store",
-    images: [
-      {
-        url: "/suncity_full_logo.png",
-        width: 1328,
-        height: 404,
-        alt: "Suncity Pallets Liquidation Store",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Refund Policy | SUNCITY PALLETS LIQUIDATION STORE LLC",
-    description:
-      "Refund and Return Policy for SUNCITY PALLETS LIQUIDATION STORE LLC. Review our terms for closeouts, returns, and exchanges.",
-    images: ["/suncity_full_logo.png"],
-  },
-};
+  path: "/refund-policy",
+});
 
 export default function RefundPolicyPage() {
   return (
