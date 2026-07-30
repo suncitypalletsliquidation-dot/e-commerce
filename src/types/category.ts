@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "sanity";
 import { Seo } from "./seo";
 
 type Slug = {
@@ -11,6 +12,7 @@ export type Category = {
   image: string;
   slug: Slug;
   description?: string;
+  bottomContent?: PortableTextBlock[];
   productCount: number;
   postCount?: number;
   seo?: Seo;

@@ -9,6 +9,7 @@ import {
   getProductsByFilter,
   imageBuilder,
 } from "@/sanity/sanity-shop-utils";
+import { PortableText } from "@portabletext/react";
 
 type Params = {
   params: Promise<{
@@ -93,8 +94,28 @@ const CategoryPage = async ({ params, searchParams }: Params) => {
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd} />
-      <Breadcrumb title={cleanSlug} pages={["category", "/", cleanSlug]} />
+      <Breadcrumb
+        title={categoryData?.title || cleanSlug}
+        pages={["category", "/", categoryData?.title || cleanSlug]}
+      />
+
+      {categoryData?.description && (
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0 pt-7.5">
+          <p className="text-custom-sm sm:text-base text-dark-3 leading-relaxed max-w-3xl">
+            {categoryData.description}
+          </p>
+        </div>
+      )}
+
       <ShopWithoutSidebar shopData={data} />
+
+      {categoryData?.bottomContent && (
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0 pb-15">
+          <div className="blog-details max-w-3xl">
+            <PortableText value={categoryData.bottomContent as any} />
+          </div>
+        </div>
+      )}
     </main>
   );
 };

@@ -47,8 +47,17 @@ const category = {
     },
     {
       name: "description",
-      title: "Description",
+      title: "Short Description",
       type: "text",
+      description:
+        "Short intro shown on the category page under the title, and used as the fallback SEO meta description.",
+    },
+    {
+      name: "bottomContent",
+      title: "Bottom Content",
+      type: "blockContent",
+      description:
+        "Longer content shown below the product grid on the category page (e.g. buying guide, category details).",
     },
     {
       name: "seo",
