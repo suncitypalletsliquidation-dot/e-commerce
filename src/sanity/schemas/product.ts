@@ -39,6 +39,13 @@ const product = {
       type: "number",
       validation: (Rule: any) => Rule.required(),
     },
+    {
+      name: "sku",
+      title: "SKU",
+      type: "string",
+      description:
+        "Stock keeping unit / product code, included in the Product structured data shown to search engines. Optional — an internal ID is used if left blank.",
+    },
 
     {
       name: "offers",
@@ -299,6 +306,23 @@ const product = {
       name: "status",
       title: "Stock Status",
       type: "boolean",
+    },
+    {
+      name: "condition",
+      title: "Condition",
+      type: "string",
+      description:
+        "Physical condition of the item, included in the Product structured data shown to search engines.",
+      options: {
+        list: [
+          { title: "New", value: "New" },
+          { title: "Used - Like New", value: "UsedLikeNew" },
+          { title: "Used - Good", value: "UsedGood" },
+          { title: "Refurbished", value: "Refurbished" },
+          { title: "Damaged / Salvage", value: "Damaged" },
+        ],
+        layout: "dropdown",
+      },
     },
 
     {

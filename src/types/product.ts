@@ -32,6 +32,7 @@ export type Product = {
   price_id?: string;
   currency?: string;
   sku?: string;
+  condition?: "New" | "UsedLikeNew" | "UsedGood" | "Refurbished" | "Damaged";
   body?: PortableTextBlock[];
   sizeVariants?: {
     size: string;

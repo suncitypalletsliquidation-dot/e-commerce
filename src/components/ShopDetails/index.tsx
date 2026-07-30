@@ -140,7 +140,7 @@ const ShopDetails = ({ product }: { product: Product }) => {
 
   return (
     <>
-      <Breadcrumb title={"Shop Details"} pages={["shop details"]} />
+      <Breadcrumb title={product.name} pages={["shop", "/", product.name]} />
 
       <section className="relative pt-5 pb-20 overflow-hidden lg:pt-20 xl:pt-28">
         <div className="w-full px-4 mx-auto max-w-7xl sm:px-6 xl:px-0 ">

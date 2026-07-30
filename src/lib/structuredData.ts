@@ -4,6 +4,14 @@ import { SiteSettings } from "@/types/siteSettings";
 
 const SITE_NAME = "Suncity Pallets Liquidation Store";
 
+const CONDITION_TO_SCHEMA_ORG: Record<string, string> = {
+  New: "https://schema.org/NewCondition",
+  UsedLikeNew: "https://schema.org/UsedCondition",
+  UsedGood: "https://schema.org/UsedCondition",
+  Refurbished: "https://schema.org/RefurbishedCondition",
+  Damaged: "https://schema.org/DamagedCondition",
+};
+
 type BreadcrumbItem = {
   name: string;
   url: string;
@@ -80,7 +88,7 @@ export function buildProductJsonLd({
     "@type": "Product",
     name: product.name,
     description: product.shortDescription,
-    sku: product._id,
+    sku: product.sku || product._id,
     image: images,
     url,
     brand: {
@@ -95,6 +103,9 @@ export function buildProductJsonLd({
       availability: product.status
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
+      itemCondition: product.condition
+        ? CONDITION_TO_SCHEMA_ORG[product.condition]
+        : undefined,
     },
     ...(reviewStats && reviewStats.count > 0
       ? {
