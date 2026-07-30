@@ -29,11 +29,11 @@ const HeroCarousal = ({ sliders }: any) => {
         <SwiperSlide key={key}>
           <div>
             <div className="max-w-[366px] absolute left-8 lg:left-20 top-1/2 -translate-y-1/2 z-[5]">
-              <h1 className="font-semibold text-white text-xl sm:text-[40px] mb-3">
+              <h2 className="font-semibold text-white text-xl sm:text-[40px] mb-3">
                 <Link href={`/products/${slider?.product?.slug.current}`}>
                   {slider?.product?.name}
                 </Link>
-              </h1>
+              </h2>
 
               <p className="text-sm text-white/80">
                 {slider?.product?.shortDescription.slice(0, 100)}

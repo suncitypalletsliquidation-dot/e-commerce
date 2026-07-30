@@ -10,6 +10,9 @@ const Hero = async () => {
 
   return (
     <section className="overflow-hidden pb-10 lg:pb-12.5 xl:pb-15 pt-60 sm:pt-45 lg:pt-30 xl:pt-51.5">
+      <h1 className="sr-only">
+        Suncity Pallets Liquidation Store | Bulk Pallets & Liquidation Stock
+      </h1>
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0">
         <div className="flex flex-col xl:flex-row gap-5">
           <div className="xl:w-2/3 w-full">
