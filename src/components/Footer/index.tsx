@@ -4,12 +4,14 @@ import {
   InstagramIcon,
   LinkedInIcon,
   TwitterIcon,
+  WhatsAppIcon,
 } from "@/assets/icons/social";
 import Link from "next/link";
 import AccountLinks from "./AccountLinks";
 import FooterBottom from "./FooterBottom";
 import { AppStoreIcon, GooglePlayIcon } from "./icons";
 import QuickLinks from "./QuickLinks";
+import FooterSocials from "./FooterSocials";
 
 const Footer = () => {
   return (
@@ -36,8 +38,18 @@ const Footer = () => {
                   target="_blank"
                   className="flex items-center gap-4.5"
                 >
+                  <WhatsAppIcon className="size-5 text-blue" />
+                  (817) 330 9020
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="tel:+14697086328"
+                  className="flex items-center gap-4.5"
+                >
                   <CallIcon className="w-6 h-6 text-blue" />
-                  WhatsApp 817 330 9020
+                  (469) 708 6328
                 </Link>
               </li>
 
@@ -51,6 +63,8 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
+
+            <FooterSocials />
           </div>
 
           <AccountLinks />
