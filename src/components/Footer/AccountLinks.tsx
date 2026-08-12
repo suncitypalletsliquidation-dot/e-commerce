@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 const accountLinks = [
-  {
-    id: 1,
-    label: "Login / Register",
-    href: "/signin",
-  },
+  // {
+  //   id: 1,
+  //   label: "Login / Register",
+  //   href: "/signin",
+  // },
   {
     id: 2,
     label: "Cart",
