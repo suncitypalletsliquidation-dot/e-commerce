@@ -13,6 +13,7 @@ import {
   buildProductJsonLd,
 } from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
+import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -84,11 +85,13 @@ const ProductDetails = async ({ params }: Props) => {
     () => null
   );
   const reviews = await getProductReviews(product._id).catch(() => []);
+  const siteSettings = await getSiteSettings().catch(() => null);
   const productJsonLd = buildProductJsonLd({
     product,
     siteUrl: siteURL,
     reviewStats,
     reviews,
+    siteSettings,
   });
 
   const category = product.category as unknown as

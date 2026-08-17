@@ -108,6 +108,13 @@ const siteSettings = {
       type: "array",
       of: [{ type: "url" }],
     },
+    {
+      name: "shippingRate",
+      title: "Starting Shipping Rate (USD)",
+      type: "number",
+      description:
+        "Minimum/starting shipping cost shown in product structured data. Actual cost is still calculated at checkout - this is just the number search engines see as a baseline.",
+    },
   ],
   preview: {
     prepare() {

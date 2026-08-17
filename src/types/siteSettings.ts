@@ -16,4 +16,5 @@ export type SiteSettings = {
     addressCountry?: string;
   };
   sameAs?: string[];
+  shippingRate?: number;
 };

@@ -187,11 +187,13 @@ export function buildProductJsonLd({
   siteUrl,
   reviewStats,
   reviews,
+  siteSettings,
 }: {
   product: Product;
   siteUrl: string;
   reviewStats?: ReviewStats | null;
   reviews?: ProductReview[];
+  siteSettings?: SiteSettings | null;
 }) {
   const url = `${siteUrl}/products/${product.slug?.current}`;
   const images = (product.previewImages || [])
@@ -202,6 +204,50 @@ export function buildProductJsonLd({
     product.discountedPrice && product.discountedPrice < product.price
       ? product.discountedPrice
       : product.price;
+
+  // Policy is "AS-IS, all sales final" (see /refund-policy) - no standard
+  // consumer return window exists, so MerchantReturnNotPermitted is the
+  // accurate representation rather than a fabricated return period.
+  const hasMerchantReturnPolicy = {
+    "@type": "MerchantReturnPolicy",
+    returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    applicableCountry: "US",
+  };
+
+  // Delivery times come from the published /shipping-policy (processing
+  // 2-4 business days, Standard Shipping 5-7 business days). Cost is
+  // "calculated at checkout" there, not fixed - shippingRate is only
+  // included when a starting rate has been set in Site Settings.
+  const shippingDetails =
+    siteSettings?.shippingRate != null
+      ? {
+          "@type": "OfferShippingDetails",
+          shippingRate: {
+            "@type": "MonetaryAmount",
+            value: siteSettings.shippingRate,
+            currency: "USD",
+          },
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "US",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: 2,
+              maxValue: 4,
+              unitCode: "DAY",
+            },
+            transitTime: {
+              "@type": "QuantitativeValue",
+              minValue: 5,
+              maxValue: 7,
+              unitCode: "DAY",
+            },
+          },
+        }
+      : undefined;
 
   return {
     "@context": "https://schema.org",
@@ -226,6 +272,8 @@ export function buildProductJsonLd({
       itemCondition: product.condition
         ? CONDITION_TO_SCHEMA_ORG[product.condition]
         : undefined,
+      hasMerchantReturnPolicy,
+      shippingDetails,
     },
     ...(reviewStats && reviewStats.count > 0
       ? {

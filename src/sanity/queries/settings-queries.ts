@@ -7,5 +7,6 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
   defaultOgImage,
   logo,
   organization,
-  sameAs
+  sameAs,
+  shippingRate
 }`;
