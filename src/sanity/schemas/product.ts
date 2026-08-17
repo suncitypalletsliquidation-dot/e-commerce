@@ -299,6 +299,33 @@ const product = {
       ],
     },
     {
+      name: "thumbnails",
+      title: "Thumbnails",
+      type: "array",
+      description:
+        "Legacy per-product thumbnail images from an earlier version of this site - not currently shown anywhere on the storefront (the Preview Images field above is what's actually used for the product gallery).",
+      of: [
+        {
+          type: "object",
+          name: "thumbnail",
+          title: "Thumbnail",
+          fields: [
+            {
+              name: "image",
+              title: "Image",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+            },
+          ],
+          preview: {
+            select: { media: "image" },
+          },
+        },
+      ],
+    },
+    {
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
