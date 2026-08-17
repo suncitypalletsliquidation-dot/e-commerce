@@ -6,10 +6,15 @@ import {
   getProduct,
   imageBuilder,
 } from "@/sanity/sanity-shop-utils";
-import { getProductReviewStats } from "@/lib/reviews";
-import { buildBreadcrumbJsonLd, buildProductJsonLd } from "@/lib/structuredData";
+import { getProductReviews, getProductReviewStats } from "@/lib/reviews";
+import {
+  buildBreadcrumbJsonLd,
+  buildFaqPageJsonLd,
+  buildProductJsonLd,
+} from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
+import { PortableText } from "@portabletext/react";
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -79,7 +84,13 @@ const ProductDetails = async ({ params }: Props) => {
   const reviewStats = await getProductReviewStats(product._id).catch(
     () => null
   );
-  const productJsonLd = buildProductJsonLd({ product, siteUrl: siteURL, reviewStats });
+  const reviews = await getProductReviews(product._id).catch(() => []);
+  const productJsonLd = buildProductJsonLd({
+    product,
+    siteUrl: siteURL,
+    reviewStats,
+    reviews,
+  });
 
   const category = product.category as unknown as
     | { title?: string; slug?: { current?: string } }
@@ -100,12 +111,22 @@ const ProductDetails = async ({ params }: Props) => {
     },
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumbItems);
+  const faqPageJsonLd = buildFaqPageJsonLd(product.faqs);
 
   return (
     <main>
       <JsonLd data={productJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
+      {faqPageJsonLd && <JsonLd data={faqPageJsonLd} />}
       <ShopDetails product={product} />
+
+      {product.body && product.body.length > 0 && (
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0 pb-15">
+          <div className="blog-details max-w-3xl">
+            <PortableText value={product.body as any} />
+          </div>
+        </div>
+      )}
     </main>
   );
 };

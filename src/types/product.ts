@@ -34,6 +34,7 @@ export type Product = {
   sku?: string;
   condition?: "New" | "UsedLikeNew" | "UsedGood" | "Refurbished" | "Damaged";
   body?: PortableTextBlock[];
+  faqs?: { question: string; answer: string }[];
   sizeVariants?: {
     size: string;
     price: number;

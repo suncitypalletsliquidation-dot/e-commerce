@@ -32,6 +32,29 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]) {
   };
 }
 
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export function buildFaqPageJsonLd(faqs: FaqItem[] | undefined) {
+  const validFaqs = (faqs || []).filter((faq) => faq.question && faq.answer);
+  if (validFaqs.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: validFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 /**
  * Sitewide Store node, meant to be injected once (root layout) alongside
  * buildWebSiteJsonLd(). Per-page nodes (buildCategoryPageJsonLd, etc.)
@@ -151,14 +174,22 @@ export type ReviewStats = {
   count: number;
 };
 
+export type ProductReview = {
+  name: string;
+  comment: string;
+  ratings: number;
+};
+
 export function buildProductJsonLd({
   product,
   siteUrl,
   reviewStats,
+  reviews,
 }: {
   product: Product;
   siteUrl: string;
   reviewStats?: ReviewStats | null;
+  reviews?: ProductReview[];
 }) {
   const url = `${siteUrl}/products/${product.slug?.current}`;
   const images = (product.previewImages || [])
@@ -201,6 +232,21 @@ export function buildProductJsonLd({
             ratingValue: reviewStats.average,
             reviewCount: reviewStats.count,
           },
+        }
+      : {}),
+    ...(reviews && reviews.length > 0
+      ? {
+          review: reviews.map((r) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: r.name },
+            reviewBody: r.comment,
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: r.ratings,
+              bestRating: 5,
+              worstRating: 1,
+            },
+          })),
         }
       : {}),
   };

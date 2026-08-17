@@ -329,6 +329,16 @@ const product = {
       name: "body",
       title: "Body",
       type: "blockContent",
+      description:
+        "Longer content shown below the tabs on the product page (e.g. buying guide, product details).",
+    },
+    {
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      description:
+        "Shown as an FAQ section in this product's structured data (helps FAQ rich results in Google search).",
+      of: [{ type: "faq" }],
     },
     {
       name: "seo",

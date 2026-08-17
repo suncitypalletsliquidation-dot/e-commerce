@@ -16,3 +16,10 @@ export async function getProductReviewStats(productId: string) {
     count: stats._count.ratings,
   };
 }
+
+export async function getProductReviews(productId: string) {
+  return prisma.review.findMany({
+    where: { productID: productId },
+    orderBy: { id: "desc" },
+  });
+}

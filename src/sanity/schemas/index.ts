@@ -12,6 +12,7 @@ import coupon from "./coupon";
 import countdown from "./countdown";
 import seo from "./objects/seo";
 import shortBlockContent from "./objects/shortBlockContent";
+import faq from "./objects/faq";
 import siteSettings from "./siteSettings";
 
 const schemas = [
@@ -29,6 +30,7 @@ const schemas = [
   countdown,
   seo,
   shortBlockContent,
+  faq,
   siteSettings,
 ];
 

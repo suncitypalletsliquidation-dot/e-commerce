@@ -65,31 +65,7 @@ const category = {
       type: "array",
       description:
         "Shown as an FAQ section in this category's structured data (helps FAQ rich results in Google search).",
-      of: [
-        {
-          type: "object",
-          name: "faq",
-          title: "FAQ",
-          fields: [
-            {
-              name: "question",
-              title: "Question",
-              type: "string",
-              validation: (Rule: any) => Rule.required(),
-            },
-            {
-              name: "answer",
-              title: "Answer",
-              type: "text",
-              rows: 3,
-              validation: (Rule: any) => Rule.required(),
-            },
-          ],
-          preview: {
-            select: { title: "question", subtitle: "answer" },
-          },
-        },
-      ],
+      of: [{ type: "faq" }],
     },
     {
       name: "seo",

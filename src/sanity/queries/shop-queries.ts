@@ -26,6 +26,7 @@ export const productData = `
   currency,
   sku,
   condition,
+  faqs,
   seo,
   'reviews': *[_type == "review" &&  references(^._id)] | order(publishedAt desc) {_id, name, email, comment}
 }
