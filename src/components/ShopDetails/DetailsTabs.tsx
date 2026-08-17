@@ -53,11 +53,7 @@ const DetailsTabs = ({ product }: { product: Product }) => {
             }`}
           >
             <div className="max-w-[670px] w-full">
-              <h2 className="text-2xl font-medium text-dark mb-7">
-                Specifications:
-              </h2>
-
-              <div className="leading-7 text-base text-gray-6">
+              <div className="blog-details leading-7 text-base text-gray-6">
                 <PortableText value={product?.description!} />
               </div>
             </div>

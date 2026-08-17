@@ -22,7 +22,6 @@ export const productData = `
   offers,
   status,
   price_id,
-  body,
   currency,
   sku,
   condition,

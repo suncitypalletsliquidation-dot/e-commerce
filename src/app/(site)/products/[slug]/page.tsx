@@ -14,7 +14,6 @@ import {
 } from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
-import { PortableText } from "@portabletext/react";
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -119,14 +118,6 @@ const ProductDetails = async ({ params }: Props) => {
       <JsonLd data={breadcrumbJsonLd} />
       {faqPageJsonLd && <JsonLd data={faqPageJsonLd} />}
       <ShopDetails product={product} />
-
-      {product.body && product.body.length > 0 && (
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-0 pb-15">
-          <div className="blog-details max-w-3xl">
-            <PortableText value={product.body as any} />
-          </div>
-        </div>
-      )}
     </main>
   );
 };

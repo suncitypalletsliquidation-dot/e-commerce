@@ -13,6 +13,8 @@ const product = {
       name: "description",
       title: "Description",
       type: "blockContent",
+      description:
+        "Shown in the Description tab on the product page. Use this for specs, buying-guide content, and anything else about the product - it's the one place for that content.",
     },
     {
       name: "shortDescription",
@@ -325,13 +327,6 @@ const product = {
       },
     },
 
-    {
-      name: "body",
-      title: "Body",
-      type: "blockContent",
-      description:
-        "Longer content shown below the tabs on the product page (e.g. buying guide, product details).",
-    },
     {
       name: "faqs",
       title: "FAQs",
