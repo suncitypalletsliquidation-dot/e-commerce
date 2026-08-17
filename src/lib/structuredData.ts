@@ -72,7 +72,9 @@ export function buildStoreJsonLd(
     name: siteSettings?.siteName || SITE_NAME,
     legalName: org?.legalName,
     url: siteUrl,
-    image: siteSettings?.logo ? imageBuilder(siteSettings.logo).url() : undefined,
+    image: siteSettings?.logo
+      ? imageBuilder(siteSettings.logo).url()
+      : `${siteUrl}/suncity_full_logo.png`,
     telephone: org?.phone,
     email: org?.email,
     priceRange: org?.priceRange,
