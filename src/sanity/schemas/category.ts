@@ -60,6 +60,38 @@ const category = {
         "Longer content shown below the product grid on the category page (e.g. buying guide, category details).",
     },
     {
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      description:
+        "Shown as an FAQ section in this category's structured data (helps FAQ rich results in Google search).",
+      of: [
+        {
+          type: "object",
+          name: "faq",
+          title: "FAQ",
+          fields: [
+            {
+              name: "question",
+              title: "Question",
+              type: "string",
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              name: "answer",
+              title: "Answer",
+              type: "text",
+              rows: 3,
+              validation: (Rule: any) => Rule.required(),
+            },
+          ],
+          preview: {
+            select: { title: "question", subtitle: "answer" },
+          },
+        },
+      ],
+    },
+    {
       name: "seo",
       title: "SEO",
       type: "seo",

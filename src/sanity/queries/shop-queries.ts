@@ -60,6 +60,7 @@ export const singleCategoryQuery = groq`
   slug,
   description,
   bottomContent,
+  faqs,
   seo,
   "productCount": count(*[_type == "product" && references(^._id)])
 }

@@ -62,6 +62,18 @@ const siteSettings = {
           type: "string",
         },
         {
+          name: "email",
+          title: "Email",
+          type: "string",
+        },
+        {
+          name: "priceRange",
+          title: "Price Range",
+          type: "string",
+          description:
+            "Free text shown in structured data, e.g. \"$\" or \"Varies by pallet and product\".",
+        },
+        {
           name: "streetAddress",
           title: "Street Address",
           type: "string",

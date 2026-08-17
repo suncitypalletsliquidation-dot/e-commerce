@@ -7,6 +7,8 @@ export type SiteSettings = {
   organization?: {
     legalName?: string;
     phone?: string;
+    email?: string;
+    priceRange?: string;
     streetAddress?: string;
     addressLocality?: string;
     addressRegion?: string;

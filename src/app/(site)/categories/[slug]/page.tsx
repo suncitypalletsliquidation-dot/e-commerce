@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import JsonLd from "@/components/Common/JsonLd";
 import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
-import { buildBreadcrumbJsonLd } from "@/lib/structuredData";
+import { buildBreadcrumbJsonLd, buildCategoryPageJsonLd } from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
 import { portableTextToPlainText } from "@/lib/portableText";
 import {
@@ -91,10 +91,14 @@ const CategoryPage = async ({ params, searchParams }: Params) => {
       url: `${siteURL}/categories/${slug}`,
     },
   ]);
+  const categoryPageJsonLd = categoryData
+    ? buildCategoryPageJsonLd({ category: categoryData, siteUrl: siteURL })
+    : null;
 
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd} />
+      {categoryPageJsonLd && <JsonLd data={categoryPageJsonLd} />}
       <Breadcrumb
         title={categoryData?.title || cleanSlug}
         pages={["category", "/", categoryData?.title || cleanSlug]}

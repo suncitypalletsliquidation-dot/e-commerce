@@ -11,7 +11,7 @@ import Providers from "./Providers";
 import Script from "next/script";
 import type { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
-import { buildOrganizationJsonLd } from "@/lib/structuredData";
+import { buildStoreJsonLd, buildWebSiteJsonLd } from "@/lib/structuredData";
 import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 
 const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -38,12 +38,18 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const siteSettings = await getSiteSettings().catch(() => null);
-  const organizationJsonLd = buildOrganizationJsonLd(siteSettings, siteURL);
+  const siteGraphJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      buildStoreJsonLd(siteSettings, siteURL),
+      buildWebSiteJsonLd(siteSettings, siteURL),
+    ],
+  };
 
   return (
     <html lang="en" className="font-inter" suppressHydrationWarning>
       <body>
-        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={siteGraphJsonLd} />
 
         {gaMeasurementId && (
           <>

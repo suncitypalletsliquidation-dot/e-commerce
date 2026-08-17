@@ -1,6 +1,8 @@
 import { imageBuilder } from "@/sanity/sanity-shop-utils";
+import { Category } from "@/types/category";
 import { Product } from "@/types/product";
 import { SiteSettings } from "@/types/siteSettings";
+import { portableTextToPlainText } from "./portableText";
 
 const SITE_NAME = "Suncity Pallets Liquidation Store";
 
@@ -30,20 +32,27 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbItem[]) {
   };
 }
 
-export function buildOrganizationJsonLd(
+/**
+ * Sitewide Store node, meant to be injected once (root layout) alongside
+ * buildWebSiteJsonLd(). Per-page nodes (buildCategoryPageJsonLd, etc.)
+ * reference this by its @id rather than repeating the business details.
+ */
+export function buildStoreJsonLd(
   siteSettings: SiteSettings | null,
   siteUrl: string
 ) {
   const org = siteSettings?.organization;
 
   return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Store",
+    "@id": `${siteUrl}/#store`,
     name: siteSettings?.siteName || SITE_NAME,
     legalName: org?.legalName,
     url: siteUrl,
-    logo: siteSettings?.logo ? imageBuilder(siteSettings.logo).url() : undefined,
+    image: siteSettings?.logo ? imageBuilder(siteSettings.logo).url() : undefined,
     telephone: org?.phone,
+    email: org?.email,
+    priceRange: org?.priceRange,
     address:
       org?.streetAddress || org?.addressLocality
         ? {
@@ -56,6 +65,84 @@ export function buildOrganizationJsonLd(
           }
         : undefined,
     sameAs: siteSettings?.sameAs?.length ? siteSettings.sameAs : undefined,
+  };
+}
+
+export function buildWebSiteJsonLd(
+  siteSettings: SiteSettings | null,
+  siteUrl: string
+) {
+  return {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name: siteSettings?.siteName || SITE_NAME,
+    publisher: { "@id": `${siteUrl}/#store` },
+  };
+}
+
+/**
+ * CollectionPage (+ FAQPage when the category has FAQs) for a category
+ * page, plus its own ImageObject node. References the sitewide Store/
+ * WebSite nodes by @id instead of repeating them per page.
+ */
+export function buildCategoryPageJsonLd({
+  category,
+  siteUrl,
+}: {
+  category: Category;
+  siteUrl: string;
+}) {
+  const url = `${siteUrl}/categories/${category.slug?.current}`;
+  const imageUrl = category.image
+    ? imageBuilder(category.image).url()
+    : undefined;
+  const faqs = (category.faqs || []).filter(
+    (faq) => faq.question && faq.answer
+  );
+
+  const nodes: Record<string, any>[] = [];
+
+  if (imageUrl) {
+    nodes.push({
+      "@type": "ImageObject",
+      "@id": `${url}#primaryimage`,
+      url: imageUrl,
+      contentUrl: imageUrl,
+      caption: category.title,
+    });
+  }
+
+  nodes.push({
+    "@type": faqs.length > 0 ? ["CollectionPage", "FAQPage"] : "CollectionPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: category.seo?.metaTitle || category.title,
+    description:
+      category.seo?.metaDescription ||
+      portableTextToPlainText(category.description),
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    publisher: { "@id": `${siteUrl}/#store` },
+    about: { "@type": "Thing", name: category.title },
+    ...(imageUrl && {
+      primaryImageOfPage: { "@id": `${url}#primaryimage` },
+      image: { "@id": `${url}#primaryimage` },
+    }),
+    ...(faqs.length > 0 && {
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    }),
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": nodes,
   };
 }
 

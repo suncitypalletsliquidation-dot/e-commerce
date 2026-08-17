@@ -13,6 +13,7 @@ export type Category = {
   slug: Slug;
   description?: PortableTextBlock[];
   bottomContent?: PortableTextBlock[];
+  faqs?: { question: string; answer: string }[];
   productCount: number;
   postCount?: number;
   seo?: Seo;
