@@ -48,9 +48,9 @@ const category = {
     {
       name: "description",
       title: "Short Description",
-      type: "text",
+      type: "shortBlockContent",
       description:
-        "Short intro shown on the category page under the title, and used as the fallback SEO meta description.",
+        "Short intro shown on the category page under the title, and used as the fallback SEO meta description. Bold/italic only - keep it a sentence or two.",
     },
     {
       name: "bottomContent",

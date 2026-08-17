@@ -11,7 +11,7 @@ export type Category = {
   _id: string;
   image: string;
   slug: Slug;
-  description?: string;
+  description?: PortableTextBlock[];
   bottomContent?: PortableTextBlock[];
   productCount: number;
   postCount?: number;

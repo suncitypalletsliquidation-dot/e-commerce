@@ -11,6 +11,7 @@ import heroSlider from "./hero-slider";
 import coupon from "./coupon";
 import countdown from "./countdown";
 import seo from "./objects/seo";
+import shortBlockContent from "./objects/shortBlockContent";
 import siteSettings from "./siteSettings";
 
 const schemas = [
@@ -27,6 +28,7 @@ const schemas = [
   coupon,
   countdown,
   seo,
+  shortBlockContent,
   siteSettings,
 ];
 
