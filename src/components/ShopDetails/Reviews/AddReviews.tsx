@@ -82,11 +82,10 @@ const AddReviews = ({ productId }: PropsType) => {
                     disabled={isLoading}
                   >
                     <span
-                      className={`cursor-pointer ${
-                        index <= (hover || form.getValues('ratings'))
+                      className={`cursor-pointer ${index <= (hover || form.getValues('ratings'))
                           ? 'text-[#FBB040]'
                           : 'text-gray-5'
-                      }`}
+                        }`}
                     >
                       <StarIcon />
                     </span>

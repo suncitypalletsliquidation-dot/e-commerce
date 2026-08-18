@@ -320,7 +320,7 @@ const Reviews = ({ product }: { product: Product }) => {
     productID: product?._id || "generic",
   }));
 
-  const reviews: Review[] = [...fakeProductReviews];
+  const reviews: Review[] = [...apiReviews, ...fakeProductReviews];
 
   if (isLoading) {
     return <p>Loading reviews...</p>;
