@@ -51,9 +51,8 @@ export default function FooterBottom() {
               <LanguageDropdown align="left" direction="up" />
             </div>
 
-            <span className="hidden md:inline w-[1px] h-6 bg-gray-3" />
 
-            <div className="flex flex-wrap items-center gap-4">
+            {/* <div className="flex flex-wrap items-center gap-4">
               <p className="font-medium text-sm text-dark-3">We Accept:</p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -71,7 +70,7 @@ export default function FooterBottom() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
