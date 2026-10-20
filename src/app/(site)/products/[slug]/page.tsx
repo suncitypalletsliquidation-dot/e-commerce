@@ -13,6 +13,7 @@ import {
   buildProductJsonLd,
 } from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 import { notFound } from "next/navigation";
 
@@ -80,7 +81,7 @@ const ProductDetails = async ({ params }: Props) => {
     previewImages: product?.previewImages,
   });
 
-  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const siteURL = getSiteUrl();
   const reviewStats = await getProductReviewStats(product._id).catch(
     () => null
   );

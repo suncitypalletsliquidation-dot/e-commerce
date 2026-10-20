@@ -3,6 +3,7 @@ import JsonLd from "@/components/Common/JsonLd";
 import ShopWithoutSidebar from "@/components/ShopWithoutSidebar";
 import { buildBreadcrumbJsonLd, buildCategoryPageJsonLd } from "@/lib/structuredData";
 import { buildPageMetadata } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { portableTextToPlainText } from "@/lib/portableText";
 import {
   getCategories,
@@ -83,7 +84,7 @@ const CategoryPage = async ({ params, searchParams }: Params) => {
         .trim()
     : "Category Page";
 
-  const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const siteURL = getSiteUrl();
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Home", url: siteURL },
     {

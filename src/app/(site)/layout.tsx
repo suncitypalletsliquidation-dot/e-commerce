@@ -12,13 +12,13 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
 import { buildStoreJsonLd, buildWebSiteJsonLd } from "@/lib/structuredData";
-import { getSiteSettings } from "@/sanity/sanity-settings-utils";
+import { getSiteUrl, getMetadataBaseUrl } from "@/lib/siteUrl";
 
-const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteURL = getSiteUrl();
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteURL),
+  metadataBase: getMetadataBaseUrl(),
   // Every page in this app already sets its own full title (e.g. "X | Suncity
   // Pallets Liquidation Store"), so this is a plain fallback default rather
   // than a `template` — a template would double up the site-name suffix.
