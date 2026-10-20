@@ -13,6 +13,7 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/Common/JsonLd";
 import { buildStoreJsonLd, buildWebSiteJsonLd } from "@/lib/structuredData";
 import { getSiteUrl, getMetadataBaseUrl } from "@/lib/siteUrl";
+import { getSiteSettings } from "@/sanity/sanity-settings-utils";
 
 const siteURL = getSiteUrl();
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
