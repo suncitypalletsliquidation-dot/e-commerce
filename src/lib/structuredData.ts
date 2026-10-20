@@ -205,13 +205,17 @@ export function buildProductJsonLd({
       ? product.discountedPrice
       : product.price;
 
-  // Policy is "AS-IS, all sales final" (see /refund-policy) - no standard
-  // consumer return window exists, so MerchantReturnNotPermitted is the
-  // accurate representation rather than a fabricated return period.
+  // 30-day return policy for new, unopened items (see /refund-policy)
   const hasMerchantReturnPolicy = {
     "@type": "MerchantReturnPolicy",
-    returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
     applicableCountry: "US",
+    returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+    merchantReturnDays: 30,
+    returnMethod: "https://schema.org/ReturnByMail",
+    returnFees: "https://schema.org/ReturnCustomerResponsibility",
+    customerRemorseReturnFees: "https://schema.org/ReturnCustomerResponsibility",
+    itemCondition: "https://schema.org/NewCondition",
+    returnPolicyPage: "https://www.suncitypalletsliquidation.com/refund-policy",
   };
 
   // Delivery times come from the published /shipping-policy (processing

@@ -28,7 +28,13 @@ const nextConfig = {
   // Add permanent (301) redirects here as old URLs need to move, e.g.:
   // { source: '/old-path', destination: '/new-path', permanent: true }
   async redirects() {
-    return [];
+    return [
+      {
+        source: '/return-policy',
+        destination: '/refund-policy',
+        permanent: true,
+      },
+    ];
   },
   // Sitewide X-Robots-Tag header, mirroring robots.ts. Per-page index/noindex
   // (e.g. a product marked noindex in Sanity) is controlled via the <meta
