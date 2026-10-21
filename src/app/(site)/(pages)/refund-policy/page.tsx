@@ -124,6 +124,22 @@ export default function RefundPolicyPage() {
           </div>
         </div>
 
+        {/* Continuous Policy Statement (Paragraph Form for Google Merchant & Reviewers) */}
+        <div className="bg-white rounded-2xl border border-gray-3 p-6 sm:p-8 space-y-4 shadow-xs">
+          <h3 className="text-custom-lg font-bold text-dark pb-2 border-b border-gray-2">
+            Official Return &amp; Refund Policy Statement
+          </h3>
+          <p className="text-base text-dark-3 leading-relaxed">
+            At <strong className="text-dark">SUNCITY PALLETS LIQUIDATION STORE LLC</strong>, our Return and Refund Policy governs all purchases and shipments destined within the <strong className="text-dark">United States</strong> (official policy URL: <Link href="https://www.suncitypalletsliquidation.com/refund-policy" className="text-blue font-semibold hover:underline">https://www.suncitypalletsliquidation.com/refund-policy</Link>). We accept returns for both <strong className="text-dark">defective products</strong> (such as items damaged during carrier transit, merchandise sent in error, or items with verified manufacturer defects) and <strong className="text-dark">non-defective products</strong> (including buyer change of mind, remorse, or general preference). We also gladly <strong className="text-dark">accept exchanges</strong> for eligible items within our designated return period.
+          </p>
+          <p className="text-base text-dark-3 leading-relaxed">
+            To be eligible for a return or exchange, all merchandise must be in <strong className="text-dark">New only</strong> condition. This requires products to be completely unopened, contained in their original manufacturer or liquidation packaging, and never used, assembled, or altered in any manner. Customers have a return window of <strong className="text-dark">30 days</strong> from the documented date of delivery to initiate, request, and ship eligible items back to our warehouse. Items that have been opened, unsealed, or used are strictly ineligible for standard return or exchange.
+          </p>
+          <p className="text-base text-dark-3 leading-relaxed">
+            All authorized returns must be returned <strong className="text-dark">By mail</strong> to our warehouse facility located at 328 Thomas Pl, Everman, TX 76140, USA. Return shipping labels and carrier transit fees are the <strong className="text-dark">customer&rsquo;s responsibility</strong>. A restocking fee equal to <strong className="text-dark">20% of the product price</strong> will be deducted from the refund total upon processing. Once the returned merchandise is delivered to our facility and passes physical condition inspection, your refund will be processed within <strong className="text-dark">7 business days</strong> directly to your original payment method.
+          </p>
+        </div>
+
         {/* Detailed Sections */}
         <div className="space-y-8">
           {/* 1. Countries & Policy */}
